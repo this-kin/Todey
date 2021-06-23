@@ -1,0 +1,31 @@
+name: todey
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  convex_bottom_bar:
+  intl:
+  flutter_icons: ^1.1.0
+  # toast: ^0.1.5
+  # get:
+  # flutter_screenutil: 
+  # shared_preferences: ^0.5.12+4
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+  assets:
+    - images/
+  fonts:
+  - family: MADType
+    fonts:
+    - asset: fonts/Abel-Regular.ttf
+  - family: Raleway
+    fonts:
+    - asset: fonts/Raleway-Black.ttf
