@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
 
 class ItemAvatar extends StatelessWidget {
   final String image;
@@ -13,7 +13,7 @@ class ItemAvatar extends StatelessWidget {
       width: height * 0.05,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: txtColor,
+          color: kTextColor,
           image: DecorationImage(image: AssetImage(image))),
     );
   }

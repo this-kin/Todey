@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
 
 class SettingTile extends StatelessWidget {
   final String btnText;
@@ -26,15 +26,9 @@ class SettingTile extends StatelessWidget {
             ),
             title: Text(
               btnText,
-              style: styleText(),
+              style: kListTileStyle,
             ),
           ),
         ));
-  }
-
-  styleText() {
-    return TextStyle(
-      color: settingColor,
-    );
   }
 }

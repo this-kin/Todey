@@ -1,4 +1,3 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:todey/ui/create_new_task/create_task.dart';
@@ -40,9 +39,34 @@ class _MainState extends State<Main> {
         children: pages,
         physics: NeverScrollableScrollPhysics(),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10),
-        child: ConvexAppBar(
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        child: Icon(Icons.add),
+        onPressed: () {
+          onChanged(1);
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        elevation: 0,
+        onTap: onChanged,
+        backgroundColor: theme.backgroundColor,
+        selectedItemColor: theme.primaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: ""),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline_sharp), label: ""),
+          BottomNavigationBarItem(icon: Icon(AntDesign.setting), label: "")
+        ],
+      ),
+    );
+  }
+}
+
+/*
+ConvexAppBar(
           curve: Curves.elasticInOut,
           elevation: 0,
           initialActiveIndex: selectedIndex,
@@ -66,8 +90,4 @@ class _MainState extends State<Main> {
                   AntDesign.setting,
                 ))
           ],
-        ),
-      ),
-    );
-  }
-}
+        ),*/

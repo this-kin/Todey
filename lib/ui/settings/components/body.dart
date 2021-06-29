@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
 import 'package:todey/widgets/setting_tile.dart';
 import 'package:todey/widgets/sized_box.dart';
 
@@ -15,13 +15,12 @@ class SetBody extends StatelessWidget {
           children: [
             Text(
               "General",
-              style: styleText(),
+              style: kAccentStyle,
             ),
             SettingTile(
-              btnText: "Stats",
-              onPressed: () {},
-              icon: FlutterIcons.chart_arc_mco,
-            ),
+                btnText: "Stats",
+                onPressed: () {},
+                icon: FlutterIcons.chart_arc_mco),
             SettingTile(
                 btnText: "Add new events on top",
                 onPressed: () {},
@@ -40,7 +39,7 @@ class SetBody extends StatelessWidget {
             ),
             Text(
               "Notification",
-              style: styleText(),
+              style: kAccentStyle,
             ),
             SettingTile(
                 btnText: "Notification priority",
@@ -59,7 +58,7 @@ class SetBody extends StatelessWidget {
             ),
             Text(
               "Help & Feedback",
-              style: styleText(),
+              style: kAccentStyle,
             ),
             SettingTile(
                 btnText: "Suggest a feature",
@@ -74,7 +73,7 @@ class SetBody extends StatelessWidget {
             ),
             Text(
               "About",
-              style: styleText(),
+              style: kAccentStyle,
             ),
             SettingTile(
                 btnText: "Follow us on twitter",
@@ -92,10 +91,5 @@ class SetBody extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  TextStyle styleText() {
-    return TextStyle(
-        color: themeData.accentColor, fontFamily: "MADType", fontSize: 15);
   }
 }

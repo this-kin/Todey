@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todey/utils/theme.dart';
-import 'package:todey/widgets/custom_category.dart';
+import 'package:todey/utils/constant.dart';
+
 import 'package:todey/widgets/date_picker.dart';
 
 class Categorys extends StatelessWidget {
@@ -12,13 +12,13 @@ class Categorys extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10, right: 10),
         height: height * 0.07,
         decoration: BoxDecoration(
-            color: backGroundColor2, borderRadius: BorderRadius.circular(10)),
+            color: kBackGroundColor2, borderRadius: BorderRadius.circular(10)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "Category",
-              style: labelStyle(),
+              style: kSwitchStyle,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8, right: 8),
@@ -30,9 +30,5 @@ class Categorys extends StatelessWidget {
             )
           ],
         ));
-  }
-
-  TextStyle labelStyle() {
-    return TextStyle(color: txtColor, fontFamily: "MADType", fontSize: 18);
   }
 }

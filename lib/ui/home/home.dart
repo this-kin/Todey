@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/ui/home/components/body.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
+
 import 'package:todey/widgets/user_avatar.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    AuthService authServiceController = Get.put(AuthService());
     var theme = Theme.of(context);
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -19,13 +23,13 @@ class _HomeState extends State<Home> {
         elevation: 0,
         title: Text(
           "Todey Schedule",
-          style: styleText(),
+          style: kAppBarTitleStyle,
         ),
         actions: [
           Padding(
               padding: const EdgeInsets.all(5),
               child: UserAvatar(
-                imgUrl: "images/man.png",
+                imgUrl: authServiceController.userImageUrl.value,
               )),
           SizedBox(
             width: width * 0.03,
@@ -35,9 +39,5 @@ class _HomeState extends State<Home> {
       backgroundColor: theme.backgroundColor,
       body: MyHomeBody(),
     );
-  }
-
-  TextStyle styleText() {
-    return TextStyle(color: txtColor, fontFamily: "Raleway", fontSize: 25);
   }
 }

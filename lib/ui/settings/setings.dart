@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todey/ui/settings/components/body.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -15,14 +15,10 @@ class Settings extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Settings",
-          style: styleText(),
+          style: kAppBarTitleStyle,
         ),
       ),
       body: SetBody(),
     );
-  }
-
-  TextStyle styleText() {
-    return TextStyle(color: txtColor, fontFamily: "Raleway", fontSize: 25);
   }
 }

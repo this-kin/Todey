@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todey/models/dummy_datas.dart';
+import 'package:todey/utils/formatted_date.dart';
 import 'package:todey/widgets/item_widget.dart';
 
 class MyHomeBody extends StatefulWidget {
@@ -17,7 +18,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Monday 19",
+            formattedDate(),
             style: styleText(theme),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.04),

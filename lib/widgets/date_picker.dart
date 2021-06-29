@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
+
 
 class PickDate extends StatefulWidget {
   final String value;
@@ -33,7 +34,7 @@ class _PickDateState extends State<PickDate> {
               Text(
                 "${widget.value}",
                 style: TextStyle(
-                    fontFamily: "Raleway", color: txtColor, fontSize: 15),
+                    fontFamily: "Raleway", color: kTextColor, fontSize: 15),
               ),
               Icon(MaterialIcons.arrow_drop_down, color: themeData.primaryColor)
             ],

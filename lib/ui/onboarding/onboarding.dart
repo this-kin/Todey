@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/models/welcome_model.dart';
-import 'package:todey/ui/home_page.dart';
 import 'package:todey/ui/onboarding/components/onboard.dart';
-import 'package:todey/utils/helper.dart';
-import 'package:todey/utils/theme.dart';
-import 'package:todey/widgets/primary_button.dart';
+import 'package:todey/utils/constant.dart';
 
 int selectedIndex = 0;
 
@@ -16,6 +15,7 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
+    AuthService authService = Get.put(AuthService());
     //mediaquery for responsiveness
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -59,21 +59,18 @@ class _OnboardingState extends State<Onboarding> {
               }),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            // padding: const EdgeInsets.only(top: 50),
-            child: Center(
-              child: selectedIndex == 2
-                  ? PrimaryButton(
-                      btnText: "Continue",
-                      onPressed: () {
-                        Helper.replaceScreen(context, Main());
-                      })
-                  : null,
-            ),
-          )
         ],
       )),
+      floatingActionButton: selectedIndex == 2
+          ? FloatingActionButton(
+              backgroundColor: theme.primaryColor,
+              child: Icon(Icons.arrow_forward_rounded),
+              onPressed: () {
+                authService.signInWithGooogle(context);
+                // Helper.replaceScreen(context, Main());
+              },
+            )
+          : null,
     );
   }
 
@@ -85,9 +82,7 @@ class _OnboardingState extends State<Onboarding> {
       height: 10,
       width: selectedIndex == index ? 20 : 10,
       decoration: BoxDecoration(
-          color: selectedIndex == index
-              ? themeData.accentColor
-              : themeData.primaryColor,
+          color: selectedIndex == index ? kAccentColor : kPrimaryColor,
           borderRadius: BorderRadius.circular(10)),
     );
   }

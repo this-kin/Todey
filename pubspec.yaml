@@ -11,10 +11,15 @@ dependencies:
   convex_bottom_bar:
   intl:
   flutter_icons: ^1.1.0
-  # toast: ^0.1.5
-  # get:
-  # flutter_screenutil: 
-  # shared_preferences: ^0.5.12+4
+  toast: ^0.1.5
+  get:
+  flutter_screenutil: 
+  shared_preferences: ^0.5.12+4
+  firebase_core:
+  firebase_auth:
+  google_sign_in:
+  sqflite:
+  path_provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter

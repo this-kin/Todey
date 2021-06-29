@@ -5,9 +5,10 @@ import 'package:todey/ui/create_new_task/components/date_time_picker.dart';
 import 'package:todey/ui/create_new_task/components/event_description.dart';
 import 'package:todey/ui/create_new_task/components/priority.dart';
 import 'package:todey/ui/create_new_task/components/set_alarm.dart';
-import 'package:todey/utils/theme.dart';
+import 'package:todey/utils/constant.dart';
 
 class CreateBody extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     //Mediaquery to get responsiveness
@@ -21,13 +22,13 @@ class CreateBody extends StatelessWidget {
             SizedBox(
               height: height * 0.02,
             ),
-            Text("Description", style: newMethod()),
+            Text("Description", style: kAccentStyle),
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: Description(),
+              // child: Description(),
             ),
             SizedBox(height: height * 0.04),
-            Text("Priority", style: newMethod()),
+            Text("Priority", style: kAccentStyle),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Priority(),
@@ -37,7 +38,7 @@ class CreateBody extends StatelessWidget {
               child: Categorys(),
             ),
             SizedBox(height: height * 0.02),
-            Text("Due Date", style: newMethod()),
+            Text("Due Date", style: kAccentStyle),
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: DateTimer(),
@@ -54,13 +55,5 @@ class CreateBody extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  TextStyle newMethod() {
-    return TextStyle(color: settingColor, fontFamily: "MADType", fontSize: 18);
-  }
-
-  TextStyle styleText() {
-    return TextStyle(color: txtColor, fontFamily: "Raleway", fontSize: 22);
   }
 }

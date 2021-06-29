@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:todey/controllers/auth_controller.dart';
 
 class UserAvatar extends StatelessWidget {
   final String imgUrl;
@@ -7,14 +9,20 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthService authServiceController = Get.put(AuthService());
     var height = MediaQuery.of(context).size.height;
 
-    return Container(
-      height: height * 0.06,
-      width: height * 0.06,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(image: AssetImage(imgUrl))),
+    return GestureDetector(
+      onTap: () {
+        authServiceController.signOut();
+      },
+      child: Container(
+        height: height * 0.06,
+        width: height * 0.06,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            image: DecorationImage(image: NetworkImage(imgUrl))),
+      ),
     );
   }
 }
