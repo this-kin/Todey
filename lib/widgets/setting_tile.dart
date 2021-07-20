@@ -16,19 +16,22 @@ class SettingTile extends StatelessWidget {
     //theme
     var theme = Theme.of(context);
     //date time button will be from the boat ui
-    return Container(
-        height: height * 0.07,
-        child: Center(
-          child: ListTile(
-            leading: Icon(
-              icon,
-              color: Colors.white,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+          height: height * 0.07,
+          child: Center(
+            child: ListTile(
+              leading: Icon(
+                icon,
+                color: Colors.white,
+              ),
+              title: Text(
+                btnText,
+                style: kListTileStyle,
+              ),
             ),
-            title: Text(
-              btnText,
-              style: kListTileStyle,
-            ),
-          ),
-        ));
+          )),
+    );
   }
 }

@@ -8,7 +8,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  convex_bottom_bar:
   intl:
   flutter_icons: ^1.1.0
   toast: ^0.1.5
@@ -19,7 +18,14 @@ dependencies:
   firebase_auth:
   google_sign_in:
   sqflite:
+  fl_chart: 
   path_provider:
+  feedback: 
+  syncfusion_flutter_datepicker:
+  flutter_local_notifications: ^4.0.1+2
+  cached_network_image:
+  # url_launcher:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

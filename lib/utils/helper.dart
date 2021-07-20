@@ -14,4 +14,8 @@ class Helper {
       return page;
     }));
   }
+
+  static popScreen(BuildContext context) {
+    Navigator.of(context).pop();
+  }
 }

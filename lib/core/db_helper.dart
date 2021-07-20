@@ -10,16 +10,23 @@ class SQFliteDB {
   static final SQFliteDB _instance = new SQFliteDB._internal();
   factory SQFliteDB() => _instance;
   static final int _version = 1;
-  final String tableName = "todeytable";
+  final String tableName = "todeytabletest";
+
+  //////Event
   final String columnId = "id";
   final String columnTitle = "eventTitle";
-  final String columnDescription = "eventDescription";
+  final String columnNote = "eventNote";
   final String columnDate = "eventDate";
   final String columnType = "eventType";
-  final String columnAlarm = "preferAlarm";
-  final String columnPriority = "eventPriority";
+  final String columnStartedDate = "eventStartedDate";
+  final String columnEndedDate = "eventEndedDate";
   final String columnCategory = "eventCategory";
-  final String columnCreatedTime = "eventCreatedTime";
+  final String columnCreatedTime = "eventCreatedDate";
+
+  ////Chart
+  final String chartTable = "todeycharttest";
+  final String columnID = "id";
+  final String columnChart = "chart";
 
   static Database _db;
 
@@ -36,17 +43,22 @@ class SQFliteDB {
 
   initializeDB() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = join(directory.path, "todeytest1.db");
+    String path = join(directory.path, "todeytest3.db");
     var myDB = await openDatabase(path, version: _version, onCreate: _onCreate);
     return myDB;
   }
 
   FutureOr<void> _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnDescription TEXT, $columnDate TEXT, $columnAlarm INTEGER, $columnCreatedTime TEXT, $columnCategory TEXT, $columnPriority TEXT, $columnType TEXT)");
+        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory)");
     print("Table is created");
+
+    await db.execute(
+        "CREATE TABLE $chartTable($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnChart INTEGER)");
+    print("Chart DB is created");
   }
 
+  //////////////////////////////////////////////////////////////////////
   //CREATE DATA
   Future<int> saveEvent(EventModel eventModel) async {
     // ignore: await_only_futures
@@ -58,12 +70,22 @@ class SQFliteDB {
 
   //READ DATA
 
-  Future<List> getAllEvent() async {
+  Future<List<EventModel>> getAllEvent() async {
     var dbClient = await db;
-    var result = await dbClient
-        .rawQuery("SELECT * FROM $tableName ORDER BY $columnTitle ASC");
-
-    return result.toList();
+    final List<Map<String, dynamic>> maps = await dbClient.query(tableName);
+    return List.generate(maps.length, (index) {
+      return EventModel(
+        id: maps[index]["id"],
+        eventTitle: maps[index]["eventTitle"],
+        eventNote: maps[index]["eventNote"],
+        eventCreatedDate: maps[index]["eventCreatedDate"],
+        eventType: maps[index]["eventType"],
+        eventStartedDate: maps[index]["eventStartedDate"],
+        eventEndedDate: maps[index]["eventEndedDate"],
+        eventCategory: maps[index]["eventCategory"],
+        eventDate: maps[index]["eventDate"],
+      );
+    });
   }
 
   //UPDATE DATA
@@ -80,4 +102,6 @@ class SQFliteDB {
     return await dbClient
         .delete(tableName, where: "$columnId = ? ", whereArgs: [id]);
   }
+  /////////////////////////////////////////////////////////////
+
 }

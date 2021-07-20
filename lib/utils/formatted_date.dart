@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 String formattedDate() {
@@ -6,4 +7,10 @@ String formattedDate() {
   String formatted = formatter.format(now);
 
   return formatted;
+}
+
+String formattedTime({TimeOfDay time, context}) {
+  var now = time;
+  var formatter = now.format(context);
+  return formatter;
 }

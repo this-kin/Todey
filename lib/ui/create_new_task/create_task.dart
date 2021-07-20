@@ -1,113 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
-import 'package:todey/core/db_helper.dart';
-import 'package:todey/models/todo_model.dart';
-import 'package:todey/ui/create_new_task/components/add_subtask.dart';
-import 'package:todey/ui/create_new_task/components/category_picker.dart';
-import 'package:todey/ui/create_new_task/components/date_time_picker.dart';
-import 'package:todey/ui/create_new_task/components/event_description.dart';
-import 'package:todey/ui/create_new_task/components/priority.dart';
-import 'package:todey/ui/create_new_task/components/set_alarm.dart';
-import 'package:todey/utils/constant.dart';
+import 'package:todey/ui/create_new_task/components/first_components/components/custom_appbar.dart';
+import 'package:todey/ui/create_new_task/components/first_components/first_slide.dart';
+import 'package:todey/ui/create_new_task/components/second_component/second_slide.dart';
 
-class Create extends StatelessWidget {
+class Create extends StatefulWidget {
+  @override
+  _CreateState createState() => _CreateState();
+}
+
+class _CreateState extends State<Create> {
   @override
   Widget build(BuildContext context) {
-    //theme
+    EventController controller = Get.put(EventController());
     var theme = Theme.of(context);
-    //
-    var height = MediaQuery.of(context).size.height;
-    void _saveNewEvents(
-      TextEditingController titleEditingController,
-      TextEditingController subTitleController,
-    ) async {
-      EventModel model = EventModel(
-        eventDescription: "I go like sleep ontop bridge thrid mainland oo",
-        eventCategory: "Work",
-        eventCreatedTime: "10:00",
-        eventDate: "Tue 28",
-        eventPriority: "2",
-        eventTitle: "sleep ontop bridge",
-        eventType: "Important",
-        preferAlarm: "no",
-      );
-      EventController().addEvent(model);
-    }
-
-    ///
-    ///
-    EventController eventController = Get.put(EventController());
-    TextEditingController titleEditingController = TextEditingController();
-    TextEditingController subTitleController = TextEditingController();
     return Scaffold(
-        backgroundColor: theme.backgroundColor,
-        appBar: AppBar(
-          backgroundColor: theme.backgroundColor,
-          elevation: 0,
-          title: Text(
-            "New Event",
-            style: kAppBarTitleStyle,
-          ),
-          actions: [
-            FlatButton(
-              onPressed: () {
-                // save data to db...
-
-                _saveNewEvents(titleEditingController, subTitleController);
-              },
-              child: Text(
-                "Done",
-                style: kListTileStyle,
-              ),
-            )
-          ],
-        ),
-        body: Container(
-          padding: const EdgeInsets.only(left: 12, right: 12),
+      backgroundColor: theme.backgroundColor.withOpacity(0.5),
+      body: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              color: Theme.of(context).backgroundColor),
+          height: 670.h,
+          width: double.infinity,
           child: SingleChildScrollView(
+              child: Container(
+            height: 670.h,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: height * 0.02,
-                ),
-                Text("Event Title", style: kAccentStyle),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Description(
-                    textEditingController: titleEditingController,
-                  ),
-                ),
-                SizedBox(height: height * 0.04),
-                Text("Priority", style: kAccentStyle),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Priority(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Categorys(),
-                ),
-                SizedBox(height: height * 0.02),
-                Text("Due Date", style: kAccentStyle),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: DateTimer(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SetAlarm(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: SubTask(
-                    controller: subTitleController,
+                CustomAppBar(),
+                Flexible(
+                  child: PageView.builder(
+                    onPageChanged: (index) {
+                      controller.selectedIndex.value = index;
+                      setState(() {});
+                    },
+                    // physics: NeverScrollableScrollPhysics(),
+                    controller: controller.pageController.value,
+                    itemCount: 2,
+                    itemBuilder: (BuildContext context, int index) {
+                      return index == 0 ? FirstSlide() : SecondSlide();
+                    },
                   ),
                 ),
               ],
             ),
-          ),
-        ));
+          )),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 }

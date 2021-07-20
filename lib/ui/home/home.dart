@@ -28,9 +28,9 @@ class _HomeState extends State<Home> {
         actions: [
           Padding(
               padding: const EdgeInsets.all(5),
-              child: UserAvatar(
-                imgUrl: authServiceController.userImageUrl.value,
-              )),
+              child: Obx(() => UserAvatar(
+                    imgUrl: authServiceController.userImageUrl.value,
+                  ))),
           SizedBox(
             width: width * 0.03,
           )

@@ -12,6 +12,8 @@ Color kIconColor = Colors.white;
 Color kDeletedColor = Colors.red;
 Color kBackGroundColor2 = Color(0xff3E3B64);
 
+Duration kDuration = Duration(milliseconds: 300);
+
 //
 TextStyle kAppBarTitleStyle =
     TextStyle(color: kTextColor, fontFamily: "Raleway", fontSize: 25);
@@ -30,13 +32,13 @@ TextStyle kPrimaryStyle =
     TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18);
 
 //
-TextStyle kAccentStyle = TextStyle(
-    color: themeData.accentColor, fontFamily: "MADType", fontSize: 18);
+TextStyle kAccentStyle =
+    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18);
 
 //app only uses one theme
 ThemeData themeData = ThemeData(
     backgroundColor: kBackgroundColor,
     primaryColor: kPrimaryColor,
-    canvasColor: kBackGroundColor2,
+    //canvasColor: Colors.transparent.withOpacity(1.0),
     accentColor: kAccentColor,
     iconTheme: IconThemeData(color: kIconColor));
