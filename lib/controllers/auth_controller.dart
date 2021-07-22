@@ -9,8 +9,8 @@ import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/helper.dart';
 
+///////to be re-written
 class AuthService extends GetxController {
-  
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   var isSignedIn = false.obs;
@@ -46,7 +46,7 @@ class AuthService extends GetxController {
       sp.saveLoginSatate(user.photoURL);
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
-      Helper.replaceScreen(context, Main());
+      Helper.replaceScreen(context, HomePage());
 
       final User currentUser = _auth.currentUser;
       assert(user.uid == currentUser.uid);

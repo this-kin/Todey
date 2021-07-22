@@ -47,7 +47,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
           height: 200.h,
           width: 200.w,
           decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("images/note.png"))),
+              image: DecorationImage(image: AssetImage("images/paper.png"))),
         ),
       ),
     );

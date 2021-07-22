@@ -8,6 +8,7 @@ import 'package:todey/core/db_helper.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/constant.dart';
+import 'package:todey/utils/translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +30,13 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
-          return Obx(() => MaterialApp(
+          return Obx(() => GetMaterialApp(
+              translations: Translation(),
+              locale: Locale('en', 'US'),
+              fallbackLocale: Locale('en', 'US'),
               theme: themeData,
               home: authService.userImageUrl.value != null
-                  ? Main()
+                  ? HomePage()
                   : Onboarding(),
               title: "Todey",
               debugShowCheckedModeBanner: false));

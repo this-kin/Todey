@@ -52,7 +52,7 @@ class EventController extends GetxController {
     noteController.value.clear();
     selectedIndex.value = 0;
 
-    Helper.nextScreen(context, Main());
+    Helper.nextScreen(context, HomePage());
   }
 
   Future<void> getEvents() async {

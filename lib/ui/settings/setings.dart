@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:todey/ui/settings/components/kswitch.dart';
+import 'package:todey/ui/settings/components/dialog.dart';
 import 'package:todey/ui/settings/components/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todey/widgets/kswitch.dart';
 
 class Settings extends StatelessWidget {
+  //build widget
+  Padding buildTitle(String text) {
+    return Padding(
+      padding: EdgeInsets.all(15.w),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontFamily: "MADType",
+          fontSize: 14.sp,
+          color: kPrimaryColor,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     //theme
@@ -23,16 +39,7 @@ class Settings extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.all(15.w),
-              child: Text(
-                "General",
-                style: TextStyle(
-                    fontFamily: "MADType",
-                    fontSize: 14.sp,
-                    color: theme.primaryColor),
-              ),
-            ),
+            buildTitle("General"),
             SettingTile(
               icon: MaterialCommunityIcons.chart_arc,
               btnText: "Stats",
@@ -42,17 +49,15 @@ class Settings extends StatelessWidget {
               icon: Entypo.language,
               btnText: "Language",
               trailing: Text("English"),
+              onPressed: () {
+                showModalBottomSheet(
+                    builder: (BuildContext context) {
+                      return KBottom();
+                    },
+                    context: context);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.all(15.w),
-              child: Text(
-                "Notification",
-                style: TextStyle(
-                    fontFamily: "MADType",
-                    fontSize: 14.sp,
-                    color: theme.primaryColor),
-              ),
-            ),
+            buildTitle("Notification"),
             SettingTile(
               icon: Entypo.notification,
               btnText: "Nofitcation",
@@ -63,16 +68,7 @@ class Settings extends StatelessWidget {
               btnText: "Daily Reminder",
               trailing: KSwitch(),
             ),
-            Padding(
-              padding: EdgeInsets.all(15.w),
-              child: Text(
-                "Help & Feedback",
-                style: TextStyle(
-                    fontFamily: "MADType",
-                    fontSize: 14.sp,
-                    color: theme.primaryColor),
-              ),
-            ),
+            buildTitle("Help & Feedback"),
             SettingTile(
               icon: AntDesign.search1,
               btnText: "Suggest a feature",
