@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:todey/ui/settings/components/kappbar.dart';
 import 'package:todey/ui/settings/components/kswitch.dart';
 import 'package:todey/ui/settings/components/setting_title.dart';
+import 'package:todey/utils/constant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -12,14 +13,26 @@ class Settings extends StatelessWidget {
     //date time button will be from the boat ui
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(double.infinity, 110),
-        child: KAppbar(),
+      appBar: AppBar(
+        backgroundColor: theme.backgroundColor,
+        elevation: 0,
+        title: Text("Setttings", style: kAppBarTitleStyle),
       ),
       backgroundColor: theme.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+              padding: EdgeInsets.all(15.w),
+              child: Text(
+                "General",
+                style: TextStyle(
+                    fontFamily: "MADType",
+                    fontSize: 14.sp,
+                    color: theme.primaryColor),
+              ),
+            ),
             SettingTile(
               icon: MaterialCommunityIcons.chart_arc,
               btnText: "Stats",
@@ -30,6 +43,16 @@ class Settings extends StatelessWidget {
               btnText: "Language",
               trailing: Text("English"),
             ),
+            Padding(
+              padding: EdgeInsets.all(15.w),
+              child: Text(
+                "Notification",
+                style: TextStyle(
+                    fontFamily: "MADType",
+                    fontSize: 14.sp,
+                    color: theme.primaryColor),
+              ),
+            ),
             SettingTile(
               icon: Entypo.notification,
               btnText: "Nofitcation",
@@ -39,6 +62,16 @@ class Settings extends StatelessWidget {
               icon: Entypo.notifications_off,
               btnText: "Daily Reminder",
               trailing: KSwitch(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(15.w),
+              child: Text(
+                "Help & Feedback",
+                style: TextStyle(
+                    fontFamily: "MADType",
+                    fontSize: 14.sp,
+                    color: theme.primaryColor),
+              ),
             ),
             SettingTile(
               icon: AntDesign.search1,
