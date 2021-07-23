@@ -19,7 +19,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
       itemCount: controller.events.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0.w),
             child: GetX<EventController>(
               builder: (controller) {
                 return ItemWidget(
@@ -57,7 +57,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.only(left: 13),
+      padding: EdgeInsets.only(left: 13.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -65,10 +65,12 @@ class _MyHomeBodyState extends State<MyHomeBody> {
             formattedDate(),
             style: styleText(theme),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+
+          ///responsiveness 0
+          SizedBox(height: 40.h),
           Flexible(
             child: Container(
-                margin: const EdgeInsets.only(right: 10),
+                margin: EdgeInsets.only(right: 10.w),
                 child: Obx(
                   () =>
                       controller.events.isEmpty ? emptyEvents() : viewEvents(),
@@ -81,6 +83,9 @@ class _MyHomeBodyState extends State<MyHomeBody> {
 
   TextStyle styleText(ThemeData theme) {
     return TextStyle(
-        color: theme.primaryColor, fontFamily: "Raleway", fontSize: 25);
+      color: theme.primaryColor,
+      fontFamily: "Raleway",
+      fontSize: 25.sp,
+    );
   }
 }

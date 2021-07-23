@@ -32,34 +32,37 @@ class EventController extends GetxController {
     notification.setOnNotificationClick(onNotificationClick);
   }
 
-  onNotificationClick(String payload) {
-    print("fuck offf ");
-  }
-
+  /////////////////////CREATE  EVENT
   Future<void> addEvent(BuildContext context) async {
-    EventModel model = EventModel(
-        eventCategory: eventCategory.value,
-        eventCreatedDate: eventCreatedDate,
-        eventDate: eventDate.value.toString(),
-        eventEndedDate: eventEndedTime.value.toString(),
-        eventNote: noteController.value.text,
-        eventTitle: titleController.value.text,
-        eventStartedDate: eventStartedTime.value.toString(),
-        eventType: eventType.value);
-    await sqFliteDB.saveEvent(model);
-    getEvents();
-    titleController.value.clear();
-    noteController.value.clear();
-    selectedIndex.value = 0;
-
-    Helper.nextScreen(context, HomePage());
+    if (titleController.value.text.isNotEmpty &&
+        noteController.value.text.isNotEmpty) {
+      EventModel model = EventModel(
+          eventCategory: eventCategory.value,
+          eventCreatedDate: eventCreatedDate,
+          eventDate: eventDate.value.toString(),
+          eventEndedDate: eventEndedTime.value.toString(),
+          eventNote: noteController.value.text,
+          eventTitle: titleController.value.text,
+          eventStartedDate: eventStartedTime.value.toString(),
+          eventType: eventType.value);
+      await sqFliteDB.saveEvent(model);
+      setNotification(
+          eventDate.value, eventStartedTime.value, eventEndedTime.value);
+      getEvents();
+      _disposeController();
+      Navigator.pop(context);
+    } else {
+      ShowToast.checkEvent(context);
+    }
   }
 
+///////// FETCH ALL EVENT
   Future<void> getEvents() async {
     events.value = await sqFliteDB.getAllEvent();
     update();
   }
 
+///////////// DElETE EVENT
   Future<void> removeEvent({int id, index}) async {
     await sqFliteDB.deleteEvent(id);
     events.removeAt(index);
@@ -67,32 +70,45 @@ class EventController extends GetxController {
     getEvents();
   }
 
+/////////////UPDATE EVENT
   Future<void> updateEvent(EventModel event) async {
     await sqFliteDB.updateEvent(event);
     getEvents();
   }
 
-  checkValue(BuildContext context) {
-    if (titleController.value.text.isNotEmpty &&
-        noteController.value.text.isNotEmpty) {
-      print("Not Empty");
-      //xcellent
-
-      var date = DateTime(
-          eventDate.value.year,
-          eventDate.value.month,
-          eventDate.value.day,
-          eventStartedTime.value.hour,
-          eventStartedTime.value.minute);
-      print(date);
-      notification.startScheduleNotification(date);
-      print("Today's Date is ${DateTime.now()}");
-    } else {
-      ShowToast.checkEvent(context);
-    }
-  }
-
+////////////CLEARS ALL
   Future<void> clearAllEvents() async {
     // clear all data entered by userrrr
+  }
+
+  /////////  FIRES WHEN YOU CLICK ON THE NOTIFICATION
+  onNotificationClick(String payload) {
+    print("fuck offf ");
+  }
+
+  _disposeController() {
+    noteController.value.clear();
+    titleController.value.clear();
+    selectedIndex.value = 0;
+  }
+
+  ////to set scheduled notification
+  setNotification(DateTime eventDate, TimeOfDay eventStartedTime,
+      TimeOfDay eventEndedTime) {
+    var now = eventDate;
+    var start = eventStartedTime;
+    var end = eventEndedTime;
+
+//Start Time
+    var startedDate =
+        DateTime(now.year, now.month, now.day, start.hour, start.minute);
+    notification.startScheduleNotification(startedDate);
+    print(startedDate);
+
+//End Time
+    var endedDate =
+        DateTime(now.year, now.month, now.day, end.hour, end.minute);
+    notification.endScheduleNotification(endedDate);
+    print(endedDate);
   }
 }

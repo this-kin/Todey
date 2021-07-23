@@ -21,9 +21,13 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0,
-        title: Text(
-          "Todey Schedule",
-          style: kAppBarTitleStyle,
+        title: RichText(
+          text: TextSpan(text: "Todey ", style: kAppBarTitleStyle, children: [
+            TextSpan(
+              text: 'schedule'.tr,
+              style: kAppBarTitleStyle,
+            )
+          ]),
         ),
         actions: [
           Padding(

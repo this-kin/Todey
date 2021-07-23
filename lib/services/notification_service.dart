@@ -4,6 +4,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //TZ
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:get/get.dart';
 
 class NotificationHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -42,6 +43,7 @@ class NotificationHelper {
     });
   }
 
+  ///
   Future<void> showNotification() async {
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID",
@@ -64,11 +66,11 @@ class NotificationHelper {
 ////Scheduled StartedDate
   Future<void> startScheduleNotification(DateTime date) async {
     var scheduledTime =
-        tz.TZDateTime.from(date, tz.local).add(Duration(seconds: 5));
+        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 1",
-      "CHANNEL_NAME 1",
-      "CHANNEL_DESCRIPTION 1",
+      "CHANNEL_ID 0",
+      "CHANNEL_NAME 0",
+      "CHANNEL_DESCRIPTION 0",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -78,19 +80,18 @@ class NotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        0, "Todey", "A New Event just Started", scheduledTime, platformSpecific,
+        0, "Todey", "started".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
 
-  //////
   ///
   ///
   Future<void> endScheduleNotification(DateTime date) async {
     var scheduledTime =
-        tz.TZDateTime.from(date, tz.local).add(Duration(seconds: 5));
+        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 1",
       "CHANNEL_NAME 1",
@@ -104,7 +105,7 @@ class NotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        0, "Todey", "An event just ended", scheduledTime, platformSpecific,
+        0, "Todey", "ended".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

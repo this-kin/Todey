@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/ui/settings/components/dialog.dart';
 import 'package:todey/ui/settings/components/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/widgets/kswitch.dart';
+import 'package:get/get.dart';
 
 class Settings extends StatelessWidget {
   //build widget
@@ -22,6 +24,7 @@ class Settings extends StatelessWidget {
     );
   }
 
+  SettingController settingController = Get.put(SettingController());
   @override
   Widget build(BuildContext context) {
     //theme
@@ -32,22 +35,22 @@ class Settings extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0,
-        title: Text("Setttings", style: kAppBarTitleStyle),
+        title: Text('settings'.tr, style: kAppBarTitleStyle),
       ),
       backgroundColor: theme.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTitle("General"),
+            buildTitle('General'.tr),
             SettingTile(
               icon: MaterialCommunityIcons.chart_arc,
-              btnText: "Stats",
+              btnText: "stats".tr,
               trailing: Text(""),
             ),
             SettingTile(
               icon: Entypo.language,
-              btnText: "Language",
+              btnText: "language".tr,
               trailing: Text("English"),
               onPressed: () {
                 showModalBottomSheet(
@@ -57,32 +60,43 @@ class Settings extends StatelessWidget {
                     context: context);
               },
             ),
-            buildTitle("Notification"),
+            buildTitle("Notification".tr),
             SettingTile(
               icon: Entypo.notification,
-              btnText: "Nofitcation",
+              btnText: "Nofitcation".tr,
               trailing: KSwitch(),
             ),
             SettingTile(
               icon: Entypo.notifications_off,
-              btnText: "Daily Reminder",
+              btnText: "daily_reminder".tr,
               trailing: KSwitch(),
             ),
-            buildTitle("Help & Feedback"),
+            buildTitle("help_feed".tr),
             SettingTile(
               icon: AntDesign.search1,
-              btnText: "Suggest a feature",
+              btnText: "suggest".tr,
               trailing: Text(""),
+              onPressed: () {
+                //
+                settingController.launchGmail();
+              },
             ),
             SettingTile(
               icon: MaterialCommunityIcons.hazard_lights,
-              btnText: "Report a problem",
+              btnText: "report".tr,
               trailing: Text(""),
+              onPressed: () {
+                //
+                settingController.reportProblem();
+              },
             ),
             SettingTile(
               icon: Entypo.twitter,
-              btnText: "Follow us on Twitter",
+              btnText: "follow twitt".tr,
               trailing: Text(""),
+              onPressed: () {
+                settingController.launchTwitter();
+              },
             ),
             SettingTile(
               icon: Icons.phone_android,

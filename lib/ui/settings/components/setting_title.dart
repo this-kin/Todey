@@ -13,36 +13,28 @@ class SettingTile extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 12.h),
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
         child: Container(
-          height: 50.h,
-          width: 325.w,
-          child: Center(
-            child: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: kIconColor,
-                  size: 25.sp,
-                ),
-                SizedBox(width: 10.w),
-                Text(btnText, style: kSettingStyle()),
-                Spacer(),
-                trailing
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+            height: 50.h,
+            width: 325.w,
+            child: ListTile(
+              leading: Icon(
+                icon,
+                color: Colors.white,
+              ),
+              title: Text(
+                btnText,
+                style: kSettingStyle(),
+              ),
+              onTap: onPressed,
+              trailing: trailing,
+            )));
   }
 
   kSettingStyle() {
     return TextStyle(
-      fontSize: 14.sp,
+      fontSize: 15.sp,
       fontFamily: "MADType",
       fontWeight: FontWeight.w400,
       color: kSettingColor,

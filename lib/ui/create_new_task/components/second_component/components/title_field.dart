@@ -12,13 +12,13 @@ class TitleField extends StatelessWidget {
       height: 60.h,
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
-          color: kBackGroundColor2, borderRadius: BorderRadius.circular(15)),
+          color: kBackGroundColor2, borderRadius: BorderRadius.circular(15.sp)),
       child: Center(
         child: TextField(
           controller: controller.titleController.value,
           decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: "Task Name",
+              hintText: "task_name".tr,
               hintStyle: kListTileStyle),
         ),
       ),

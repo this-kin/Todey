@@ -14,11 +14,6 @@ class _CustomTimePickersState extends State<CustomTimePickers> {
   EventController controller = Get.put(EventController());
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     customChips({TimeOfDay date, Function onPressed}) {
       return GestureDetector(
@@ -26,10 +21,10 @@ class _CustomTimePickersState extends State<CustomTimePickers> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           height: 40.h,
-          width: 100.w,
+          width: 90.w,
           decoration: BoxDecoration(
               border: Border.all(color: kSettingColor),
-              borderRadius: BorderRadius.circular(8)),
+              borderRadius: BorderRadius.circular(8.sp)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

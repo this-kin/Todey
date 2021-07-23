@@ -37,28 +37,26 @@ class _EventTypeState extends State<EventType> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Container(
-          height: 70.h,
-          child: Wrap(
-            spacing: 10.w,
-            children: List<Widget>.generate(allEventTypes.length, (int index) {
-              return GestureDetector(
-                  onTap: () {
-                    print(allEventTypes[index].name);
-                    selectedIndex = index;
-                    controller.eventType.value =
-                        allEventTypes[selectedIndex].name;
-                    setState(() {});
-                  },
-                  child: buildChips(
-                      imgurl: allEventTypes[index].imageurl,
-                      txt: allEventTypes[index].name,
-                      borderColor: selectedIndex == index
-                          ? kAccentColor
-                          : kBackgroundColor));
-            }),
-          )),
-    );
+    return Container(
+        height: 70.h,
+        child: Wrap(
+          spacing: 10.w,
+          children: List<Widget>.generate(allEventTypes.length, (int index) {
+            return GestureDetector(
+                onTap: () {
+                  print(allEventTypes[index].name);
+                  selectedIndex = index;
+                  controller.eventType.value =
+                      allEventTypes[selectedIndex].name;
+                  setState(() {});
+                },
+                child: buildChips(
+                    imgurl: allEventTypes[index].imageurl,
+                    txt: allEventTypes[index].name,
+                    borderColor: selectedIndex == index
+                        ? kAccentColor
+                        : kBackgroundColor));
+          }),
+        ));
   }
 }

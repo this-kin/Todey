@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/utils/constant.dart';
-import 'package:todey/utils/formatted_date.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PickerDate extends StatefulWidget {
   @override
@@ -42,9 +42,7 @@ class _PickerDateState extends State<PickerDate> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 100.h,
-      // width: 100.w,
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       child: SfDateRangePicker(
         enablePastDates: false,
         onSelectionChanged: _onSelectionChanged,

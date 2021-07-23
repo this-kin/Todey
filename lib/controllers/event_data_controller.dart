@@ -26,12 +26,6 @@ class EventController extends GetxController {
     notification.setOnNotificationClick(onNotificationClick);
   }
 
-
-
-  validateInput() {
-  
-  }
-
   onNotificationClick() {
     print("Clicked Notification");
   }

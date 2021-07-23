@@ -62,7 +62,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   //open next form
                   controller.selectedIndex.value == 0
                       ? controller.pageController.value.jumpToPage(1)
-                      : controller.checkValue(context);
+                      : controller.addEvent(context);
                 },
                 gradient1: kImportantColor.withOpacity(0.7),
                 gradient2: kImportantColor,

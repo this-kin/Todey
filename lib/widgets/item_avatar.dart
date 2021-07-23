@@ -27,7 +27,7 @@ class ItemAvatar extends StatelessWidget {
 _getColor(String title) {
   switch (title) {
     case "Fun":
-      return Colors.pinkAccent;
+      return Colors.yellowAccent;
       break;
     case "Family":
       return Colors.purpleAccent;

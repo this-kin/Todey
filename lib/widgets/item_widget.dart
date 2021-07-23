@@ -75,7 +75,7 @@ class _ItemWidgetState extends State<ItemWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 70.h,
+              width: 100.w,
               height: 20.h,
               child: Text(
                 widget.eventTitle,
@@ -87,11 +87,11 @@ class _ItemWidgetState extends State<ItemWidget> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             Container(
-              width: 100.h,
+              width: 120.w,
               height: 20.h,
               child: Text(
                 widget.eventNote,
-                overflow: TextOverflow.fade,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                     color: kSettingColor,
                     fontFamily: "MADType",

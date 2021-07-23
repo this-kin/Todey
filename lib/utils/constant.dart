@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Color kBlackColor = Color(0xff292E3C);
 Color kTextColor = Colors.white;
@@ -16,7 +17,7 @@ Duration kDuration = Duration(milliseconds: 300);
 
 //
 TextStyle kAppBarTitleStyle =
-    TextStyle(color: kTextColor, fontFamily: "Raleway", fontSize: 25);
+    TextStyle(color: kTextColor, fontFamily: "Raleway", fontSize: 24.sp);
 //
 TextStyle kListTileStyle = TextStyle(color: kTextColor, fontFamily: "MADType");
 //
@@ -25,15 +26,15 @@ TextStyle kItemWidgetStyle = TextStyle(
 
 //
 TextStyle kSwitchStyle =
-    TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 18);
+    TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 18.sp);
 
 //
 TextStyle kPrimaryStyle =
-    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18);
+    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18.sp);
 
 //
 TextStyle kAccentStyle =
-    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18);
+    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18.sp);
 
 //app only uses one theme
 ThemeData themeData = ThemeData(

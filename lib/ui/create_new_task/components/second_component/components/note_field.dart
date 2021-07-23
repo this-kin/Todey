@@ -12,13 +12,13 @@ class NoteField extends StatelessWidget {
       height: 220.h,
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
-          color: kBackGroundColor2, borderRadius: BorderRadius.circular(15)),
+          color: kBackGroundColor2, borderRadius: BorderRadius.circular(15.sp)),
       child: Expanded(
         child: TextField(
           controller: controller.noteController.value,
           decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: "Note",
+              hintText: 'note'.tr,
               hintStyle: kListTileStyle),
         ),
       ),

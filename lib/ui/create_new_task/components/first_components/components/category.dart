@@ -25,7 +25,7 @@ class _CategoryState extends State<Category> {
       decoration: BoxDecoration(
           color: bkgColor,
           border: Border.all(color: borderColor),
-          borderRadius: BorderRadius.circular(8)),
+          borderRadius: BorderRadius.circular(8.sp)),
       duration: kDuration,
       child: Center(
         child: Text(
