@@ -15,11 +15,14 @@ class NoteField extends StatelessWidget {
           color: kBackGroundColor2, borderRadius: BorderRadius.circular(15.sp)),
       child: Expanded(
         child: TextField(
+          style: kListTileStyle,
+          autocorrect: true,
           controller: controller.noteController.value,
           decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: 'note'.tr,
-              hintStyle: kListTileStyle),
+            border: InputBorder.none,
+            hintText: 'note'.tr,
+            hintStyle: kListTileStyle,
+          ),
         ),
       ),
     );

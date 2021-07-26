@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/core/db_helper.dart';
-import 'package:todey/services/sp_service.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/constant.dart';
@@ -22,6 +21,7 @@ void main() async {
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+  
 }
 
 class _MyAppState extends State<MyApp> {
@@ -29,8 +29,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    var currentLang = SP().fetchLang();
-    print(currentLang);
+    // var currentLang = SP().fetchLang();
+    // print(currentLang);
   }
 
   @override
@@ -43,6 +43,7 @@ class _MyAppState extends State<MyApp> {
               locale: Locale('en', 'US'),
               fallbackLocale: Locale('en', 'US'),
               theme: themeData,
+
               home: FutureBuilder(
                 future: authService.getLoginState(),
                 builder:

@@ -67,7 +67,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
           ),
 
           ///responsiveness 0
-          SizedBox(height: 40.h),
+          SizedBox(height: 30.h),
           Flexible(
             child: Container(
                 margin: EdgeInsets.only(right: 10.w),

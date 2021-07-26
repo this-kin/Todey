@@ -45,7 +45,7 @@ class _ItemWidgetState extends State<ItemWidget> {
 
         controller.removeEvent(id: widget.eventId, index: widget.eventIndex);
       },
-      key: Key(widget.eventIndex.toString()),
+      key: Key(widget.eventId.toString()),
       child: Container(
         padding: const EdgeInsets.only(left: 10),
         height: height / 10,

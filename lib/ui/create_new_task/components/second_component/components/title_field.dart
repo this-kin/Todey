@@ -16,6 +16,9 @@ class TitleField extends StatelessWidget {
       child: Center(
         child: TextField(
           controller: controller.titleController.value,
+          maxLines: 200,
+          style: kListTileStyle,
+          autocorrect: true,
           decoration: InputDecoration(
               border: InputBorder.none,
               hintText: "task_name".tr,

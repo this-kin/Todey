@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todey/utils/constant.dart';
 
 class ItemAvatar extends StatelessWidget {
   final String image;
@@ -27,19 +28,22 @@ class ItemAvatar extends StatelessWidget {
 _getColor(String title) {
   switch (title) {
     case "Fun":
-      return Colors.yellowAccent;
+      return kFunColor;
       break;
     case "Family":
-      return Colors.purpleAccent;
+      return kFamilyColor;
       break;
     case "Personal":
-      return Colors.white;
+      return kPersonalColor;
       break;
     case "Work":
-      return Colors.tealAccent;
+      return kWorkColor;
+      break;
+    case "Academic":
+      return kHomeColor;
       break;
     default:
-      return Colors.deepOrangeAccent;
+      return kDefaultColor;
       break;
   }
 }

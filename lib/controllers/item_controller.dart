@@ -108,6 +108,7 @@ class EventController extends GetxController {
 //End Time
     var endedDate =
         DateTime(now.year, now.month, now.day, end.hour, end.minute);
+
     notification.endScheduleNotification(endedDate);
     print(endedDate);
   }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/models/todo_model.dart';
 import 'package:todey/services/notification_service.dart';
 import 'package:todey/utils/formatted_date.dart';
 
 class EventController extends GetxController {
+  //
+  //this guy doesnt really do anything im just trying to make code more readable
   //im trying to create another controller so i can taka advantages of few things
 
   var dateNow = DateTime.now();
@@ -30,9 +31,8 @@ class EventController extends GetxController {
     print("Clicked Notification");
   }
 
-
-/// fires when 
-    @override
+  /// fires when  controller is disposed
+  @override
   void dispose() {
     super.dispose();
     pageController.value.dispose();
