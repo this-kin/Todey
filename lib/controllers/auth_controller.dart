@@ -72,9 +72,9 @@ class AuthService extends GetxController {
     });
   }
 
-  Future<String> removeUser() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    userImageUrl.value = preferences.getString('user');
-    return userImageUrl.value;
-  }
+  // Future<String> removeUser() async {
+  //   SharedPreferences preferences = await SharedPreferences.getInstance();
+  //   userImageUrl.value = preferences.getString('user');
+  //   return userImageUrl.value;
+  // }
 }

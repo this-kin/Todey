@@ -6,6 +6,7 @@ class SettingController extends GetxController {
   //
   var isNotification = false.obs;
   var isDailyReminder = false.obs;
+  var defaultLanguage = Locale("en", "US").obs;
 
   @override
   void onReady() {

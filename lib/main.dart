@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
+import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/core/db_helper.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
@@ -21,16 +22,14 @@ void main() async {
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
-  
 }
 
 class _MyAppState extends State<MyApp> {
   AuthService authService = Get.put(AuthService());
+  SettingController settingController = Get.put(SettingController());
   @override
   void initState() {
     super.initState();
-    // var currentLang = SP().fetchLang();
-    // print(currentLang);
   }
 
   @override
@@ -38,24 +37,17 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
-          return GetMaterialApp(
-              translations: Translation(),
-              locale: Locale('en', 'US'),
-              fallbackLocale: Locale('en', 'US'),
-              theme: themeData,
-
-              home: FutureBuilder(
-                future: authService.getLoginState(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasData) {
-                    return HomePage();
-                  }
-                  return Onboarding();
-                },
-              ),
-              title: "Todey",
-              debugShowCheckedModeBanner: false);
+          return Obx(
+            () => GetMaterialApp(
+                translations: Translation(),
+                locale: settingController.defaultLanguage.value,
+                fallbackLocale: Locale('en', 'US'),
+                theme: themeData,
+                //will be changed future builder is very Slow
+                home: authService.userImageUrl.value == null ? Onboarding() : HomePage(),
+                title: "Todey",
+                debugShowCheckedModeBanner: false),
+          );
         });
   }
 }

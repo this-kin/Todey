@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/utils/constant.dart';
@@ -48,7 +49,20 @@ class UserAvatar extends StatelessWidget {
 }
 
 _showBottomSheet(BuildContext context) {
-  return showModalBottomSheet(
+  return CupertinoActionSheet(
+    title: Text("User"),
+    message: Text("User"),
+    actions: [
+      Container(
+          height: 50,
+          child: Center(
+            child: Text("Center"),
+          ))
+    ],
+  );
+}
+
+/* showModalBottomSheet(
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
@@ -70,6 +84,4 @@ _showBottomSheet(BuildContext context) {
             ],
           ),
         );
-      },
-      context: context);
-}
+      },  */

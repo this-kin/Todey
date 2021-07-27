@@ -20,7 +20,7 @@ Color kFamilyColor = Colors.redAccent;
 Color kWorkColor = Color(0xff020F2F);
 Color kPersonalColor = Colors.white;
 Color kDefaultColor = Colors.transparent;
-Color kHomeColor = Colors.grey.withOpacity(0.4);
+Color kHomeColor = Colors.green;
 
 //////////
 Color kBackGroundColor2 = Color(0xff3E3B64);

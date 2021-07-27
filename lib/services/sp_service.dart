@@ -17,9 +17,9 @@ class SP {
     print(locale);
   }
 
-   fetchLang() async {
+  Future<String> fetchLang() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    var locale = preferences.getString("language");
-    return locale;
+    var locale = preferences.get("language");
+    return locale.toString();
   }
 }

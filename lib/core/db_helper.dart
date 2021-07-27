@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:todey/models/chart_model.dart';
 import 'package:todey/models/todo_model.dart';
 
 class SQFliteDB {
@@ -26,7 +27,10 @@ class SQFliteDB {
   ////Chart
   final String chartTable = "todeycharttest";
   final String columnID = "id";
-  final String columnChart = "chart";
+  final String columnCreated = "created";
+  final String columnDeleted = "deleted";
+  final String columnUpdated = "updated";
+  final String columnAccomplished = "accomplished";
 
   static Database _db;
 
@@ -54,8 +58,31 @@ class SQFliteDB {
     print("Table is created");
 
     await db.execute(
-        "CREATE TABLE $chartTable($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnChart INTEGER)");
+        "CREATE TABLE $chartTable($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnCreated INTEGER, $columnDeleted INTEGER, $columnAccomplished INTEGER, $columnUpdated INTEGER )");
     print("Chart DB is created");
+  }
+
+  /////////////CREATE CHART
+  Future<int> saveChart(ChartModel chartModel) async {
+    var dbClient = await db;
+    int res = await dbClient.insert("$chartTable", chartModel.toJson());
+    print(res.toString());
+    return res;
+  }
+
+  ///////////// READ CHART
+
+  Future<List<ChartModel>> getAllChart() async {
+    var dbClient = await db;
+    final List<Map<String, dynamic>> maps = await dbClient.rawQuery(chartTable);
+    return List.generate(maps.length, (index) {
+      return ChartModel(
+          id: maps[index]['id'],
+          created: maps[index]['created'],
+          updated: maps[index]['updated'],
+          deleted: maps[index]['deleted'],
+          accomplished: maps[index]['deleted']);
+    });
   }
 
   //////////////////////////////////////////////////////////////////////

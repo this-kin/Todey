@@ -1,10 +1,11 @@
 class ChartModel {
   int id;
-  String created;
-  String deleted;
-  String updated;
-  String accomplished;
-  ChartModel({this.created, this.updated, this.deleted, this.accomplished});
+  int created;
+  int deleted;
+  int updated;
+  int accomplished;
+  ChartModel(
+      {this.id, this.created, this.updated, this.deleted, this.accomplished});
 
   ChartModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];
