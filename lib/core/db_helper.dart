@@ -24,14 +24,6 @@ class SQFliteDB {
   final String columnCategory = "eventCategory";
   final String columnCreatedTime = "eventCreatedDate";
 
-  ////Chart
-  final String chartTable = "todeycharttest";
-  final String columnID = "id";
-  final String columnCreated = "created";
-  final String columnDeleted = "deleted";
-  final String columnUpdated = "updated";
-  final String columnAccomplished = "accomplished";
-
   static Database _db;
 
   SQFliteDB._internal();
@@ -56,33 +48,6 @@ class SQFliteDB {
     await db.execute(
         "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory)");
     print("Table is created");
-
-    await db.execute(
-        "CREATE TABLE $chartTable($columnID INTEGER PRIMARY KEY AUTOINCREMENT, $columnCreated INTEGER, $columnDeleted INTEGER, $columnAccomplished INTEGER, $columnUpdated INTEGER )");
-    print("Chart DB is created");
-  }
-
-  /////////////CREATE CHART
-  Future<int> saveChart(ChartModel chartModel) async {
-    var dbClient = await db;
-    int res = await dbClient.insert("$chartTable", chartModel.toJson());
-    print(res.toString());
-    return res;
-  }
-
-  ///////////// READ CHART
-
-  Future<List<ChartModel>> getAllChart() async {
-    var dbClient = await db;
-    final List<Map<String, dynamic>> maps = await dbClient.rawQuery(chartTable);
-    return List.generate(maps.length, (index) {
-      return ChartModel(
-          id: maps[index]['id'],
-          created: maps[index]['created'],
-          updated: maps[index]['updated'],
-          deleted: maps[index]['deleted'],
-          accomplished: maps[index]['deleted']);
-    });
   }
 
   //////////////////////////////////////////////////////////////////////
