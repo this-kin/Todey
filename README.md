@@ -1,17 +1,73 @@
-ISSUES
+# Todey Task Management App 👋
+
+![Version](https://img.shields.io/badge/version-1.0.0+1-blue.svg?cacheSeconds=2592000)
+[![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](#)
+
+A Task Management App built with Flutter
+
+# Flutter Version
+Flutter 1.22.4
 
 
 
-fix notification  => create another class notification for startAlarm maybe
-make item widget expandable like a AnimatedContainer;
-fix switch flip =========> assign values to it in GetX 
-sharePF for language  
-////////////// 
-getLocale<Locale>(String data) {
-    return Locale(data);
-}
-//////////////
-general translation
+# 💻 Requirements
+
+- Any Operating System (ie. MacOS X, Linux, Windows)
+- Any IDE with Flutter SDK installed (ie. IntelliJ, Android Studio, VSCode etc)
+- A little knowledge of Dart and Flutter
+
+# Screenshots
+
+||||
+|--|--|--|
+| ![Dribble](./demo/dribble.png)
+
+# Command
+### Install dependencies
+
+```sh
+flutter pub get
+```
+
+### Run application
+
+```sh
+flutter emulators --launch <emulator_name>
+flutter run
+```
+
+### Build
+
+```sh
+flutter build apk
+```
+
+# Plugins
+
+- [firebase_core](https://pub.dev/packages/firebase_core) 
+- [firebase_auth](https://pub.dev/packages/firebase_auth) 
+- [google_sign_in](https://pub.dev/packages/google_sign_in) 
+- [sqflite](https://pub.dev/packages/sqflite) 
+- [path_provider](https://pub.dev/packages/path_provider) 
+- [shared_preferences](https://pub.dev/packages/shared_preferences) 
+- [fl_chart](https://pub.dev/packages/fl_chart) 
+- [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) 
+- [syncfusion_flutter_datepicker](https://pub.dev/packages/syncfusion_flutter_datepicker)
+- [feedback](https://pub.dev/packages/feedback) 
+- [cached_network_image](https://pub.dev/packages/cached_network_image) 
+- [url_launcher](https://pub.dev/packages/url_launcher) 
+
+
+
+## Author
+
+👤 **Flutter BoyFriend**
+
+* Github: [@FlutterBoyfriend](https://github.com/FlutterBoyfriend)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
 
 
 
