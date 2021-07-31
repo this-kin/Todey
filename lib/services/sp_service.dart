@@ -1,25 +1,44 @@
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todey/controllers/auth_controller.dart';
+import 'package:todey/controllers/settings_controller.dart';
 
 class SP {
-  Future saveLoginSatate(String user) async {
+  static const String userKey = "USERKEY";
+  static const String languageKey = "LANGUAGEKEY";
+
+  AuthService authController = Get.put(AuthService());
+  SettingController settingController = Get.put(SettingController());
+
+///////////CREATE
+  Future setLoginSatate(String user) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString('user', user);
+    preferences.setString(userKey, user);
   }
 
-  Future removeUser() async {
+  Future setLanguage(String param1, String param2) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.remove('user');
+    preferences.setString(languageKey, '$param1,$param2');
+    print(param1);
   }
 
-  Future saveLanguage({String locale}) async {
+/////////////READ
+
+  Future<String> getLoginState(String imageUrl) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.setString("language", locale);
-    print(locale);
+    imageUrl = preferences.getString(userKey);
+    return imageUrl;
   }
 
-  Future<String> fetchLang() async {
+  Future<String> getLanguage(String langCode) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    var locale = preferences.get("language");
-    return locale.toString();
+    langCode = preferences.getString(languageKey);
+    return langCode;
+  }
+
+//////////DELETE
+  Future clearAll() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.clear();
   }
 }

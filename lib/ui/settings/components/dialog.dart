@@ -46,12 +46,10 @@ class KBottom extends StatelessWidget {
                       onPressed: () {
                         ///change the language
                         settingController.changeLanguage(
-                            allLang[index].param1, allLang[index].param2);
+                            allLang[index].param1, allLang[index].param2,
+                            );
 
-                        ///save state of current language
-                        spService.saveLanguage(
-                            locale:
-                                "${allLang[index].param1}'_'${allLang[index].param2}");
+                        
                       });
                 },
               ),

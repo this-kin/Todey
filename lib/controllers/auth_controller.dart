@@ -9,20 +9,18 @@ import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/helper.dart';
 
-///////to be re-written
 class AuthService extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   var isSignedIn = false.obs;
-  var userName = "".obs;
   var userImageUrl = "".obs;
 
-  var sp = SP();
+  SP spService = SP();
 
   @override
   void onReady() {
-    getLoginState();
     super.onReady();
+    spService.getLoginState(userImageUrl.value);
   }
 
   signInWithGooogle(BuildContext context) async {
@@ -41,9 +39,9 @@ class AuthService extends GetxController {
       assert(user.displayName != null);
       assert(user.photoURL != null);
       isSignedIn.value = false;
-      userName.value = user.displayName;
+
       userImageUrl.value = user.photoURL;
-      sp.saveLoginSatate(user.photoURL);
+      spService.setLoginSatate(user.photoURL);
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
       Helper.replaceScreen(context, HomePage());
@@ -56,25 +54,12 @@ class AuthService extends GetxController {
     }
   }
 
-  Future<String> getLoginState() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    userImageUrl.value = preferences.getString('user');
-    return userImageUrl.value;
-  }
-
   signOut(BuildContext context) async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
     await googleSignIn.signOut().then((value) {
       if (value == null) {
-        sp.removeUser();
+        spService.clearAll();
         Helper.replaceScreen(context, Onboarding());
       }
     });
   }
-
-  // Future<String> removeUser() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   userImageUrl.value = preferences.getString('user');
-  //   return userImageUrl.value;
-  // }
 }

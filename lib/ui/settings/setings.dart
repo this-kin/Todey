@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:todey/controllers/settings_controller.dart';
+import 'package:todey/ui/settings/components/chart/chart.dart';
 import 'package:todey/ui/settings/components/dialog.dart';
 import 'package:todey/ui/settings/components/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todey/utils/helper.dart';
 import 'package:todey/widgets/kswitch.dart';
 import 'package:get/get.dart';
 
@@ -47,6 +49,9 @@ class Settings extends StatelessWidget {
               icon: MaterialCommunityIcons.chart_arc,
               btnText: "stats".tr,
               trailing: Text(""),
+              onPressed: () {
+                Helper.nextScreen(context, Chart());
+              },
             ),
             SettingTile(
               icon: Entypo.language,

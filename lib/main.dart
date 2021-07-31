@@ -13,9 +13,9 @@ import 'package:todey/utils/translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await SQFliteDB().initializeDB();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SQFliteDB().initializeDB();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -28,25 +28,25 @@ class _MyAppState extends State<MyApp> {
   AuthService authService = Get.put(AuthService());
   SettingController settingController = Get.put(SettingController());
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print(authService.userImageUrl);
+    print(settingController.defaultLanguage.value);
     return ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
           return Obx(
             () => GetMaterialApp(
-                translations: Translation(),
-                locale: settingController.defaultLanguage.value,
-                fallbackLocale: Locale('en', 'US'),
-                theme: themeData,
-                //will be changed future builder is very Slow
-                home: authService.userImageUrl.value == null ? Onboarding() : HomePage(),
-                title: "Todey",
-                debugShowCheckedModeBanner: false),
+              translations: Translation(),
+              locale: Locale(settingController.defaultLanguage.value),
+              fallbackLocale: Locale('en', 'US'),
+              theme: themeData,
+              //will be changed future builder is very Slow
+              home: authService.userImageUrl.value == null
+                  ? Onboarding()
+                  : HomePage(),
+              title: "Todey",
+              debugShowCheckedModeBanner: false,
+            ),
           );
         });
   }

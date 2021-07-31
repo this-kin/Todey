@@ -5,9 +5,8 @@ import 'package:todey/services/notification_service.dart';
 import 'package:todey/core/db_helper.dart';
 import 'package:todey/models/todo_model.dart';
 import 'package:todey/services/toast_service.dart';
-import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/utils/formatted_date.dart';
-import 'package:todey/utils/helper.dart';
+
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
