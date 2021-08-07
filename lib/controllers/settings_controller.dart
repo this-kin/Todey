@@ -6,15 +6,15 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
   //
-  var isNotification = false.obs;
-  var isDailyReminder = false.obs;
+  // var isNotification = false.obs;
+  // var isDailyReminder = false.obs;
   var defaultLanguage = 'en, US'.obs;
-  SP spService = SP();
+  // SP spService = SP();
 
   @override
   void onReady() {
     super.onReady();
-    spService.getLanguage(defaultLanguage.value);
+    // spService.getLanguage(defaultLanguage.value);
   }
 
   // change language
@@ -22,7 +22,7 @@ class SettingController extends GetxController {
     var locale = Locale(param1, param2);
     Get.updateLocale(locale);
     //save state of current language
-    spService.setLanguage(param1, param2);
+    // spService.setLanguage(param1, param2);
     print('$param1, $param2');
   }
 

@@ -10,19 +10,20 @@ class TitleField extends StatelessWidget {
     EventController controller = Get.put(EventController());
     return Container(
       height: 60.h,
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
       decoration: BoxDecoration(
-          color: kBackGroundColor2, borderRadius: BorderRadius.circular(15.sp)),
+          color: kBackGroundColor2, borderRadius: BorderRadius.circular(10.sp)),
       child: Center(
         child: TextField(
           controller: controller.titleController.value,
-          maxLines: 200,
+          maxLines: 100,
           style: kListTileStyle,
           autocorrect: true,
           decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "task_name".tr,
-              hintStyle: kListTileStyle),
+            border: InputBorder.none,
+            hintText: "task_name".tr,
+            hintStyle: kListTileStyle,
+          ),
         ),
       ),
     );

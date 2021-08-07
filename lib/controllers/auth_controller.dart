@@ -40,7 +40,7 @@ class AuthService extends GetxController {
       isSignedIn.value = false;
 
       userImageUrl.value = user.photoURL;
-      spService.setLoginSatate(user.photoURL);
+      // spService.setLoginSatate(user.photoURL);
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
       Helper.replaceScreen(context, HomePage());
@@ -56,7 +56,7 @@ class AuthService extends GetxController {
   signOut(BuildContext context) async {
     await googleSignIn.signOut().then((value) {
       if (value == null) {
-        spService.clearAll();
+        // spService.clearAll();
         Helper.replaceScreen(context, Onboarding());
       }
     });

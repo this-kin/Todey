@@ -7,7 +7,7 @@ class SP {
   static const String userKey = "USERKEY";
   static const String languageKey = "LANGUAGEKEY";
 
-  AuthService authController = Get.put(AuthService());
+  // AuthService authController = Get.put(AuthService());
   SettingController settingController = Get.put(SettingController());
 
 ///////////CREATE

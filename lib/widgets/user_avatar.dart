@@ -62,26 +62,3 @@ _showBottomSheet(BuildContext context) {
   );
 }
 
-/* showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          height: 100.h,
-          decoration: BoxDecoration(
-              color: themeData.backgroundColor,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              )),
-          child: Row(
-            children: [
-              CircularProgressIndicator(
-                backgroundColor: kImportantColor,
-              ),
-              SizedBox(width: 50),
-              Text("Logging out and Erasing all data", style: kListTileStyle),
-            ],
-          ),
-        );
-      },  */

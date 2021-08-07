@@ -95,6 +95,7 @@ class Settings extends StatelessWidget {
                 settingController.reportProblem();
               },
             ),
+            //
             SettingTile(
               icon: Entypo.twitter,
               btnText: "follow twitt".tr,
@@ -103,6 +104,7 @@ class Settings extends StatelessWidget {
                 settingController.launchTwitter();
               },
             ),
+            //
             SettingTile(
               icon: Icons.phone_android,
               btnText: "Version 2.1.0",

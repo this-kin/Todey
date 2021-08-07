@@ -31,7 +31,8 @@ Duration kDuration = Duration(milliseconds: 300);
 TextStyle kAppBarTitleStyle =
     TextStyle(color: kTextColor, fontFamily: "Raleway", fontSize: 24.sp);
 //
-TextStyle kListTileStyle = TextStyle(color: kTextColor, fontFamily: "MADType");
+TextStyle kListTileStyle =
+    TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 16.sp);
 //
 TextStyle kItemWidgetStyle = TextStyle(
     color: kTextColor, fontFamily: "Raleway", fontWeight: FontWeight.w400);
