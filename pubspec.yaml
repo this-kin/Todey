@@ -13,7 +13,7 @@ dependencies:
   toast: ^0.1.5
   get:
   flutter_screenutil: 
-  shared_preferences: ^0.5.12+4
+  shared_preferences:
   firebase_core:
   firebase_auth:
   google_sign_in:

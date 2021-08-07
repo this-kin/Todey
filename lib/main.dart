@@ -25,8 +25,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  //Dependency injection
   AuthService authService = Get.put(AuthService());
   SettingController settingController = Get.put(SettingController());
+
   @override
   Widget build(BuildContext context) {
     print(authService.userImageUrl);

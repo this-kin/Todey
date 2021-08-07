@@ -43,26 +43,6 @@ class NotificationHelper {
     });
   }
 
-  ///
-  Future<void> showNotification() async {
-    var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID",
-      "CHANNEL_NAME",
-      "CHANNEL_DESCRIPTION",
-      importance: Importance.max,
-      priority: Priority.high,
-      timeoutAfter: 5000,
-    );
-
-    var iosSpecific = IOSNotificationDetails();
-    var platformSpecific =
-        NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
-
-    await flutterLocalNotificationsPlugin.show(
-        0, "Test Title", "Test Body", platformSpecific,
-        payload: "Test Payload");
-  }
-
 ////Scheduled StartedDate
   Future<void> startScheduleNotification(DateTime date) async {
     var scheduledTime =
