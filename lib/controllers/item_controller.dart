@@ -17,7 +17,7 @@ class EventController extends GetxController {
   var titleController = TextEditingController().obs;
   var noteController = TextEditingController().obs;
   var eventCategory = "Important".obs;
-  var eventCreatedDate = formattedDate();
+  var eventCreatedDate = formattedNow();
   var eventDate = DateTime.now().obs;
   var eventStartedTime = TimeOfDay.now().obs;
   var eventEndedTime = TimeOfDay.now().obs;

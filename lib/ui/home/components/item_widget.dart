@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
+import 'package:todey/ui/home/components/is_expanded.dart';
+import 'package:todey/ui/home/components/not_expanded.dart';
 import 'package:todey/utils/constant.dart';
-import 'package:todey/widgets/item_avatar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemWidget extends StatefulWidget {
@@ -55,11 +56,41 @@ class _ItemWidgetState extends State<ItemWidget> {
             },
             key: Key(widget.eventId.toString()),
             child: AnimatedContainer(
-              duration: kDuration,
-              height: isClicked ? 90.h : 75.h,
-              width: 325.w,
-              color: Colors.amberAccent,
-            )));
+                duration: kDuration,
+                height: isClicked ? 120.h : 90.h,
+                width: 325.w,
+                decoration: BoxDecoration(
+                    color: widget.eventCategory == "Important"
+                        ? kImportantColor
+                        : kPlanedColor,
+                    borderRadius: BorderRadius.circular(15)),
+                ////////
+                ///
+                child: isClicked
+
+                    ///willl be displayed if is clicked (Expnaded)
+                    ? ISExpanded(
+                        eventCategory: widget.eventCategory,
+                        eventCreatedDate: widget.eventCreatedDate,
+                        eventEndedTime: widget.eventEndedTime,
+                        eventId: widget.eventId,
+                        eventIndex: widget.eventIndex,
+                        eventNote: widget.eventNote,
+                        eventStartedTime: widget.eventStartedTime,
+                        eventTitle: widget.eventTitle,
+                        eventType: widget.eventType,
+                      )
+
+                    ///willl be displayed if is not clicked (Not Expanded)
+                    : NotExpanded(
+                        eventTitle: widget.eventTitle,
+                        eventCategory: widget.eventCategory,
+                        eventCreatedDate: widget.eventCreatedDate,
+                        eventId: widget.eventId,
+                        eventIndex: widget.eventIndex,
+                        eventNote: widget.eventNote,
+                        eventType: widget.eventType,
+                      ))));
   }
 
   deleteContainer() {
@@ -67,26 +98,5 @@ class _ItemWidgetState extends State<ItemWidget> {
       color: kDeletedColor,
       child: Icon(AntDesign.delete),
     );
-  }
-}
-
-_getAvatar(String eventType) {
-  switch (eventType) {
-    case "Fun":
-      return "images/games.png";
-      break;
-    case "Academic":
-      return "images/studying.png";
-      break;
-    case "Personal":
-      return "images/user.png";
-      break;
-    case "Family":
-      return "images/home.png";
-      break;
-    case "Work":
-      return "images/suitcase.png";
-      break;
-    default:
   }
 }

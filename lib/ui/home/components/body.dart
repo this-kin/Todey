@@ -24,6 +24,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
               padding: EdgeInsets.all(8.0.w),
               child: GetX<EventController>(
                 builder: (controller) {
+                  //Item widget from db
                   return ItemWidget(
                     eventId: controller.events[index].id,
                     eventTitle: controller.events[index].eventTitle,
@@ -65,7 +66,7 @@ class _MyHomeBodyState extends State<MyHomeBody> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            formattedDate(),
+            formattedNow(),
             style: styleText(theme),
           ),
 
