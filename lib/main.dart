@@ -44,8 +44,8 @@ class _MyAppState extends State<MyApp> {
               theme: themeData,
               //will be changed future builder is very Slow
               home: authService.userImageUrl.value == null
-                  ? HomePage()
-                  : Onboarding(),
+                  ? Onboarding()
+                  : HomePage(),
               title: "Todey",
               debugShowCheckedModeBanner: false,
             ),

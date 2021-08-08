@@ -33,29 +33,41 @@ class ItemWidget extends StatefulWidget {
 }
 
 class _ItemWidgetState extends State<ItemWidget> {
+  ///
+  bool isClicked = false;
+
+  //Dependecy injextion
   EventController controller = Get.put(EventController());
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return Dismissible(
-      background: deleteContainer(),
-      onDismissed: (direction) {
-        //delete event
-
-        controller.removeEvent(id: widget.eventId, index: widget.eventIndex);
+    return GestureDetector(
+      onTap: () {
+        print(widget.eventTitle);
+        isClicked = !isClicked;
+        setState(() {});
       },
-      key: Key(widget.eventId.toString()),
-      child: Container(
-        padding: const EdgeInsets.only(left: 10),
-        height: height / 10,
-        width: width,
-        decoration: BoxDecoration(
-            color: widget.eventCategory == "Important"
-                ? kImportantColor
-                : kPlanedColor,
-            borderRadius: BorderRadius.circular(15)),
-        child: customListile(),
+      child: Dismissible(
+        background: deleteContainer(),
+        onDismissed: (direction) {
+          //delete event
+
+          controller.removeEvent(id: widget.eventId, index: widget.eventIndex);
+        },
+        key: Key(widget.eventId.toString()),
+        child: AnimatedContainer(
+          duration: kDuration,
+          padding: const EdgeInsets.only(left: 10),
+          height: !isClicked ? height / 9 : height / 7.5,
+          width: width,
+          decoration: BoxDecoration(
+              color: widget.eventCategory == "Important"
+                  ? kImportantColor
+                  : kPlanedColor,
+              borderRadius: BorderRadius.circular(15)),
+          child: customListile(),
+        ),
       ),
     );
   }
