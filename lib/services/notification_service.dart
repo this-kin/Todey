@@ -6,12 +6,14 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:get/get.dart';
 
-class NotificationHelper {
+///had to create different notification helper for each event
+///this is is fired when event is ended and early every night
+class EndedNotificationHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   var initializationSetting;
 
-  NotificationHelper._() {
+  EndedNotificationHelper._() {
     init();
   }
 
@@ -43,14 +45,17 @@ class NotificationHelper {
     });
   }
 
-////Scheduled StartedDate
-  Future<void> startScheduleNotification(DateTime date) async {
+  //
+  //End of the Day
+
+  Future<void> endOfDay() async {
+    var now = DateTime.now();
     var scheduledTime =
-        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
+        tz.TZDateTime.from(DateTime(now.year, 0, 0, 20, 0, 0, 0, 0), tz.local);
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 0",
-      "CHANNEL_NAME 0",
-      "CHANNEL_DESCRIPTION 0",
+      "CHANNEL_ID 2",
+      "CHANNEL_NAME 2",
+      "CHANNEL_DESCRIPTION 2",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -60,7 +65,7 @@ class NotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        0, "Todey", "started".tr, scheduledTime, platformSpecific,
+        0, "Todey", "night".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
@@ -68,14 +73,14 @@ class NotificationHelper {
   }
 
   ///
-  ///
+  ///Scheduled eventEnded
   Future<void> endScheduleNotification(DateTime date) async {
     var scheduledTime =
         tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 1",
-      "CHANNEL_NAME 1",
-      "CHANNEL_DESCRIPTION 1",
+      "CHANNEL_ID 3",
+      "CHANNEL_NAME 3",
+      "CHANNEL_DESCRIPTION 3",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -93,7 +98,7 @@ class NotificationHelper {
   }
 }
 
-NotificationHelper notification = NotificationHelper._();
+EndedNotificationHelper endedNotification = EndedNotificationHelper._();
 
 _requestPermissionIos() {
   //im not runnin mac basically this project gonna be Andriod till i get a mac

@@ -25,7 +25,8 @@ class Translation extends Translations {
           'version': 'Version',
           'started': 'A new Event has Started',
           'ended': 'An Event has ended',
-          'morning': 'Good morning please make a Schedule'
+          'morning': 'Good morning please make a Schedule',
+          'night': 'Good night please make a Schedule'
         },
         'fr_FR': {
           'schedule': 'Horaire',
@@ -47,7 +48,8 @@ class Translation extends Translations {
           'version': 'Version',
           'started': 'Un nouvel événement a commencé',
           'ended': 'Un événement est terminé',
-          'morning': 'Bonjour s\'il vous plaît faire un programme'
+          'morning': 'Bonjour s\'il vous plaît faire un programme',
+          'night': 'Bonjour nuit vous plaît faire un programme'
         },
         'pt_ANG': {
           'schedule': ' Cronograma',
@@ -69,7 +71,8 @@ class Translation extends Translations {
           'version': 'Versão',
           'started': 'Um novo evento começou',
           'ended': 'Um evento terminou',
-          'morning': 'Bom dia por favor faça um cronograma'
+          'morning': 'Bom dia por favor faça um cronograma',
+          'night': 'Bom noite por favor faça um cronograma'
         },
       };
 }

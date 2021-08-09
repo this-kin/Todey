@@ -23,11 +23,11 @@ class UserAvatar extends StatelessWidget {
         width: height * 0.06,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          // child: CachedNetworkImage(
-          //   imageUrl: imgUrl,
-          //   errorWidget: _errorWidget,
-          //   progressIndicatorBuilder: _progressWidget,
-          // ),
+          child: CachedNetworkImage(
+            imageUrl: imgUrl,
+            errorWidget: _errorWidget,
+            progressIndicatorBuilder: _progressWidget,
+          ),
         ),
       ),
     );

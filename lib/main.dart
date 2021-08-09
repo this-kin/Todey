@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/core/db_helper.dart';
+import 'package:todey/services/notification_service.dart';
+import 'package:todey/services/start_notification.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/constant.dart';
@@ -33,6 +35,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     print(authService.userImageUrl);
     print(settingController.defaultLanguage.value);
+    startNotification.startOfDay();
+    endedNotification.endOfDay();
     return ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {

@@ -28,7 +28,8 @@ class EventController extends GetxController {
   void onReady() {
     super.onReady();
     getEvents();
-    notification.setOnNotificationClick(onNotificationClick);
+    endedNotification.setOnNotificationClick(onNotificationClick);
+    startNotification.setOnNotificationClick(onStartClick);
   }
 
   /////////////////////CREATE  EVENT
@@ -101,14 +102,18 @@ class EventController extends GetxController {
 //Start Time
     var startedDate =
         DateTime(now.year, now.month, now.day, start.hour, start.minute);
-    notification.startScheduleNotification(startedDate);
+    startNotification.startScheduleNotification(startedDate);
     print(startedDate);
 
 //End Time
     var endedDate =
         DateTime(now.year, now.month, now.day, end.hour, end.minute);
 
-    notification.endScheduleNotification(endedDate);
+    endedNotification.endScheduleNotification(endedDate);
     print(endedDate);
+  }
+
+  onStartClick() {
+    print("start notification clicked");
   }
 }
