@@ -26,16 +26,18 @@ class _MyHomeBodyState extends State<MyHomeBody> {
                 builder: (controller) {
                   //Item widget from db
                   return ItemWidget(
-                    eventId: controller.events[index].id,
-                    eventTitle: controller.events[index].eventTitle,
-                    eventNote: controller.events[index].eventNote,
-                    eventCategory: controller.events[index].eventCategory,
-                    eventCreatedDate: controller.events[index].eventCreatedDate,
-                    eventStartedTime: controller.events[index].eventStartedDate,
-                    eventEndedTime: controller.events[index].eventEndedDate,
-                    eventIndex: index,
-                    eventType: controller.events[index].eventType,
-                  );
+                      eventId: controller.events[index].id,
+                      eventTitle: controller.events[index].eventTitle,
+                      eventNote: controller.events[index].eventNote,
+                      eventCategory: controller.events[index].eventCategory,
+                      eventCreatedDate:
+                          controller.events[index].eventCreatedDate,
+                      eventStartedTime:
+                          controller.events[index].eventStartedDate,
+                      eventEndedTime: controller.events[index].eventEndedDate,
+                      eventIndex: index,
+                      eventType: controller.events[index].eventType,
+                      eventDate: controller.events[index].eventDate);
                 },
               ));
         },

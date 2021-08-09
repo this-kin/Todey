@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 //DateTime Now formatter
@@ -11,17 +10,9 @@ String formattedNow() {
 }
 //Time Formatter
 
-String formattedTime({TimeOfDay time, context}) {
+String formattedTime({String time, context}) {
   var now = time;
-  var formatter = now.format(context);
-  return formatter;
+  // var formatter = TimeOfDay();
 }
 
-// Formatted date
-String formattedDate(DateTime date) {
-  var now = DateTime.now();
-  var formatter = new DateFormat("EEE  d ");
-  String formatted = formatter.format(now);
-
-  return formatted;
-}
+//Time formatter according to time

@@ -17,6 +17,7 @@ class ItemWidget extends StatefulWidget {
   final String eventStartedTime;
   final String eventEndedTime;
   final String eventType;
+  final String eventDate;
   const ItemWidget(
       {Key key,
       this.eventId,
@@ -27,7 +28,8 @@ class ItemWidget extends StatefulWidget {
       this.eventStartedTime,
       this.eventEndedTime,
       this.eventType,
-      this.eventIndex})
+      this.eventIndex,
+      @required this.eventDate})
       : super(key: key);
   @override
   _ItemWidgetState createState() => _ItemWidgetState();
@@ -70,6 +72,7 @@ class _ItemWidgetState extends State<ItemWidget> {
 
                     ///willl be displayed if is clicked (Expnaded)
                     ? ISExpanded(
+                        eventDate: widget.eventDate,
                         eventCategory: widget.eventCategory,
                         eventCreatedDate: widget.eventCreatedDate,
                         eventEndedTime: widget.eventEndedTime,
