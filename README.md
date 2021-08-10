@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000)
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](#)
 
-| ![Dribble](images/todey.png)
+ ![Logo](images/todey.png)
 
 
 
@@ -23,11 +23,11 @@ Flutter 1.22.4
 # Screenshots
 
 
-| ![Onboarding](ss/ss1.png)
-| ![Home Screen](ss/ss2.png)
-| ![Create Event](ss/ss3.png)
-| ![Create Event](ss/ss4.png)
-| ![Setting](ss/ss5.png)
+ ![Onboarding](ss/ss1.png)
+ ![Home Screen](ss/ss2.png)
+ ![Create Event](ss/ss3.png)
+ ![Create Event](ss/ss4.png)
+ ![Setting](ss/ss5.png)
 
 # Command
 ### Install dependencies

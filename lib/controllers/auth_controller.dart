@@ -60,7 +60,7 @@ class AuthService extends GetxController {
     try {
       await googleSignIn.signOut().then((val) {
         spService.clearAll();
-        Helper.replaceScreen(Onboarding());
+        Helper.replaceScreen(context, Onboarding());
       });
     } catch (e) {
       print(e);
