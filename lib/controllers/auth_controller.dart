@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todey/services/sp_service.dart';
@@ -18,7 +19,7 @@ class AuthService extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    spService.getLoginState(userImageUrl.value);
+    fetchUser();
   }
 
   signInWithGooogle(BuildContext context) async {
@@ -38,15 +39,20 @@ class AuthService extends GetxController {
       if (user != null) {
         isSignedIn.value = false;
         userImageUrl.value = user.photoURL;
-        spService.setLoginSatate(user.photoURL);
-        Helper.replaceScreen(HomePage());
+        SP.setLogged(true);
+
+        //Replace screen
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (BuildContext context) {
+          return HomePage();
+        }));
 
         final User currentUser = _auth.currentUser;
-        assert(user.uid == currentUser.uid);
         return '$user';
       }
     } catch (e) {
       print(e);
+      SP.setLogged(false);
     }
   }
 
@@ -59,5 +65,9 @@ class AuthService extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  fetchUser() async {
+    isSignedIn.value = await SP.getLogged();
   }
 }

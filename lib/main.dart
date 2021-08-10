@@ -43,17 +43,16 @@ class _MyAppState extends State<MyApp> {
         builder: () {
           return Obx(
             () => GetMaterialApp(
+              debugShowCheckedModeBanner: false,
               translations: Translation(),
               locale: Locale(settingController.defaultLanguage.value),
               fallbackLocale: Locale('en', 'US'),
               theme: themeData,
               //will be changed future builder is very Slow
-              home: authService.userImageUrl.value == null
+              home: authService.isSignedIn.value == null
                   ? Onboarding()
                   : HomePage(),
               title: "Todey",
-
-              debugShowCheckedModeBanner: false,
             ),
           );
         });

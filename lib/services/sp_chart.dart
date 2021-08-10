@@ -27,24 +27,24 @@ class SPChart {
 
 /////RETREIVING DATA
 //
-  Future<int> getCreated() async {
+  static Future<int> getCreated() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getInt(createdKey);
   }
 
-  Future<int> getDeleted() async {
+  static Future<int> getDeleted() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getInt(deletedKey);
   }
 
-  Future<int> getAccomplished() async {
+  static Future<int> getAccomplished() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getInt(accomplishedKey);
   }
 
   //DELETE ALL
 
-  Future<bool> clearAll() async {
+ static Future<bool> clearAll() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.clear();
   }

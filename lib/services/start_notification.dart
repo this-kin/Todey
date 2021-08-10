@@ -88,7 +88,7 @@ class StartNotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        1, "Todey", "morning".tr, scheduledTime, platformSpecific,
+        1, "Todey", "started".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

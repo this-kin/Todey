@@ -7,10 +7,10 @@ import 'package:todey/utils/helper.dart';
 
 class HomePage extends StatefulWidget {
   @override
-  _MainState createState() => _MainState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MainState extends State<HomePage> {
+class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   PageController _pageController = PageController();
   List<Widget> pages = [Home(), Create(), Settings()];

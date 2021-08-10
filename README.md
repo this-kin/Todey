@@ -1,7 +1,11 @@
 # Todey Task Management App 👋
 
-![Version](https://img.shields.io/badge/version-1.0.0+1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000)
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](#)
+
+| ![Dribble](images/todey.png)
+
+
 
 A Task Management App built with Flutter
 
@@ -18,9 +22,12 @@ Flutter 1.22.4
 
 # Screenshots
 
-||||
-|--|--|--|
-| ![Dribble](./demo/dribble.png)
+
+| ![Onboarding](ss/ss1.png)
+| ![Home Screen](ss/ss2.png)
+| ![Create Event](ss/ss3.png)
+| ![Create Event](ss/ss4.png)
+| ![Setting](ss/ss5.png)
 
 # Command
 ### Install dependencies

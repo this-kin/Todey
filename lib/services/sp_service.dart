@@ -3,41 +3,52 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todey/controllers/settings_controller.dart';
 
 class SP {
-  static const String userKey = "USERKEY";
-  static const String languageKey = "LANGUAGEKEY";
+  static String userKey = "USERKEY";
+  static String languageKey = "LANGUAGEKEY";
+  static String loggedKey = "ISLOGGED";
 
   // AuthService authController = Get.put(AuthService());
   SettingController settingController = Get.put(SettingController());
 
 ///////////CREATE
-  Future setLoginSatate(String user) async {
+  static setUserImage(String user) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString(userKey, user);
   }
 
-  Future setLanguage(String param1, String param2) async {
+  static setLanguage(String param1, String param2) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setString(languageKey, '$param1,$param2');
     print(param1);
   }
 
+  static setLogged(bool isLogged) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(loggedKey, isLogged);
+  }
+
 /////////////READ
 
-  Future<String> getLoginState(String imageUrl) async {
+  static Future<String> userImage() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    imageUrl = preferences.getString(userKey);
+     var imageUrl = preferences.getString(userKey);
     return imageUrl;
   }
 
-  Future<String> getLanguage(String langCode) async {
+ static Future<String> getLanguage() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    langCode = preferences.getString(languageKey);
-    return langCode;
+    var lang = preferences.getString(languageKey);
+    return lang;
+  }
+
+ static Future<bool> getLogged() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(loggedKey);
   }
 
 //////////DELETE
   Future clearAll() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.clear();
+    return preferences.clear();
   }
 }
