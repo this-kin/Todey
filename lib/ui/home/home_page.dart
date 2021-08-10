@@ -3,7 +3,6 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:todey/ui/create_new_task/create_task.dart';
 import 'package:todey/ui/home/home.dart';
 import 'package:todey/ui/settings/setings.dart';
-
 import 'package:todey/utils/helper.dart';
 
 class HomePage extends StatefulWidget {

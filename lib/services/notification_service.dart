@@ -50,8 +50,7 @@ class EndedNotificationHelper {
 
   Future<void> endOfDay() async {
     var now = DateTime.now();
-    var scheduledTime =
-        tz.TZDateTime.from(DateTime(now.year, 0, 0, 20, 0, 0, 0, 0), tz.local);
+    var scheduledTime = Time(22, 0, 0);
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 2",
       "CHANNEL_NAME 2",
@@ -64,12 +63,14 @@ class EndedNotificationHelper {
     var platformSpecific =
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        0, "Todey", "night".tr, scheduledTime, platformSpecific,
-        payload: "Test Payload",
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
+    await flutterLocalNotificationsPlugin.showDailyAtTime(
+      2,
+      "Todey",
+      "night".tr,
+      scheduledTime,
+      platformSpecific,
+      payload: "Test Payload",
+    );
   }
 
   ///
@@ -90,7 +91,7 @@ class EndedNotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        0, "Todey", "ended".tr, scheduledTime, platformSpecific,
+        3, "Todey", "ended".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

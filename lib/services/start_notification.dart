@@ -1,4 +1,5 @@
 import 'dart:io' show File, Platform;
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //TZDATETIME
 import 'package:timezone/data/latest.dart' as tz;
@@ -46,13 +47,11 @@ class StartNotificationHelper {
 
   ////Start of the day
   Future<void> startOfDay() async {
-    var now = DateTime.now();
-    var scheduledTime =
-        tz.TZDateTime.from(DateTime(now.year, 0, 0, 6, 0, 0, 0, 0), tz.local);
+    var scheduledTime = Time(6, 0, 0);
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 1",
-      "CHANNEL_NAME 1",
-      "CHANNEL_DESCRIPTION 1",
+      "CHANNEL_ID 0",
+      "CHANNEL_NAME 0",
+      "CHANNEL_DESCRIPTION 0",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -61,12 +60,15 @@ class StartNotificationHelper {
     var platformSpecific =
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        2, "Todey", "started".tr, scheduledTime, platformSpecific,
-        payload: "Test Payload",
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
+    // ignore: deprecated_member_use
+    await flutterLocalNotificationsPlugin.showDailyAtTime(
+      0,
+      "Todey",
+      "started".tr,
+      scheduledTime,
+      platformSpecific,
+      payload: "Test Payload",
+    );
   }
 
 ////Scheduled StartedDate
@@ -86,7 +88,7 @@ class StartNotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        2, "Todey", "morning".tr, scheduledTime, platformSpecific,
+        1, "Todey", "morning".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:

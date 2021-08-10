@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/state_manager.dart';
@@ -23,42 +22,42 @@ class AuthService extends GetxController {
   }
 
   signInWithGooogle(BuildContext context) async {
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
-    final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken);
+    try {
+      final GoogleSignInAccount googleSignInAccount =
+          await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken);
 
-    final UserCredential authResult =
-        await _auth.signInWithCredential(credential);
+      final UserCredential authResult =
+          await _auth.signInWithCredential(credential);
 
-    final User user = authResult.user;
-    if (user != null) {
-      assert(user.displayName != null);
-      assert(user.photoURL != null);
-      isSignedIn.value = false;
+      final User user = authResult.user;
+      if (user != null) {
+        isSignedIn.value = false;
+        userImageUrl.value = user.photoURL;
+        spService.setLoginSatate(user.photoURL);
+        Helper.replaceScreen(HomePage());
 
-      userImageUrl.value = user.photoURL;
-      // spService.setLoginSatate(user.photoURL);
-      assert(!user.isAnonymous);
-      assert(await user.getIdToken() != null);
-      Helper.replaceScreen(context, HomePage());
-
-      final User currentUser = _auth.currentUser;
-      assert(user.uid == currentUser.uid);
-      return '$user';
-    } else {
-      return null;
+        final User currentUser = _auth.currentUser;
+        assert(user.uid == currentUser.uid);
+        return '$user';
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
   signOut(BuildContext context) async {
-    await googleSignIn.signOut().then((value) {
-      if (value == null) {
-        // spService.clearAll();
-        Helper.replaceScreen(context, Onboarding());
-      }
-    });
+    try {
+      await googleSignIn.signOut().then((val) {
+        spService.clearAll();
+        Helper.replaceScreen(Onboarding());
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }

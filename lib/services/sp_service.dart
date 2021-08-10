@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/controllers/settings_controller.dart';
 
 class SP {

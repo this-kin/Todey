@@ -18,6 +18,8 @@ void main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await SQFliteDB().initializeDB();
   await Firebase.initializeApp();
+  startNotification.startOfDay();
+  endedNotification.endOfDay();
   runApp(MyApp());
 }
 
@@ -35,8 +37,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     print(authService.userImageUrl);
     print(settingController.defaultLanguage.value);
-    startNotification.startOfDay();
-    endedNotification.endOfDay();
+
     return ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
@@ -51,6 +52,7 @@ class _MyAppState extends State<MyApp> {
                   ? Onboarding()
                   : HomePage(),
               title: "Todey",
+
               debugShowCheckedModeBanner: false,
             ),
           );

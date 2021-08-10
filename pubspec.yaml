@@ -1,7 +1,7 @@
 name: todey
 description: A new Flutter project.
 publish_to: 'none'
-version: 1.0.0+1
+version: 2.0.0
 environment:
   sdk: ">=2.7.0 <3.0.0"
 dependencies:
@@ -13,7 +13,7 @@ dependencies:
   toast: ^0.1.5
   get:
   flutter_screenutil: 
-  shared_preferences:
+  shared_preferences: ^0.5.12+4
   firebase_core:
   firebase_auth:
   google_sign_in:
@@ -23,7 +23,7 @@ dependencies:
   feedback: 
   syncfusion_flutter_datepicker:
   flutter_local_notifications: ^4.0.1+2
-  cached_network_image:
+  cached_network_image: 2.0.0
   url_launcher: ^5.7.7
 
 dev_dependencies:
