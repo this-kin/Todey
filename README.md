@@ -74,7 +74,8 @@ flutter build apk
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give a ⭐️ if you like this project! all contributions 👏✍ and PRs 🖖🤞 are welcome 🤝🙏
+you can also create issues if you detect any bug 🦟🦟 
 
 
 
