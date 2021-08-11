@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todey/services/sp_service.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
-import 'package:todey/utils/helper.dart';
 
 class AuthService extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -48,7 +47,7 @@ class AuthService extends GetxController {
         }));
 
         final User currentUser = _auth.currentUser;
-        return '$user';
+        return '$currentUser';
       }
     } catch (e) {
       print(e);
@@ -59,8 +58,17 @@ class AuthService extends GetxController {
   signOut(BuildContext context) async {
     try {
       await googleSignIn.signOut().then((val) {
-        spService.clearAll();
-        Helper.replaceScreen(context, Onboarding());
+        print(val);
+        if (val == null) {
+          //clear all data 
+          SP.clearAll();
+            //Replace screen
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (BuildContext context) {
+          return Onboarding();
+        }));
+
+        }
       });
     } catch (e) {
       print(e);

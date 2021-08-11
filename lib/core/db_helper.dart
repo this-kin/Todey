@@ -93,6 +93,12 @@ class SQFliteDB {
     return await dbClient
         .delete(tableName, where: "$columnId = ? ", whereArgs: [id]);
   }
+
+  Future<void> clearDB() async {
+    var dbClient = await db;
+    // return await dbClient.execute()
+  }
+
   /////////////////////////////////////////////////////////////
 
 }

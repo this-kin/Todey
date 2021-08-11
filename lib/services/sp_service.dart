@@ -47,7 +47,7 @@ class SP {
   }
 
 //////////DELETE
-  Future clearAll() async {
+  static clearAll() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return preferences.clear();
   }
