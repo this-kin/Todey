@@ -49,6 +49,8 @@ class _MyAppState extends State<MyApp> {
               fallbackLocale: Locale('en', 'US'),
               theme: themeData,
               //will be changed future builder is very Slow
+              //checkiing if value is null (user is not signed in yet ) we go
+              //to onboarding screen else go to home page
               home: authService.isSignedIn.value == null
                   ? Onboarding()
                   : HomePage(),
