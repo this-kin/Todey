@@ -22,6 +22,8 @@ Color kPersonalColor = Colors.white;
 Color kDefaultColor = Colors.transparent;
 Color kHomeColor = Colors.green;
 
+
+
 //////////
 Color kBackGroundColor2 = Color(0xff3E3B64);
 

@@ -7,7 +7,7 @@ class ChartController extends GetxController {
   var accomplishedEvents = 0.obs;
 
   //Dependenecy injection
-  SPChart spChart = SPChart();
+  // SPChart spChart = SPChart();
 
 /////Fires on Start
   @override
@@ -19,25 +19,25 @@ class ChartController extends GetxController {
   }
 
 ////CREATION
-  void create() {
-    createdEvents.value = createdEvents.value += 1;
-    spChart.setCreated(createdEvents.value);
-    updated();
+  create() {
+    var newCreated = createdEvents.value += 1;
+    SPChart.setCreated(newCreated);
+    update();
   }
 
-  void deleted() {
+  deleted() {
     deletedEvents.value = deletedEvents.value += 1;
-    spChart.setDeleted(deletedEvents.value);
+    SPChart.setDeleted(deletedEvents.value);
     update();
   }
 
-  void accomplished() {
+  accomplished() {
     accomplishedEvents.value = accomplishedEvents.value += 1;
-    spChart.setAccomplished(accomplishedEvents.value);
+    SPChart.setAccomplished(accomplishedEvents.value);
     update();
   }
 
-  void updated() {}
+  updated() {}
 
   fetchChart() async {
     createdEvents.value = await SPChart.getCreated();

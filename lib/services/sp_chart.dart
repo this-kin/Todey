@@ -10,19 +10,22 @@ class SPChart {
   static const String accomplishedKey = "ACCOMPLISHKEY";
 
   ///CREATION
-  Future<bool> setCreated(int createdInt) async {
+  ///
+  ///
+  ///
+  static setCreated(int createdInt) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setInt(createdKey, createdInt);
+    prefs.setInt(createdKey, createdInt);
   }
 
-  Future<bool> setDeleted(int deletedInt) async {
+  static setDeleted(int deletedInt) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setInt(deletedKey, deletedInt);
+    prefs.setInt(deletedKey, deletedInt);
   }
 
-  Future<bool> setAccomplished(int accomplishedInt) async {
+  static setAccomplished(int accomplishedInt) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setInt(accomplishedKey, accomplishedInt);
+    prefs.setInt(accomplishedKey, accomplishedInt);
   }
 
 /////RETREIVING DATA
@@ -44,7 +47,7 @@ class SPChart {
 
   //DELETE ALL
 
- static Future<bool> clearAll() async {
+  static Future<bool> clearAll() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.clear();
   }
