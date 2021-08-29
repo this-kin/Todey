@@ -23,8 +23,10 @@ dependencies:
   feedback: 
   syncfusion_flutter_datepicker:
   flutter_local_notifications: ^4.0.1+2
-  cached_network_image: 2.0.0
+  cached_network_image:
   url_launcher: ^5.7.7
+  flutter_phoenix:
+  
 
 dev_dependencies:
   flutter_test:

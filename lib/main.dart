@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
@@ -11,6 +13,9 @@ import 'package:todey/services/start_notification.dart';
 import 'package:todey/ui/home/home_page.dart';
 import 'package:todey/ui/onboarding/onboarding.dart';
 import 'package:todey/utils/constant.dart';
+import 'package:todey/utils/global.dart' as global;
+import 'package:todey/utils/routes.dart';
+import 'package:todey/utils/theme.dart';
 import 'package:todey/utils/translation.dart';
 
 void main() async {
@@ -38,7 +43,21 @@ class _MyAppState extends State<MyApp> {
     print(authService.userImageUrl);
     print(settingController.defaultLanguage.value);
 
-    return ScreenUtilInit(
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness:
+          global.isLight ? Brightness.dark : Brightness.light,
+      statusBarBrightness:
+          Platform.isAndroid ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: CoustomTheme.getThemeData().cardColor,
+      systemNavigationBarDividerColor:
+          CoustomTheme.getThemeData().disabledColor,
+      systemNavigationBarIconBrightness:
+          global.isLight ? Brightness.dark : Brightness.light,
+    ));
+
+    return Phoenix(
+      child: ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
           return Obx(
@@ -48,15 +67,15 @@ class _MyAppState extends State<MyApp> {
               locale: Locale(settingController.defaultLanguage.value),
               fallbackLocale: Locale('en', 'US'),
               theme: themeData,
-              //will be changed future builder is very Slow
-              //checkiing if value is null (user is not signed in yet ) we go
-              //to onboarding screen else go to home page
               home: authService.isSignedIn.value == null
                   ? Onboarding()
                   : HomePage(),
               title: "Todey",
+              getPages: routes,
             ),
           );
-        });
+        },
+      ),
+    );
   }
 }

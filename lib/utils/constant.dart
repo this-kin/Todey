@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+class ConstanceData {
+  //icons
+  static const BASEIMAGEURL = "images/";
+  static final appIcon = BASEIMAGEURL + "todey.png";
+  static final calendarIcon = BASEIMAGEURL + "calendar.png";
+  static final familyIcon = BASEIMAGEURL + "family.png";
+  static final gameIcon = BASEIMAGEURL + "games.png";
+  static final homeIcon = BASEIMAGEURL + "home.png";
+  static final notificationIcon = BASEIMAGEURL + "notification.png";
+  static final paperIcon = BASEIMAGEURL + "paper.png";
+  static final studyingIcon = BASEIMAGEURL + "studying.png";
+  static final suitcaseIcon = BASEIMAGEURL + "suitcase.png";
+  static final userIcon = BASEIMAGEURL + "user.png";
+
+//fonts
+  static const BASEFONTURL = "fonts/";
+  static final abelFont = BASEFONTURL + 'Abel-Regular.tff';
+  static final ralewayFont = BASEFONTURL + 'Raleway-Black.tff';
+
+//Duration
+  static final kDuration = Duration(milliseconds: 300);
+}
+
 Color kBlackColor = Color(0xff292E3C);
 Color kTextColor = Colors.white;
 Color kImportantColor = Color(0xff2765FA);
@@ -21,8 +44,6 @@ Color kWorkColor = Color(0xff020F2F);
 Color kPersonalColor = Colors.white;
 Color kDefaultColor = Colors.transparent;
 Color kHomeColor = Colors.green;
-
-
 
 //////////
 Color kBackGroundColor2 = Color(0xff3E3B64);
