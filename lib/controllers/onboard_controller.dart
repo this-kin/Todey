@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/utils/constant.dart';
-import 'package:todey/utils/helper.dart';
 
 class OnboardController extends GetxController {
   var pageController = PageController().obs;
@@ -22,6 +21,6 @@ class OnboardController extends GetxController {
   }
 
   void skipChanged(context) {
-    authService.signInWithGooogle(context);
+    // authService.signInWithGooogle(context);
   }
 }

@@ -13,18 +13,18 @@ dependencies:
   toast: ^0.1.5
   get:
   flutter_screenutil: 
-  shared_preferences: ^0.5.12+4
+  shared_preferences: ^2.0.8
   firebase_core:
-  firebase_auth:
+  # firebase_auth:
   google_sign_in:
   sqflite:
   fl_chart: 
   path_provider:
   feedback: 
   syncfusion_flutter_datepicker:
-  flutter_local_notifications: ^4.0.1+2
+  flutter_local_notifications: ^9.1.1
   cached_network_image:
-  url_launcher: ^5.7.7
+  url_launcher: ^6.0.12
   flutter_phoenix:
   
 
@@ -34,11 +34,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/
+    - assets/images/
   fonts:
   - family: MADType
     fonts:
-    - asset: fonts/Abel-Regular.ttf
+    - asset: assets/fonts/Abel-Regular.ttf
   - family: Raleway
     fonts:
-    - asset: fonts/Raleway-Black.ttf
+    - asset: assets/fonts/Raleway-Black.ttf

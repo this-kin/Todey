@@ -54,7 +54,7 @@ class EndedNotificationHelper {
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 2",
       "CHANNEL_NAME 2",
-      "CHANNEL_DESCRIPTION 2",
+      channelDescription: "CHANNEL_DESCRIPTION 2",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -81,7 +81,7 @@ class EndedNotificationHelper {
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 3",
       "CHANNEL_NAME 3",
-      "CHANNEL_DESCRIPTION 3",
+      channelDescription: "CHANNEL_DESCRIPTION 3",
       importance: Importance.max,
       priority: Priority.high,
     );

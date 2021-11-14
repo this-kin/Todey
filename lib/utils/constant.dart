@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConstanceData {
   //icons
-  static const BASEIMAGEURL = "images/";
+  static const BASEIMAGEURL = "assets/images/";
   static final appIcon = BASEIMAGEURL + "todey.png";
   static final calendarIcon = BASEIMAGEURL + "calendar.png";
   static final familyIcon = BASEIMAGEURL + "family.png";

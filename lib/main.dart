@@ -8,11 +8,9 @@ import 'package:get/get.dart';
 import 'package:todey/controllers/auth_controller.dart';
 import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/core/db_helper.dart';
+import 'package:todey/modules/onboard/onboard.dart';
 import 'package:todey/services/notification_service.dart';
 import 'package:todey/services/start_notification.dart';
-import 'package:todey/ui/home/home_page.dart';
-import 'package:todey/ui/onboarding/onboarding.dart';
-import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/global.dart' as global;
 import 'package:todey/utils/routes.dart';
 import 'package:todey/utils/theme.dart';
@@ -40,22 +38,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print(authService.userImageUrl);
-    print(settingController.defaultLanguage.value);
-
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness:
-          global.isLight ? Brightness.dark : Brightness.light,
-      statusBarBrightness:
-          Platform.isAndroid ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: CoustomTheme.getThemeData().cardColor,
-      systemNavigationBarDividerColor:
-          CoustomTheme.getThemeData().disabledColor,
-      systemNavigationBarIconBrightness:
-          global.isLight ? Brightness.dark : Brightness.light,
-    ));
-
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness:
+            global.isLight ? Brightness.dark : Brightness.light,
+        statusBarBrightness:
+            Platform.isAndroid ? Brightness.dark : Brightness.light,
+        systemNavigationBarColor: CustomTheme.getThemeData().cardColor,
+        systemNavigationBarDividerColor:
+            CustomTheme.getThemeData().disabledColor,
+        systemNavigationBarIconBrightness:
+            global.isLight ? Brightness.dark : Brightness.light,
+      ),
+    );
     return Phoenix(
       child: ScreenUtilInit(
         designSize: Size(360, 784),
@@ -66,10 +62,10 @@ class _MyAppState extends State<MyApp> {
               translations: Translation(),
               locale: Locale(settingController.defaultLanguage.value),
               fallbackLocale: Locale('en', 'US'),
-              theme: themeData,
-              home: authService.isSignedIn.value == null
-                  ? Onboarding()
-                  : HomePage(),
+              theme: CustomTheme.getThemeData(),
+              home: Onboard(),
+              // authService.isSignedIn.value == null ? Onboard()
+              // : HomePage(),
               title: "Todey",
               getPages: routes,
             ),

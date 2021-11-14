@@ -51,7 +51,7 @@ class StartNotificationHelper {
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 0",
       "CHANNEL_NAME 0",
-      "CHANNEL_DESCRIPTION 0",
+     channelDescription: "CHANNEL_DESCRIPTION 0",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -78,7 +78,7 @@ class StartNotificationHelper {
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 1",
       "CHANNEL_NAME 1",
-      "CHANNEL_DESCRIPTION 1",
+    channelDescription:  "CHANNEL_DESCRIPTION 1",
       importance: Importance.max,
       priority: Priority.high,
     );

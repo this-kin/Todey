@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todey/utils/global.dart' as global;
 
-class CoustomTheme {
+class CustomTheme {
   static ThemeData getThemeData() {
     if (global.isLight) {
       return _buildLightTheme();
@@ -11,43 +11,7 @@ class CoustomTheme {
   }
 
   static TextTheme _buildTextTheme(TextTheme base) {
-    return base.copyWith(
-        // title: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(
-        //         color: base.title.color,
-        //         fontSize: 20,
-        //         fontWeight: FontWeight.w500)),
-        // subhead: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.subhead.color, fontSize: 16)),
-        // subtitle: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(
-        //         color: base.subtitle.color,
-        //         fontSize: 14,
-        //         fontWeight: FontWeight.w500)),
-        // body1: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.body1.color, fontSize: 16)),
-        // body2: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.body2.color, fontSize: 14)),
-        // button: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(
-        //         color: base.button.color,
-        //         fontSize: 14,
-        //         fontWeight: FontWeight.w600)),
-        // caption: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.caption.color, fontSize: 12)),
-        // display1: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.display1.color, fontSize: 34)),
-        // display2: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.display2.color, fontSize: 48)),
-        // display3: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.display3.color, fontSize: 60)),
-        // display4: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.display4.color, fontSize: 96)),
-        // headline: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.headline.color, fontSize: 24)),
-        // overline: GoogleFonts.montserrat(
-        //     textStyle: TextStyle(color: base.overline.color, fontSize: 10)),
-        );
+    return base.copyWith();
   }
 
   static ThemeData _buildDarkTheme() {
