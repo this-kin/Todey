@@ -1,103 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:todey/utils/global.dart' as global;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todey/utils/constant.dart';
 
 class CustomTheme {
+//
+  static const Color _primaryColor1 = Color(0xff1C68F0);
+  static const Color _primaryColor2 = Color(0xff2281F5);
+
+  static const Color _deleteColor = Color(0xffE34946);
+  static const Color _updateColor = Color(0xffED9B1E);
+
   static ThemeData getThemeData() {
-    if (global.isLight) {
+    var theme = true;
+
+    if (theme) {
       return _buildLightTheme();
     } else {
       return _buildDarkTheme();
     }
   }
 
-  static TextTheme _buildTextTheme(TextTheme base) {
-    return base.copyWith();
-  }
+  static const TextTheme _lightTextTheme = TextTheme();
+
+  static const TextTheme _darkTextTheme = TextTheme();
 
   static ThemeData _buildDarkTheme() {
-    Color primaryColor = HexColor(global.primaryDarkColorString);
     final ThemeData base = ThemeData.dark();
     final ColorScheme colorScheme = const ColorScheme.dark().copyWith(
-      primary: primaryColor,
-      secondary: primaryColor,
+      primary: _primaryColor1,
+      secondary: _primaryColor2,
+      brightness: Brightness.light,
     );
     return base.copyWith(
-      primaryColor: primaryColor,
-      buttonColor: primaryColor,
+      primaryColor: _primaryColor1,
+      buttonColor: _primaryColor1,
       indicatorColor: Colors.white,
-      accentColor: primaryColor,
-      // canvasColor: const Color(0xFF202124),
-      scaffoldBackgroundColor: const Color(0xFF212121),
-      // backgroundColor: const Color(0xFF202124),
-      errorColor: const Color(0xFFB00020),
-      buttonTheme: _buttonThemeData(colorScheme),
-      dialogTheme: _dialogTheme(),
-      cardTheme: _cardTheme(),
-      textTheme: _buildTextTheme(base.textTheme),
-      primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-      accentTextTheme: _buildTextTheme(base.accentTextTheme),
+      accentColor: Colors.grey,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: const Color(0xFF1D193D),
+      backgroundColor: const Color(0xFF1D193D),
+      errorColor: _deleteColor,
+      platform: TargetPlatform.iOS,
+      cursorColor: _primaryColor1,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      brightness: Brightness.light,
+      typography: Typography(),
+      iconTheme: IconThemeData(color: Colors.white),
+      primaryIconTheme: IconThemeData(color: Colors.white),
+      accentIconTheme: IconThemeData(color: Colors.white),
+      textTheme: _darkTextTheme,
     );
   }
 
   static ThemeData _buildLightTheme() {
-    Color primaryColor = HexColor(global.primaryLightColorString);
-
     final ColorScheme colorScheme = const ColorScheme.light().copyWith(
-      primary: primaryColor,
-      secondary: primaryColor,
+      primary: _primaryColor1,
+      secondary: _primaryColor2,
     );
     final ThemeData base = ThemeData.light();
     return base.copyWith(
-      // cupertinoOverrideTheme: _buildCupertinoTheme(base.cupertinoOverrideTheme),
       colorScheme: colorScheme,
-      primaryColor: Colors.deepPurpleAccent,
-      buttonColor: primaryColor,
-      // indicatorColor: Colors.white,
+      primaryColor: _primaryColor1,
+      buttonColor: _primaryColor1,
       splashColor: Colors.white38,
       splashFactory: InkRipple.splashFactory,
-      accentColor: primaryColor,
-      // canvasColor: Colors.white,
-      // scaffoldBackgroundColor: const Color(0xFFEFF1F4),
+      accentColor: Colors.grey,
       backgroundColor: const Color(0xFFFFFFFF),
-      errorColor: const Color(0xFFB00020),
-      cursorColor: primaryColor,
+      scaffoldBackgroundColor: const Color(0xFFFFFFFF),
+      errorColor: _deleteColor,
+      cursorColor: _primaryColor1,
       typography: Typography(),
-      buttonTheme: _buttonThemeData(colorScheme),
-      dialogTheme: _dialogTheme(),
-      cardTheme: _cardTheme(),
-      textTheme: _buildTextTheme(base.textTheme),
-      primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-      accentTextTheme: _buildTextTheme(base.accentTextTheme),
       platform: TargetPlatform.iOS,
-    );
-  }
-
-  static ButtonThemeData _buttonThemeData(ColorScheme colorScheme) {
-    return ButtonThemeData(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      colorScheme: colorScheme,
-      textTheme: ButtonTextTheme.primary,
-    );
-  }
-
-  static DialogTheme _dialogTheme() {
-    return DialogTheme(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-    );
-  }
-
-  static CardTheme _cardTheme() {
-    return CardTheme(
-      clipBehavior: Clip.antiAlias,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      elevation: 8,
-      margin: EdgeInsets.all(0),
+      brightness: Brightness.dark,
+      textTheme: _lightTextTheme,
+      iconTheme: IconThemeData(color: Colors.grey),
+      primaryIconTheme: IconThemeData(color: Colors.grey),
+      accentIconTheme: IconThemeData(color: Colors.grey),
     );
   }
 }

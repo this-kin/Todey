@@ -11,7 +11,6 @@ import 'package:todey/core/db_helper.dart';
 import 'package:todey/modules/onboard/onboard.dart';
 import 'package:todey/services/notification_service.dart';
 import 'package:todey/services/start_notification.dart';
-import 'package:todey/utils/global.dart' as global;
 import 'package:todey/utils/routes.dart';
 import 'package:todey/utils/theme.dart';
 import 'package:todey/utils/translation.dart';
@@ -42,14 +41,14 @@ class _MyAppState extends State<MyApp> {
       SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness:
-            global.isLight ? Brightness.dark : Brightness.light,
+            Platform.isAndroid ? Brightness.dark : Brightness.light,
         statusBarBrightness:
             Platform.isAndroid ? Brightness.dark : Brightness.light,
-        systemNavigationBarColor: CustomTheme.getThemeData().cardColor,
+        systemNavigationBarColor: Colors.transparent,
         systemNavigationBarDividerColor:
             CustomTheme.getThemeData().disabledColor,
         systemNavigationBarIconBrightness:
-            global.isLight ? Brightness.dark : Brightness.light,
+            Platform.isAndroid ? Brightness.dark : Brightness.light,
       ),
     );
     return Phoenix(
@@ -64,8 +63,6 @@ class _MyAppState extends State<MyApp> {
               fallbackLocale: Locale('en', 'US'),
               theme: CustomTheme.getThemeData(),
               home: Onboard(),
-              // authService.isSignedIn.value == null ? Onboard()
-              // : HomePage(),
               title: "Todey",
               getPages: routes,
             ),

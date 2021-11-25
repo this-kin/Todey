@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
 class Translation extends Translations {
-  ///supports three lanugages ENGLISH, FRENCH AND PORTUGESE
+  ///supports (3) lanugages ENGLISH, FRENCH AND PORTUGESE
+
   @override
-  // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'en_US': {
           'schedule': 'Schedule',
@@ -76,10 +76,3 @@ class Translation extends Translations {
         },
       };
 }
-
-/*
-
-
-an event has ended  /////  um evento terminou  ////////// un événement est terminé
-Good morning please make a schedule ///// Bom dia por favor faça um cronograma         ////////  Bonjour s'il vous plaît faire un programme
-*/

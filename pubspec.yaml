@@ -15,7 +15,7 @@ dependencies:
   flutter_screenutil: 
   shared_preferences: ^2.0.8
   firebase_core:
-  # firebase_auth:
+  firebase_auth:
   google_sign_in:
   sqflite:
   fl_chart: 
