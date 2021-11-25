@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "176681696731",
+    "project_id": "todoy-bccd0",
+    "storage_bucket": "todoy-bccd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176681696731:android:6e58d2cc4c6552de893bfe",
+        "android_client_info": {
+          "package_name": "com.flutterboyfriend.todey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176681696731-sjv0g01ns3cuvikh9ncep82tfgit2mdj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterboyfriend.todey",
+            "certificate_hash": "927c02da8f152b18a01968c75d5060d455f47c01"
+          }
+        },
+        {
+          "client_id": "176681696731-n4eish8bj0ig01dppa1eoc1io6ngcb5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR8ZFXo--XTcU5sGHKxqyPJ0Pt_fVfkOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176681696731-n4eish8bj0ig01dppa1eoc1io6ngcb5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/utils/constant.dart';
 
 class CustomTheme {
@@ -10,38 +10,53 @@ class CustomTheme {
   static const Color _deleteColor = Color(0xffE34946);
   static const Color _updateColor = Color(0xffED9B1E);
 
-  static ThemeData getThemeData() {
-    var theme = true;
+  static ColorScheme _lightColorScheme = ColorScheme.light(
+    primary: _primaryColor1,
+    secondary: _primaryColor2,
+  );
 
-    if (theme) {
-      return _buildLightTheme();
-    } else {
-      return _buildDarkTheme();
-    }
-  }
+  static TextTheme _lightTextTheme = TextTheme(
+    overline: TextStyle(
+      fontFamily: ConstanceData.abelFont,
+      fontSize: 17.sp,
+      color: Colors.black,
+      fontWeight: FontWeight.w600,
+    ),
+    button: TextStyle(
+      color: Colors.white,
+      fontSize: 15.sp,
+      fontFamily: ConstanceData.ralewayFont,
+      fontWeight: FontWeight.w700,
+    ),
+  );
 
-  static const TextTheme _lightTextTheme = TextTheme();
+  static TextTheme _darkTextTheme = TextTheme(
+    overline: TextStyle(
+      fontFamily: ConstanceData.abelFont,
+      fontSize: 17.sp,
+      color: Colors.white,
+      fontWeight: FontWeight.w600,
+    ),
+    button: TextStyle(
+      color: Colors.white,
+      fontSize: 15.sp,
+      fontFamily: ConstanceData.ralewayFont,
+      fontWeight: FontWeight.w700,
+    ),
+  );
 
-  static const TextTheme _darkTextTheme = TextTheme();
-
-  static ThemeData _buildDarkTheme() {
-    final ThemeData base = ThemeData.dark();
-    final ColorScheme colorScheme = const ColorScheme.dark().copyWith(
-      primary: _primaryColor1,
-      secondary: _primaryColor2,
-      brightness: Brightness.light,
-    );
-    return base.copyWith(
-      primaryColor: _primaryColor1,
-      buttonColor: _primaryColor1,
+  static ThemeData buildDarkTheme() {
+    return ThemeData(
       indicatorColor: Colors.white,
+      primaryColor: _primaryColor2,
+      buttonColor: _primaryColor2,
       accentColor: Colors.grey,
-      colorScheme: colorScheme,
-      scaffoldBackgroundColor: const Color(0xFF1D193D),
-      backgroundColor: const Color(0xFF1D193D),
+      // colorScheme: _lightColorScheme,
+      scaffoldBackgroundColor: const Color(0xff2F2C53),
+      backgroundColor: const Color(0xff2F2C53),
       errorColor: _deleteColor,
       platform: TargetPlatform.iOS,
-      cursorColor: _primaryColor1,
+      cursorColor: _primaryColor2,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       typography: Typography(),
@@ -52,23 +67,18 @@ class CustomTheme {
     );
   }
 
-  static ThemeData _buildLightTheme() {
-    final ColorScheme colorScheme = const ColorScheme.light().copyWith(
-      primary: _primaryColor1,
-      secondary: _primaryColor2,
-    );
-    final ThemeData base = ThemeData.light();
-    return base.copyWith(
-      colorScheme: colorScheme,
-      primaryColor: _primaryColor1,
-      buttonColor: _primaryColor1,
+  static ThemeData buildLightTheme() {
+    return ThemeData(
+      //  colorScheme: _lightColorScheme,
+      primaryColor: _primaryColor2,
+      buttonColor: _primaryColor2,
       splashColor: Colors.white38,
       splashFactory: InkRipple.splashFactory,
       accentColor: Colors.grey,
       backgroundColor: const Color(0xFFFFFFFF),
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       errorColor: _deleteColor,
-      cursorColor: _primaryColor1,
+      cursorColor: _primaryColor2,
       typography: Typography(),
       platform: TargetPlatform.iOS,
       brightness: Brightness.dark,
