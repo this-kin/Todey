@@ -1,12 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/state_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService extends GetxController {
-//google signing
+  var _googleSigin = GoogleSignIn();
+  var googleAccount = Rx<GoogleSignInAccount>(null);
 
-  void googleSigning() async {
+  Future login() async {
     try {
-      debugPrint("Sign in With Google");
+      googleAccount.value = await _googleSigin.signIn();
+      return googleAccount.value;
     } catch (e) {}
   }
 
