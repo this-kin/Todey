@@ -8,11 +8,3 @@ String formattedNow() {
 
   return formatted;
 }
-//Time Formatter
-
-String formattedTime({String time, context}) {
-  var now = time;
-  // var formatter = TimeOfDay();
-}
-
-//Time formatter according to time

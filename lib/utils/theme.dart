@@ -28,6 +28,16 @@ class CustomTheme {
       fontFamily: ConstanceData.ralewayFont,
       fontWeight: FontWeight.w700,
     ),
+    headline2: TextStyle(
+      color: Colors.black,
+      fontFamily: "Raleway",
+      fontSize: 22.sp,
+    ),
+    headline3: TextStyle(
+      color: Colors.grey,
+      fontFamily: "Raleway",
+      fontSize: 20.sp,
+    ),
   );
 
   static TextTheme _darkTextTheme = TextTheme(
@@ -42,6 +52,16 @@ class CustomTheme {
       fontSize: 15.sp,
       fontFamily: ConstanceData.ralewayFont,
       fontWeight: FontWeight.w700,
+    ),
+    headline2: TextStyle(
+      color: Colors.white,
+      fontFamily: "Raleway",
+      fontSize: 24.sp,
+    ),
+    headline3: TextStyle(
+      color: Colors.grey,
+      fontFamily: "Raleway",
+      fontSize: 20.sp,
     ),
   );
 

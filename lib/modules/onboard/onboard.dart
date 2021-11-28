@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:todey/core/sharepreference_helper.dart';
 import 'package:todey/models/welcome_model.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:todey/services/auth_service.dart';
@@ -28,8 +29,9 @@ class _OnboardState extends State<Onboard> {
   //tracks current page
   int _selectedIndex = 0;
 
-  void checkUser() {
-    if (_authService.googleAccount.value == null) {
+  void checkUser() async {
+    var user = await SharedPreferenceHelper.getUsername();
+    if (user == null) {
     } else {
       Navigator.pushAndRemoveUntil(
           context, MaterialPageRoute(builder: (_) => Home()), (route) => false);
@@ -98,7 +100,7 @@ class _OnboardState extends State<Onboard> {
               ? _pageController.nextPage(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.bounceInOut)
-              : _authService.login();
+              : _authService.login(context);
         },
         label: Text(
           _selectedIndex < 2 ? "Next" : "Continue",

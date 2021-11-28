@@ -16,9 +16,8 @@ class ConstanceData {
   static final userIcon = BASEIMAGEURL + "user.png";
 
 //fonts
-  static const BASEFONTURL = "fonts/";
-  static final abelFont = BASEFONTURL + 'Abel-Regular.tff';
-  static final ralewayFont = BASEFONTURL + 'Raleway-Black.tff';
+  static final abelFont = "MADType";
+  static final ralewayFont = 'Raleway';
 
 //Duration
   static final kDuration = Duration(milliseconds: 300);
@@ -51,8 +50,7 @@ Color kBackGroundColor2 = Color(0xff3E3B64);
 Duration kDuration = Duration(milliseconds: 300);
 
 //
-TextStyle kAppBarTitleStyle =
-    TextStyle(color: kTextColor, fontFamily: "Raleway", fontSize: 24.sp);
+
 //
 TextStyle kListTileStyle =
     TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 16.sp);
