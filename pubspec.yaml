@@ -26,6 +26,7 @@ dependencies:
   cached_network_image:
   url_launcher: ^6.0.12
   flutter_phoenix:
+  date_picker_timeline:  
   
 
 dev_dependencies:

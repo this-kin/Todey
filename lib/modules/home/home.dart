@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/modules/create/create.dart';
 import 'package:todey/modules/dashboard/dashboard.dart';
 import 'package:todey/modules/setting/setting.dart';
@@ -44,6 +45,22 @@ class _HomeState extends State<Home> {
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: _itemTapped,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _pageController.animateToPage(1,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.bounceInOut);
+        },
+        backgroundColor: theme.primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.sp),
+        ),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,

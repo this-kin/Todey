@@ -13,6 +13,12 @@ class CustomTheme {
   static ColorScheme _lightColorScheme = ColorScheme.light(
     primary: _primaryColor1,
     secondary: _primaryColor2,
+    brightness: Brightness.light,
+  );
+  static ColorScheme _darkColorScheme = ColorScheme.dark(
+    primary: _primaryColor1,
+    secondary: _primaryColor2,
+    brightness: Brightness.dark,
   );
 
   static TextTheme _lightTextTheme = TextTheme(
@@ -30,13 +36,17 @@ class CustomTheme {
     ),
     headline2: TextStyle(
       color: Colors.black,
-      fontFamily: "Raleway",
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 22.sp,
     ),
     headline3: TextStyle(
       color: Colors.grey,
-      fontFamily: "Raleway",
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 20.sp,
+    ),
+    headline4: TextStyle(
+      color: Colors.grey,
+      fontSize: 16.sp,
     ),
   );
 
@@ -55,13 +65,17 @@ class CustomTheme {
     ),
     headline2: TextStyle(
       color: Colors.white,
-      fontFamily: "Raleway",
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 24.sp,
     ),
     headline3: TextStyle(
       color: Colors.grey,
-      fontFamily: "Raleway",
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 20.sp,
+    ),
+    headline4: TextStyle(
+      color: Colors.white,
+      fontSize: 16.sp,
     ),
   );
 
@@ -84,12 +98,12 @@ class CustomTheme {
       primaryIconTheme: IconThemeData(color: Colors.white),
       accentIconTheme: IconThemeData(color: Colors.white),
       textTheme: _darkTextTheme,
+      // colorScheme: _darkColorScheme,
     );
   }
 
   static ThemeData buildLightTheme() {
     return ThemeData(
-      //  colorScheme: _lightColorScheme,
       primaryColor: _primaryColor2,
       buttonColor: _primaryColor2,
       splashColor: Colors.white38,
@@ -106,6 +120,7 @@ class CustomTheme {
       iconTheme: IconThemeData(color: Colors.grey),
       primaryIconTheme: IconThemeData(color: Colors.grey),
       accentIconTheme: IconThemeData(color: Colors.grey),
+      // colorScheme: _lightColorScheme,
     );
   }
 }
