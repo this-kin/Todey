@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:todey/modules/create/components/first_compo.dart';
+import 'package:todey/modules/create/components/second_compo.dart';
 
 class Create extends StatefulWidget {
   const Create({Key key}) : super(key: key);
@@ -11,9 +13,14 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
-  DateTime _now = DateTime.now();
+  //controller
+  PageController _controller = PageController();
 
-  TimeOfDay _time = TimeOfDay.now();
+  //tracks current page
+  int _currentIndex = 0;
+
+  //list of pages
+  List<Widget> _pages = const [FirstComponent(), SecondComponent()];
 
   @override
   Widget build(BuildContext context) {
@@ -49,90 +56,68 @@ class _CreateState extends State<Create> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              height: 55.h,
-                              width: 55.w,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.2),
-                                shape: BoxShape.circle,
+                            GestureDetector(
+                              onTap: () {
+                                _controller.previousPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.bounceInOut);
+                              },
+                              child: Container(
+                                height: 55.h,
+                                width: 55.w,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.2),
+                                  shape: BoxShape.circle,
+                                ),
+                                alignment: Alignment.center,
+                                child: Icon(Icons.close),
                               ),
-                              alignment: Alignment.center,
-                              child: Icon(Icons.close),
                             ),
                             Text("New Task", style: theme.textTheme.headline4),
-                            Container(
-                              height: 55.h,
-                              width: 55.w,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      Colors.blue.shade700,
-                                      Colors.blueAccent.withOpacity(0.7)
-                                    ]),
-                              ),
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.arrow_forward_outlined,
-                                color: Colors.white,
+                            GestureDetector(
+                              onTap: () {
+                                _controller.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.bounceInOut);
+                              },
+                              child: Container(
+                                height: 55.h,
+                                width: 55.w,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Colors.blue.shade700,
+                                        Colors.blueAccent.withOpacity(0.7)
+                                      ]),
+                                ),
+                                alignment: Alignment.center,
+                                child: Icon(
+                                  Icons.arrow_forward_outlined,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 15.h),
-                        pageIndicator(),
-                        SizedBox(height: 15.h),
-                        Container(
-                          child: SfDateRangePicker(
-                            backgroundColor: theme.backgroundColor,
-                            selectionColor: theme.primaryColor,
-                            todayHighlightColor: theme.primaryColor,
-                            selectionTextStyle: theme.textTheme.headline4
-                                .copyWith(color: Colors.white),
-                            minDate: _now,
-                            maxDate: _now.add(const Duration(days: 1000)),
-                            onSelectionChanged: (selectedDate) {},
-                            headerStyle: DateRangePickerHeaderStyle(
-                              textAlign: TextAlign.center,
-                              textStyle: theme.textTheme.headline4,
-                            ),
-                            monthCellStyle: DateRangePickerMonthCellStyle(
-                              textStyle: theme.textTheme.headline4,
+                        SizedBox(height: 10.h),
+                        pageIndicator(
+                          currentIndex: _currentIndex,
+                        ),
+                        Expanded(
+                          child: Container(
+                            child: PageView(
+                              controller: _controller,
+                              onPageChanged: (index) {
+                                setState(() {
+                                  _currentIndex = index;
+                                });
+                              },
+                              children: _pages,
                             ),
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "Start Time",
-                              style: theme.textTheme.headline4,
-                            ),
-                            SizedBox(width: 50.w),
-                            Text(
-                              "End Time",
-                              style: theme.textTheme.headline4,
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 15.h),
-                        Row(
-                          children: [
-                            customChips(
-                              date: _time,
-                              onPressed: () {
-                                //
-                              },
-                            ),
-                            SizedBox(width: 25.w),
-                            customChips(
-                              date: _time,
-                              onPressed: () {
-                                //
-                              },
-                            ),
-                          ],
                         )
                       ],
                     ),
@@ -169,7 +154,7 @@ class _CreateState extends State<Create> {
     );
   }
 
-  Container indicatorWidget() {
+  Widget indicatorWidget() {
     return Container(
       height: 5.h,
       width: 50.w,
@@ -179,10 +164,30 @@ class _CreateState extends State<Create> {
     );
   }
 
-  Container pageIndicator() {
+  Widget pageIndicator({currentIndex = 0}) {
     return Container(
       height: 20.h,
-      width: 400.w,
+      width: 350.w,
+      alignment: Alignment.center,
+      child: Wrap(
+        spacing: 10.w,
+        children: List.generate(
+          2,
+          (index) => AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            child: Container(
+              height: 7.h,
+              width: 155.w,
+              decoration: BoxDecoration(
+                color: index == currentIndex
+                    ? Colors.blue
+                    : Colors.grey.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

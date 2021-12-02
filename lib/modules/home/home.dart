@@ -47,19 +47,22 @@ class _HomeState extends State<Home> {
         onPageChanged: _itemTapped,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _pageController.animateToPage(1,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.bounceInOut);
-        },
-        backgroundColor: theme.primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.sp),
-        ),
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(top: 35.h),
+        child: FloatingActionButton(
+          onPressed: () {
+            _pageController.animateToPage(1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.bounceInOut);
+          },
+          backgroundColor: theme.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.sp),
+          ),
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
