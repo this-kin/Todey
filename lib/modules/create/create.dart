@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
 import 'package:todey/modules/create/components/second_compo.dart';
 
@@ -26,13 +25,13 @@ class _CreateState extends State<Create> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: theme.backgroundColor.withOpacity(0.5),
+      backgroundColor: theme.backgroundColor.withOpacity(0.4),
       body: Stack(
         children: [
           Positioned.fill(
             child: Material(
               elevation: 10,
-              color: theme.backgroundColor.withOpacity(0.5),
+              color: theme.backgroundColor.withOpacity(0.4),
               child: DraggableScrollableSheet(
                 maxChildSize: 1.0,
                 initialChildSize: 0.85,

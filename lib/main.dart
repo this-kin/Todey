@@ -1,21 +1,22 @@
-import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:todey/core/db_helper.dart';
+import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/modules/onboard/onboard.dart';
+import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/routes.dart';
 import 'package:todey/utils/theme.dart';
 import 'package:todey/utils/translation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await SQFliteDB().initializeDB();
   await Firebase.initializeApp();
+  await SQFliteDB().initializeDB();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(MyApp());
 }
 
@@ -31,12 +32,13 @@ class _MyAppState extends State<MyApp> {
       SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness:
-            Platform.isAndroid ? Brightness.dark : Brightness.light,
+            Get.isDarkMode ? Brightness.light : Brightness.dark,
         statusBarBrightness:
-            Platform.isAndroid ? Brightness.dark : Brightness.light,
+            Get.isDarkMode ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: Colors.transparent,
         systemNavigationBarIconBrightness:
-            Platform.isAndroid ? Brightness.dark : Brightness.light,
+            Get.isDarkMode ? Brightness.light : Brightness.dark,
+        systemNavigationBarDividerColor: Colors.transparent,
       ),
     );
     return Phoenix(
@@ -47,8 +49,10 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             translations: Translation(),
             locale: Locale("en", "US"),
+            color: Theme.of(context).backgroundColor,
             fallbackLocale: Locale('en', 'US'),
             theme: CustomTheme.buildLightTheme(),
+            darkTheme: CustomTheme.buildDarkTheme(),
             home: Onboard(),
             title: "Todey",
             getPages: routes,

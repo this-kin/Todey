@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/chart_controller.dart';
 import 'package:todey/services/notification_service.dart';
-import 'package:todey/core/db_helper.dart';
+import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
 import 'package:todey/services/start_notification.dart';
 import 'package:todey/services/toast_service.dart';

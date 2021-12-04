@@ -2,11 +2,14 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:todey/core/sharepreference_helper.dart';
+import 'package:todey/helpers/sharepreference_helper.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/formatted_date.dart';
-import 'package:todey/widgets/todo_widget.dart';
 import 'package:todey/widgets/user_avatar.dart';
+
+//TODO change time picker text color
+//TODO change primaryColor to gradients
+//
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
@@ -25,7 +28,6 @@ class _DashboardState extends State<Dashboard> {
   var imageUrl = "";
   void loadSharedPF() async {
     imageUrl = await SharedPreferenceHelper.getUserimage();
-    print('===========> $imageUrl ===========>');
   }
 
   @override
@@ -102,6 +104,5 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 }
-
 
 //on tap of user avatar glow avatar (animation)

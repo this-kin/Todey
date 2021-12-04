@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(top: 35.h),
+        padding: EdgeInsets.only(top: 30.h),
         child: FloatingActionButton(
           onPressed: () {
             _pageController.animateToPage(1,
