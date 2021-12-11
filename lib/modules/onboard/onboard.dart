@@ -49,6 +49,7 @@ class _OnboardState extends State<Onboard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 60.h),
             Center(
               child: Container(
                 height: 300.h,

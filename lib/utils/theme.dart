@@ -48,6 +48,12 @@ class CustomTheme {
       color: Colors.grey,
       fontSize: 16.sp,
     ),
+    headline5: TextStyle(
+      fontSize: 15.sp,
+      fontFamily: ConstanceData.abelFont,
+      fontWeight: FontWeight.w400,
+      color: Colors.grey,
+    ),
   );
 
   static TextTheme _darkTextTheme = TextTheme(
@@ -76,6 +82,12 @@ class CustomTheme {
     headline4: TextStyle(
       color: Colors.white,
       fontSize: 16.sp,
+    ),
+    headline5: TextStyle(
+      fontSize: 15.sp,
+      fontFamily: ConstanceData.abelFont,
+      fontWeight: FontWeight.w400,
+      color: Colors.grey,
     ),
   );
 
