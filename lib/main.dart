@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/modules/onboard/onboard.dart';
-import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/routes.dart';
 import 'package:todey/utils/theme.dart';
 import 'package:todey/utils/translation.dart';
@@ -32,9 +31,9 @@ class _MyAppState extends State<MyApp> {
       SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness:
-            Get.isDarkMode ? Brightness.dark : Brightness.light,
+            Get.isDarkMode ? Brightness.light : Brightness.dark,
         statusBarBrightness:
-            Get.isDarkMode ? Brightness.dark : Brightness.light,
+            Get.isDarkMode ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: Colors.transparent,
         systemNavigationBarIconBrightness:
             Get.isDarkMode ? Brightness.light : Brightness.dark,
@@ -62,3 +61,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+
+//TODO fix home page issue

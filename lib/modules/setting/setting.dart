@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/modules/setting/widget/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 
-//TODO cupertino switch
 //TODO light_mode_rounded and dark mode rounded
-//TODO dark mode test
 
 class Setting extends StatefulWidget {
   const Setting({Key key}) : super(key: key);
@@ -18,19 +18,11 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  Padding buildTitle(String text) {
-    return Padding(
-      padding: EdgeInsets.all(15.w),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontFamily: ConstanceData.abelFont,
-          fontSize: 16.sp,
-          color: Colors.blueAccent,
-        ),
-      ),
-    );
-  }
+  //
+
+  final SettingController _con = Get.put(SettingController());
+
+  var _isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +41,27 @@ class _SettingState extends State<Setting> {
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SingleChildScrollView(
-          child: Column(
+          child:
+              // Obx(
+              //   () =>
+              Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildTitle('General'.tr),
               SettingTile(
-                icon: Icons.light_mode_rounded,
+                icon: _isDarkMode
+                    ? Icons.dark_mode_rounded
+                    : Icons.light_mode_rounded,
                 btnText: "Theme".tr,
-                trailing: Text(""),
-                onPressed: () {
-                  //
-                },
+                trailing: CupertinoSwitch(
+                  value: _isDarkMode,
+                  onChanged: (val) {
+                    setState(() {
+                      _isDarkMode = !_isDarkMode;
+                      _con.changeTheme(val);
+                    });
+                  },
+                ),
               ),
               SettingTile(
                 icon: Entypo.language,
@@ -86,8 +88,7 @@ class _SettingState extends State<Setting> {
                 btnText: "suggest".tr,
                 trailing: Text(""),
                 onPressed: () {
-                  //
-                  //   settingController.launchGmail();
+                  _con.launchGmail();
                 },
               ),
               SettingTile(
@@ -95,8 +96,7 @@ class _SettingState extends State<Setting> {
                 btnText: "report".tr,
                 trailing: Text(""),
                 onPressed: () {
-                  //
-                  // settingController.reportProblem();
+                  _con.reportProblem();
                 },
               ),
               //
@@ -105,12 +105,27 @@ class _SettingState extends State<Setting> {
                 btnText: "follow twitt".tr,
                 trailing: Text(""),
                 onPressed: () {
-                  // settingController.launchTwitter();
+                  _con.launchTwitter();
                 },
               ),
               SizedBox(height: 20.h)
             ],
           ),
+        ),
+      ),
+      // ),
+    );
+  }
+
+  Padding buildTitle(String text) {
+    return Padding(
+      padding: EdgeInsets.all(15.w),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontFamily: ConstanceData.abelFont,
+          fontSize: 16.sp,
+          color: Colors.blueAccent,
         ),
       ),
     );

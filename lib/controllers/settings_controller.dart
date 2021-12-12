@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
-  //
-  // var isNotification = false.obs;
-  // var isDailyReminder = false.obs;
+  var isDarkMode = true.obs;
+  var notification = true.obs;
+  var reminder = true.obs;
+
   var defaultLanguage = 'en, US'.obs;
-  // SP spService = SP();
 
   @override
   void onReady() {
@@ -32,7 +32,7 @@ class SettingController extends GetxController {
   }
 
   // launch url
-  launchGmail() async {
+  void launchGmail() async {
     final Uri params = Uri(
         scheme: 'mailto',
         path: 'flutterboyfriend200@gmail.com',
@@ -46,7 +46,7 @@ class SettingController extends GetxController {
   }
 
   //Report a problem
-  reportProblem() async {
+  void reportProblem() async {
     final Uri params = Uri(
         scheme: 'mailto',
         path: 'flutterboyfriend200@gmail.com',
@@ -59,12 +59,22 @@ class SettingController extends GetxController {
     }
   }
 
-  launchTwitter() async {
-    final String url = 'https://www.twitter.com/@flutterboy1';
+  void launchTwitter() async {
+    final String url = 'https://www.twitter.com/@ichie200';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       print('Could not launch twitter');
+    }
+  }
+
+  void changeTheme(bool value) {
+    if (value) {
+      Get.changeThemeMode(ThemeMode.dark);
+      update();
+    } else {
+      Get.changeThemeMode(ThemeMode.light);
+      update();
     }
   }
 }
