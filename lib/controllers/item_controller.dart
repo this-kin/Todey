@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/controllers/chart_controller.dart';
 import 'package:todey/services/notification_service.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
@@ -24,9 +23,6 @@ class EventController extends GetxController {
   var eventEndedTime = TimeOfDay.now().obs;
   var eventType = "Personal".obs;
   var selectedIndex = 0.obs;
-
-  //Dependency Injection
-  ChartController chartController = Get.put(ChartController());
 
   @override
   void onReady() {
@@ -54,7 +50,7 @@ class EventController extends GetxController {
           eventDate.value, eventStartedTime.value, eventEndedTime.value);
       getEvents();
       _disposeController();
-      chartController.create();
+
       Navigator.pop(context);
     } else {
       ShowToast.checkEvent(context);
@@ -70,7 +66,7 @@ class EventController extends GetxController {
 ///////////// DElETE EVENT
   Future<void> removeEvent({int id, index}) async {
     await sqFliteDB.deleteEvent(id);
-    chartController.deleted();
+
     events.removeAt(index);
     update();
     getEvents();
@@ -80,7 +76,6 @@ class EventController extends GetxController {
   Future<void> updateEvent(EventModel event) async {
     await sqFliteDB.updateEvent(event);
     getEvents();
-    chartController.updated();
   }
 
 ////////////CLEARS ALL

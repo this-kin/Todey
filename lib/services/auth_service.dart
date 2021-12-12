@@ -47,7 +47,6 @@ class AuthService extends GetxController {
           await _auth.signInWithCredential(_authCredential);
       if (_credential.user != null) {
         _user.value = _credential.user;
-        print("Login Successful");
 
         SharedPreferenceHelper.saveUserEmail(email: _user.value.email);
         SharedPreferenceHelper.saveUserimage(imageurl: _user.value.photoURL);

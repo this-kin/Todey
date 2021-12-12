@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/modules/onboard/onboard.dart';
+import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/routes.dart';
 import 'package:todey/utils/theme.dart';
 import 'package:todey/utils/translation.dart';
@@ -14,8 +15,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await SQFliteDB().initializeDB();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => Get.put(AuthService()));
   runApp(MyApp());
 }
 
