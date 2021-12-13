@@ -30,7 +30,7 @@ class _IndicatorState extends State<Indicator> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: widget.selectedIndex == index
-                  ? theme.primaryColor
+                  ? Colors.amber
                   : Colors.grey.withOpacity(0.3),
             ),
           ),

@@ -49,39 +49,6 @@ class UserAvatar extends StatelessWidget {
     );
   }
 
-  // _showBottomSheet(BuildContext context, ThemeData theme) {
-  //   var dialog = ClipRRect(
-  //       borderRadius: BorderRadius.circular(20.sp),
-  //       child: AlertDialog(
-  //         elevation: 0,
-  //         backgroundColor: theme.backgroundColor,
-  //         title: Text("Logout", style: kLogoutStyle()),
-  //         content: Container(
-  //           child: Text("All events will be deleted permanently",
-  //               style: kLogoutStyle()),
-  //         ),
-  //         actions: [
-  //           FlatButton(
-  //             onPressed: () {
-  //               Helper.popScreen(context);
-  //             },
-  //             child: Text("Cancel", style: kDialogStyle()),
-  //           ),
-  //           FlatButton(
-  //             onPressed: () {
-  //               //  authService.signOut(context);
-  //             },
-  //             child: Text("Confirm", style: kDialogStyle()),
-  //           )
-  //         ],
-  //       ));
-  //   return showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return dialog;
-  //       });
-  // }
-
   kLogoutStyle() {
     return TextStyle(
       fontFamily: 'Raleway',

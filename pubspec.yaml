@@ -27,6 +27,7 @@ dependencies:
   url_launcher: ^6.0.12
   flutter_phoenix:
   date_picker_timeline:  
+  # liquid_swipe:
   
 
 dev_dependencies:

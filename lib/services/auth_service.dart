@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'package:todey/modules/onboard/onboard.dart';
 
 class AuthService extends GetxController {
+  User get user => _user.value;
+
   Rx<User> _user = Rx<User>(null);
 
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -47,12 +49,13 @@ class AuthService extends GetxController {
           await _auth.signInWithCredential(_authCredential);
       if (_credential.user != null) {
         _user.value = _credential.user;
-
         SharedPreferenceHelper.saveUserEmail(email: _user.value.email);
         SharedPreferenceHelper.saveUserimage(imageurl: _user.value.photoURL);
         SharedPreferenceHelper.saveUsername(username: _user.value.displayName);
         SharedPreferenceHelper.saveUserid(uuid: _user.value.uid.toString());
-      } else {}
+      } else {
+        Toast.show("An error has occcured", context);
+      }
     } catch (e) {
       Toast.show(e.toString(), context);
     }

@@ -1,8 +1,9 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:todey/helpers/sharepreference_helper.dart';
+import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/formatted_date.dart';
 import 'package:todey/widgets/user_avatar.dart';
@@ -19,16 +20,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  @override
-  void initState() {
-    super.initState();
-    loadSharedPF();
-  }
-
-  var imageUrl = "";
-  void loadSharedPF() async {
-    imageUrl = await SharedPreferenceHelper.getUserimage();
-  }
+  //
+  final AuthService _con = Get.put(AuthService());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +45,7 @@ class _DashboardState extends State<Dashboard> {
         ),
         actions: [
           UserAvatar(
-            imgUrl: imageUrl,
+            imgUrl: _con.user.photoURL,
           ),
           SizedBox(width: 20.w)
         ],
@@ -76,6 +69,7 @@ class _DashboardState extends State<Dashboard> {
               selectedTextColor: Colors.white,
               deactivatedColor: Colors.grey.withOpacity(0.3),
               onDateChange: (currentDate) {},
+              initialSelectedDate: DateTime.now(),
             ),
             SizedBox(height: 30.h),
             Expanded(

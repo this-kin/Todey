@@ -48,32 +48,3 @@ Color kHomeColor = Colors.green;
 Color kBackGroundColor2 = Color(0xff3E3B64);
 
 Duration kDuration = Duration(milliseconds: 300);
-
-//
-
-//
-TextStyle kListTileStyle =
-    TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 16.sp);
-//
-TextStyle kItemWidgetStyle = TextStyle(
-    color: kTextColor, fontFamily: "Raleway", fontWeight: FontWeight.w400);
-
-//
-TextStyle kSwitchStyle =
-    TextStyle(color: kTextColor, fontFamily: "MADType", fontSize: 18.sp);
-
-//
-TextStyle kPrimaryStyle =
-    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18.sp);
-
-//
-TextStyle kAccentStyle =
-    TextStyle(color: kSettingColor, fontFamily: "MADType", fontSize: 18.sp);
-
-//app only uses one theme
-ThemeData themeData = ThemeData(
-    backgroundColor: kBackgroundColor,
-    primaryColor: kPrimaryColor,
-    //canvasColor: Colors.transparent.withOpacity(1.0),
-    accentColor: kAccentColor,
-    iconTheme: IconThemeData(color: kIconColor));

@@ -23,7 +23,7 @@ class CustomTheme {
 
   static TextTheme _lightTextTheme = TextTheme(
     overline: TextStyle(
-      fontFamily: ConstanceData.abelFont,
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 17.sp,
       color: Colors.black,
       fontWeight: FontWeight.w600,
@@ -58,7 +58,7 @@ class CustomTheme {
 
   static TextTheme _darkTextTheme = TextTheme(
     overline: TextStyle(
-      fontFamily: ConstanceData.abelFont,
+      fontFamily: ConstanceData.ralewayFont,
       fontSize: 17.sp,
       color: Colors.white,
       fontWeight: FontWeight.w600,

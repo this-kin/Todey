@@ -57,7 +57,7 @@ class _OnboardState extends State<Onboard> {
                 child: PageView.builder(
                   itemCount: allOnboard.length,
                   controller: _pageController,
-                  physics: ClampingScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   onPageChanged: (val) {
                     setState(() {
                       _selectedIndex = val;
@@ -80,7 +80,7 @@ class _OnboardState extends State<Onboard> {
                         Text(
                           allOnboard[index].introTxt,
                           style: theme.textTheme.overline,
-                        ),
+                        )
                       ],
                     );
                   },
