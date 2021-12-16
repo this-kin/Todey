@@ -8,8 +8,6 @@ import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/modules/setting/widget/setting_title.dart';
 import 'package:todey/utils/constant.dart';
 
-//TODO light_mode_rounded and dark mode rounded
-
 class Setting extends StatefulWidget {
   const Setting({Key key}) : super(key: key);
 

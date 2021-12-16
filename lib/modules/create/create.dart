@@ -3,6 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
 import 'package:todey/modules/create/components/second_compo.dart';
+import 'package:todey/widgets/create_indicator.dart';
 
 class Create extends StatefulWidget {
   const Create({Key key}) : super(key: key);
@@ -102,7 +103,7 @@ class _CreateState extends State<Create> {
                           ],
                         ),
                         SizedBox(height: 10.h),
-                        pageIndicator(
+                        CreateIndicator(
                           currentIndex: _currentIndex,
                         ),
                         Expanded(
@@ -163,30 +164,8 @@ class _CreateState extends State<Create> {
     );
   }
 
-  Widget pageIndicator({currentIndex = 0}) {
-    return Container(
-      height: 20.h,
-      width: 350.w,
-      alignment: Alignment.center,
-      child: Wrap(
-        spacing: 10.w,
-        children: List.generate(
-          2,
-          (index) => AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            child: Container(
-              height: 7.h,
-              width: 155.w,
-              decoration: BoxDecoration(
-                color: index == currentIndex
-                    ? Colors.blue
-                    : Colors.grey.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(10.sp),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

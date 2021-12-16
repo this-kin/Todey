@@ -47,12 +47,18 @@ class CustomTheme {
     headline4: TextStyle(
       color: Colors.grey,
       fontSize: 16.sp,
+      // fontFamily: ConstanceData.abelFont,
     ),
     headline5: TextStyle(
       fontSize: 15.sp,
       fontFamily: ConstanceData.abelFont,
       fontWeight: FontWeight.w400,
       color: Colors.grey,
+    ),
+    subtitle2: TextStyle(
+      color: Colors.black,
+      fontSize: 11.sp,
+      fontFamily: ConstanceData.abelFont,
     ),
   );
 
@@ -82,12 +88,18 @@ class CustomTheme {
     headline4: TextStyle(
       color: Colors.white,
       fontSize: 16.sp,
+      // fontFamily: ConstanceData.abelFont,
     ),
     headline5: TextStyle(
       fontSize: 15.sp,
       fontFamily: ConstanceData.abelFont,
       fontWeight: FontWeight.w400,
       color: Colors.grey,
+    ),
+    subtitle2: TextStyle(
+      color: Colors.white,
+      fontSize: 11.sp,
+      fontFamily: ConstanceData.abelFont,
     ),
   );
 

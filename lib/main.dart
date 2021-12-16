@@ -62,6 +62,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-
-//TODO fix home page issue

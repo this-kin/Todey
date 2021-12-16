@@ -8,10 +8,6 @@ import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/formatted_date.dart';
 import 'package:todey/widgets/user_avatar.dart';
 
-//TODO change time picker text color
-//TODO change primaryColor to gradients
-//
-
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
 
@@ -83,7 +79,6 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
             )
-
             // Flexible(
             //   child: ListView.builder(
             //     itemCount: 0,

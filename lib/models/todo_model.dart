@@ -10,16 +10,19 @@ class EventModel {
   String eventEndedDate;
   String eventCategory;
   String eventDate;
-  EventModel(
-      {this.id,
-      @required this.eventTitle,
-      @required this.eventNote,
-      @required this.eventCreatedDate,
-      @required this.eventType,
-      @required this.eventStartedDate,
-      @required this.eventEndedDate,
-      @required this.eventCategory,
-      @required this.eventDate});
+  String eventAttachment;
+  EventModel({
+    this.id,
+    @required this.eventTitle,
+    @required this.eventNote,
+    @required this.eventCreatedDate,
+    @required this.eventType,
+    @required this.eventStartedDate,
+    @required this.eventEndedDate,
+    @required this.eventCategory,
+    @required this.eventDate,
+    @required this.eventAttachment,
+  });
 
   EventModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -31,6 +34,7 @@ class EventModel {
     eventEndedDate = json["eventEndedDate"];
     eventCategory = json["eventCategory"];
     eventDate = json["eventDate"];
+    eventAttachment = json["eventAttachment"];
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> event = Map<String, dynamic>();
@@ -38,11 +42,12 @@ class EventModel {
     event["eventTitle"] = this.eventTitle;
     event["eventNote"] = this.eventNote;
     event["eventCreatedDate"] = this.eventCreatedDate;
-    event["eventType"] = this.eventType;
-    event["eventStartedDate"] = this.eventStartedDate;
-    event["eventEndedDate"] = this.eventEndedDate;
-    event["eventCategory"] = this.eventCategory;
-    event["eventDate"] = this.eventDate;
+    event["eventType"] = eventType;
+    event["eventStartedDate"] = eventStartedDate;
+    event["eventEndedDate"] = eventEndedDate;
+    event["eventCategory"] = eventCategory;
+    event["eventDate"] = eventDate;
+    event['eventAttachment'] = eventAttachment;
 
     return event;
   }

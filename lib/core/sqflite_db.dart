@@ -18,6 +18,7 @@ class SQFliteDB {
   final String columnNote = "eventNote";
   final String columnDate = "eventDate";
   final String columnType = "eventType";
+  final String columnAttached = 'eventAttachment';
   final String columnStartedDate = "eventStartedDate";
   final String columnEndedDate = "eventEndedDate";
   final String columnCategory = "eventCategory";
@@ -45,7 +46,7 @@ class SQFliteDB {
 
   FutureOr<void> _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory)");
+        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory. $columnAttached TEXT)");
     print("Table is created");
   }
 
@@ -64,19 +65,22 @@ class SQFliteDB {
   Future<List<EventModel>> getAllEvent() async {
     var dbClient = await db;
     final List<Map<String, dynamic>> maps = await dbClient.query(tableName);
-    return List.generate(maps.length, (index) {
-      return EventModel(
-        id: maps[index]["id"],
-        eventTitle: maps[index]["eventTitle"],
-        eventNote: maps[index]["eventNote"],
-        eventCreatedDate: maps[index]["eventCreatedDate"],
-        eventType: maps[index]["eventType"],
-        eventStartedDate: maps[index]["eventStartedDate"],
-        eventEndedDate: maps[index]["eventEndedDate"],
-        eventCategory: maps[index]["eventCategory"],
-        eventDate: maps[index]["eventDate"],
-      );
-    });
+    return List.generate(
+      maps.length,
+      (index) {
+        return EventModel(
+            id: maps[index]["id"],
+            eventTitle: maps[index]["eventTitle"],
+            eventNote: maps[index]["eventNote"],
+            eventCreatedDate: maps[index]["eventCreatedDate"],
+            eventType: maps[index]["eventType"],
+            eventStartedDate: maps[index]["eventStartedDate"],
+            eventEndedDate: maps[index]["eventEndedDate"],
+            eventCategory: maps[index]["eventCategory"],
+            eventDate: maps[index]["eventDate"],
+            eventAttachment: maps[index]['eventAttachment']);
+      },
+    );
   }
 
   //UPDATE DATA
@@ -96,7 +100,7 @@ class SQFliteDB {
 
   Future<void> clearDB() async {
     var dbClient = await db;
-    // return await dbClient.execute()
+    return dbClient.close();
   }
 
   /////////////////////////////////////////////////////////////
