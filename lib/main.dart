@@ -27,20 +27,20 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness:
-            Get.isDarkMode ? Brightness.light : Brightness.dark,
-        statusBarBrightness:
-            Get.isDarkMode ? Brightness.light : Brightness.dark,
-        systemNavigationBarColor: Colors.transparent,
-        systemNavigationBarIconBrightness:
-            Get.isDarkMode ? Brightness.light : Brightness.dark,
-        systemNavigationBarDividerColor: Colors.transparent,
-      ),
-    );
+    Widget build(BuildContext context) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness:
+              Get.isDarkMode ? Brightness.light : Brightness.dark,
+          statusBarBrightness:
+              Get.isDarkMode ? Brightness.light : Brightness.dark,
+          systemNavigationBarColor: Colors.transparent,
+          systemNavigationBarIconBrightness:
+              Get.isDarkMode ? Brightness.light : Brightness.dark,
+          systemNavigationBarDividerColor: Colors.transparent,
+        ),
+      );
     return Phoenix(
       child: ScreenUtilInit(
         designSize: Size(360, 784),

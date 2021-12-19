@@ -22,6 +22,7 @@ class SettingController extends GetxController {
     //save state of current language
     // spService.setLanguage(param1, param2);
     print('$param1, $param2');
+    update();
   }
 
   // switch flip
@@ -34,9 +35,10 @@ class SettingController extends GetxController {
   // launch url
   void launchGmail() async {
     final Uri params = Uri(
-        scheme: 'mailto',
-        path: 'flutterboyfriend200@gmail.com',
-        query: 'subject=Suggest A Feature Todey&body= ');
+      scheme: 'mailto',
+      path: 'flutterboyfriend200@gmail.com',
+      query: 'subject= Suggest A Feature Todey&body = ',
+    );
     String url = params.toString();
     if (await canLaunch(url)) {
       await launch(url);

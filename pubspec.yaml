@@ -18,7 +18,7 @@ dependencies:
   firebase_auth:
   google_sign_in:
   sqflite:
-  fl_chart: 
+  #  fl_chart: 
   path_provider:
   feedback: 
   syncfusion_flutter_datepicker:

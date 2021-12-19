@@ -123,6 +123,15 @@ class CustomTheme {
       accentIconTheme: IconThemeData(color: Colors.white),
       textTheme: _darkTextTheme,
       // colorScheme: _darkColorScheme,
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: const Color(0xff2F2C53),
+        dialHandColor: _primaryColor2,
+        dialTextColor: Colors.white,
+        dialBackgroundColor: Colors.grey.withOpacity(0.2),
+        hourMinuteTextColor: Colors.white,
+        //  dayPeriodTextColor: Colors.white,
+        dayPeriodColor: Colors.grey.withOpacity(0.3),
+      ),
     );
   }
 
@@ -144,7 +153,15 @@ class CustomTheme {
       iconTheme: IconThemeData(color: Colors.grey),
       primaryIconTheme: IconThemeData(color: Colors.grey),
       accentIconTheme: IconThemeData(color: Colors.grey),
-      // colorScheme: _lightColorScheme,
+      timePickerTheme: TimePickerThemeData(
+        backgroundColor: const Color(0xFFFFFFFF),
+        dialHandColor: _primaryColor2,
+        dialTextColor: Colors.black,
+        // entryModeIconColor: Colors.grey,
+        dialBackgroundColor: Colors.grey.withOpacity(0.2),
+        hourMinuteTextColor: _primaryColor1,
+        dayPeriodColor: Colors.grey.withOpacity(0.3),
+      ),
     );
   }
 }

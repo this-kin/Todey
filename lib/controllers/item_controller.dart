@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/services/notification_service.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
-import 'package:todey/services/start_notification.dart';
 import 'package:todey/services/toast_service.dart';
 import 'package:todey/utils/formatted_date.dart';
 
@@ -31,7 +29,7 @@ class EventController extends GetxController {
   }
 
   /////////////////////CREATE  EVENT
-  Future<void> addEvent(BuildContext context) async {
+  Future<void> createEvent(BuildContext context) async {
     if (titleController.value.text.isNotEmpty &&
         noteController.value.text.isNotEmpty) {
       EventModel model = EventModel(
@@ -43,7 +41,6 @@ class EventController extends GetxController {
         eventTitle: titleController.value.text,
         eventStartedDate: eventStartedTime.value.toString(),
         eventType: eventType.value,
-        //TODO
         eventAttachment: '',
       );
       await sqFliteDB.saveEvent(model);

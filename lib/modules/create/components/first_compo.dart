@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:toast/toast.dart';
+import 'package:todey/controllers/item_controller.dart';
 
 class FirstComponent extends StatefulWidget {
   const FirstComponent({Key key}) : super(key: key);
@@ -24,6 +27,9 @@ class _FirstComponentState extends State<FirstComponent> {
 
   //
   List<String> category = ["Important", "Planned"];
+
+  //
+  final EventController _con = Get.put(EventController());
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -41,7 +47,9 @@ class _FirstComponentState extends State<FirstComponent> {
                     theme.textTheme.headline4.copyWith(color: Colors.white),
                 minDate: _now,
                 maxDate: _now.add(const Duration(days: 1000)),
-                onSelectionChanged: (selectedDate) {},
+                onSelectionChanged: (selectedDate) {
+                  _con.eventDate.value = selectedDate.value;
+                },
                 headerStyle: DateRangePickerHeaderStyle(
                   textAlign: TextAlign.center,
                   textStyle: theme.textTheme.headline4,
@@ -68,22 +76,32 @@ class _FirstComponentState extends State<FirstComponent> {
               ],
             ),
             SizedBox(height: 8.h),
-            Row(
-              children: [
-                customChips(
-                  date: _time,
-                  onPressed: () {
-                    //
-                  },
-                ),
-                SizedBox(width: 25.w),
-                customChips(
-                  date: _time,
-                  onPressed: () {
-                    //
-                  },
-                ),
-              ],
+            Obx(
+              () => Row(
+                children: [
+                  customChips(
+                    date: _con.eventStartedTime.value,
+                    onPressed: () async {
+                      final time = TimeOfDay.now();
+                      _con.eventStartedTime.value = await showTimePicker(
+                        context: context,
+                        initialTime: time,
+                      );
+                    },
+                  ),
+                  SizedBox(width: 25.w),
+                  customChips(
+                    date: _con.eventEndedTime.value,
+                    onPressed: () async {
+                      final time = TimeOfDay.now();
+                      _con.eventEndedTime.value = await showTimePicker(
+                        context: context,
+                        initialTime: time,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20.h),
             Text(
@@ -100,6 +118,7 @@ class _FirstComponentState extends State<FirstComponent> {
                   onTap: () {
                     setState(() {
                       _selected = index;
+                      _con.eventCategory.value = category[_selected];
                     });
                   },
                   child: AnimatedContainer(
@@ -131,6 +150,20 @@ class _FirstComponentState extends State<FirstComponent> {
         ),
       ),
     );
+  }
+
+//
+
+  Future<TimeOfDay> timePicker() async {
+    var time = TimeOfDay.now();
+    var result =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null && result != time) {
+      return result;
+    } else {
+      Toast.show("Pick future time ", context);
+    }
+    return result;
   }
 
   customChips({TimeOfDay date, Function onPressed}) {

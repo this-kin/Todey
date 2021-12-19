@@ -26,7 +26,10 @@ class ShowToast {
   }
 
   static checkEvent(BuildContext context) {
-    Toast.show("Fields cannot be empty", context,
-        backgroundColor: kImportantColor);
+    Toast.show(
+      "fields cannot be empty",
+      context,
+      backgroundColor: kImportantColor,
+    );
   }
 }

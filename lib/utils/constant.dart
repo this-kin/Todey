@@ -19,8 +19,11 @@ class ConstanceData {
   static final abelFont = "MADType";
   static final ralewayFont = 'Raleway';
 
-//Duration
-  static final kDuration = Duration(milliseconds: 300);
+//duration
+static final kDuration = Duration(milliseconds: 300);
+
+// error message
+static const error = "An error has occcured";
 }
 
 Color kBlackColor = Color(0xff292E3C);

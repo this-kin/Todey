@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
 import 'package:todey/modules/create/components/second_compo.dart';
 import 'package:todey/widgets/create_indicator.dart';
@@ -21,6 +23,9 @@ class _CreateState extends State<Create> {
 
   //list of pages
   List<Widget> _pages = const [FirstComponent(), SecondComponent()];
+
+  //
+  final EventController _con = Get.put(EventController());
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +81,12 @@ class _CreateState extends State<Create> {
                             Text("New Task", style: theme.textTheme.headline4),
                             GestureDetector(
                               onTap: () {
-                                _controller.nextPage(
-                                    duration: const Duration(milliseconds: 300),
-                                    curve: Curves.bounceInOut);
+                                _currentIndex < 1
+                                    ? _controller.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.bounceInOut)
+                                    : _con.createEvent(context);
                               },
                               child: Container(
                                 height: 55.h,
