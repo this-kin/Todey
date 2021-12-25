@@ -15,25 +15,28 @@ class SettingTile extends StatelessWidget {
     var theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 7.h, horizontal: 15.w),
-      child: Container(
-        height: 50.h,
-        width: 325.w,
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              color: Colors.grey,
-            ),
-            SizedBox(width: 20.w),
-            Text(
-              btnText,
-              style: theme.textTheme.headline5,
-            ),
-            SizedBox(width: 160.w),
-            Container(
-              child: trailing,
-            )
-          ],
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          height: 50.h,
+          width: 325.w,
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                color: Colors.grey,
+              ),
+              SizedBox(width: 20.w),
+              Text(
+                btnText,
+                style: theme.textTheme.headline5,
+              ),
+              SizedBox(width: 160.w),
+              Container(
+                child: trailing,
+              )
+            ],
+          ),
         ),
       ),
     );

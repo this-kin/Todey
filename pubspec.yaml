@@ -28,6 +28,8 @@ dependencies:
   flutter_phoenix:
   date_picker_timeline:  
   # liquid_swipe:
+  record: ^1.0.3
+  file_picker:
   
 
 dev_dependencies:

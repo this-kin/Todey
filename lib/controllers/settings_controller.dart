@@ -1,3 +1,4 @@
+import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todey/helpers/sharepreference_helper.dart';
@@ -81,5 +82,11 @@ class SettingController extends GetxController {
       await SharedPreferenceHelper.saveTheme(isLight: value);
       update();
     }
+  }
+
+  void showFeedback(context) {
+    BetterFeedback.of(context).show((UserFeedback feedback) {
+      print(feedback.text);
+    });
   }
 }

@@ -94,7 +94,7 @@ class _SettingState extends State<Setting> {
                 btnText: "report".tr,
                 trailing: Text(""),
                 onPressed: () {
-                  _con.reportProblem();
+                  _con.showFeedback(context);
                 },
               ),
               //
