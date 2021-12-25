@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:record/record.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
 import 'package:todey/services/toast_service.dart';
@@ -19,6 +20,7 @@ class EventController extends GetxController {
   var eventStartedTime = TimeOfDay.now().obs;
   var eventEndedTime = TimeOfDay.now().obs;
   var eventType = "Personal".obs;
+  var isRecording = false.obs;
 
   @override
   void onReady() {
@@ -75,6 +77,17 @@ class EventController extends GetxController {
   onNotificationClick(String payload) {
     print("fuck offf ");
   }
+
+  // Future<String> pickImage() async {
+  //   final result = await FilePicker.platform.pickFiles(
+  //     allowMultiple: false,
+  //     allowedExtensions: <String>["png", "jpeg", "jpg"],
+  //     type: FileType.custom,
+  //   );
+  //   if (result != null) {
+  //     print(result.files[0].name);
+  //   }
+  // }
 
   void _disposeControllers() {
     noteController.value.clear();

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/models/event_type_model.dart';
+import 'package:todey/modules/create/components/voice.dart';
 
 class SecondComponent extends StatefulWidget {
   const SecondComponent({Key key}) : super(key: key);
@@ -126,6 +127,7 @@ class _SecondComponentState extends State<SecondComponent> {
                     actionButton(
                       onPressed: () {
                         //activate recorder
+                        print("clicked");
                       },
                       iconData: Entypo.mic,
                       color: theme.accentColor,
@@ -148,18 +150,21 @@ class _SecondComponentState extends State<SecondComponent> {
   }
 
   Widget actionButton({onPressed, IconData iconData, color}) {
-    return Container(
-      height: 50.h,
-      width: 50.w,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.2),
-        shape: BoxShape.circle,
-      ),
-      alignment: Alignment.center,
-      child: Icon(
-        iconData,
-        color: color,
-        size: 20.sp,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: 50.h,
+        width: 50.w,
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.2),
+          shape: BoxShape.circle,
+        ),
+        alignment: Alignment.center,
+        child: Icon(
+          iconData,
+          color: color,
+          size: 20.sp,
+        ),
       ),
     );
   }
