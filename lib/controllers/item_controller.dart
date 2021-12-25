@@ -11,7 +11,6 @@ class EventController extends GetxController {
   var timeNow = TimeOfDay.now();
   SQFliteDB sqFliteDB = SQFliteDB();
   var events = <EventModel>[].obs;
-  var pageController = PageController().obs;
   var titleController = TextEditingController().obs;
   var noteController = TextEditingController().obs;
   var eventCategory = "Important".obs;
@@ -20,15 +19,15 @@ class EventController extends GetxController {
   var eventStartedTime = TimeOfDay.now().obs;
   var eventEndedTime = TimeOfDay.now().obs;
   var eventType = "Personal".obs;
-  var selectedIndex = 0.obs;
 
   @override
   void onReady() {
     super.onReady();
     getEvents();
+    print("events length : ${events.length.toString()}");
   }
 
-  /////////////////////CREATE  EVENT
+  /// CREATE  EVENT
   Future<void> createEvent(BuildContext context) async {
     if (titleController.value.text.isNotEmpty &&
         noteController.value.text.isNotEmpty) {
@@ -41,10 +40,11 @@ class EventController extends GetxController {
         eventTitle: titleController.value.text,
         eventStartedDate: eventStartedTime.value.toString(),
         eventType: eventType.value,
-        eventAttachment: '',
+        eventAttachment: 'testerment.com',
       );
-      await sqFliteDB.saveEvent(model);
-      Navigator.pop(context);
+      await sqFliteDB.saveEvent(model).then((value) {
+        print(value);
+      });
     } else {
       ShowToast.checkEvent(context);
     }
@@ -55,7 +55,7 @@ class EventController extends GetxController {
     update();
   }
 
-  Future<void> removeEvent({int id, index}) async {
+  Future<void> deleteEvent({int id, index}) async {
     await sqFliteDB.deleteEvent(id);
     events.removeAt(index);
     update();
@@ -71,7 +71,7 @@ class EventController extends GetxController {
     await sqFliteDB.clearDB();
   }
 
-  /////////  FIRES WHEN YOU CLICK ON THE NOTIFICATION
+  /// FIRES WHEN YOU CLICK ON THE NOTIFICATION
   onNotificationClick(String payload) {
     print("fuck offf ");
   }
@@ -79,6 +79,5 @@ class EventController extends GetxController {
   void _disposeControllers() {
     noteController.value.clear();
     titleController.value.clear();
-    selectedIndex.value = 0;
   }
 }

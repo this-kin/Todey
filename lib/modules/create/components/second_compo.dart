@@ -16,6 +16,9 @@ class _SecondComponentState extends State<SecondComponent> {
   //
   final EventController _con = Get.put(EventController());
 
+  //
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -32,13 +35,30 @@ class _SecondComponentState extends State<SecondComponent> {
                 spacing: 10.w,
                 children: List.generate(
                   allEventTypes.length,
-                  (index) => AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(allEventTypes[index].imageurl),
+                  (index) => GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _selectedIndex = index;
+                        _con.eventType.value =
+                            allEventTypes[_selectedIndex].name;
+                      });
+                    },
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      height: 50.h,
+                      width: 50.w,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: _selectedIndex == index
+                              ? theme.primaryColor
+                              : Colors.transparent,
+                        ),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            allEventTypes[index].imageurl,
+                          ),
+                        ),
                       ),
                     ),
                   ),

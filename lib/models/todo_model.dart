@@ -48,7 +48,6 @@ class EventModel {
     event["eventCategory"] = eventCategory;
     event["eventDate"] = eventDate;
     event['eventAttachment'] = eventAttachment;
-
     return event;
   }
 }

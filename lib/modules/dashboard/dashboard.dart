@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/formatted_date.dart';
@@ -18,6 +19,13 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   //
   final AuthService _con = Get.put(AuthService());
+  final EventController _event = Get.put(EventController());
+
+  @override
+  void initState() {
+    _event.onReady();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,49 +57,75 @@ class _DashboardState extends State<Dashboard> {
       backgroundColor: theme.backgroundColor,
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              formattedNow(),
-              style: theme.textTheme.headline3.copyWith(
-                fontSize: 18.sp,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            formattedNow(),
+            style: theme.textTheme.headline3.copyWith(
+              fontSize: 18.sp,
+            ),
+          ),
+          SizedBox(height: 30.h),
+          DatePicker(
+            DateTime.now(),
+            selectionColor: theme.primaryColor,
+            selectedTextColor: Colors.white,
+            deactivatedColor: Colors.grey.withOpacity(0.3),
+            onDateChange: (currentDate) {},
+            initialSelectedDate: DateTime.now(),
+          ),
+          SizedBox(height: 30.h),
+          Flexible(
+            child: Container(
+              margin: EdgeInsets.only(right: 10.w),
+              child: Obx(
+                () => _event.events.isEmpty
+                    ? emptyEvents()
+                    : Container(
+                        child: ListView.builder(
+                          itemCount: _event.events.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: EdgeInsets.all(8.0.w),
+                              child: GetX<EventController>(
+                                builder: (controller) {
+                                  //Item widget from db
+                                  return Container(
+                                    height: 100.h,
+                                    width: double.infinity,
+                                    child: Center(
+                                      child: Text(
+                                        controller
+                                            .events.value[index].eventTitle,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
               ),
             ),
-            SizedBox(height: 30.h),
-            DatePicker(
-              DateTime.now(),
-              selectionColor: theme.primaryColor,
-              selectedTextColor: Colors.white,
-              deactivatedColor: Colors.grey.withOpacity(0.3),
-              onDateChange: (currentDate) {},
-              initialSelectedDate: DateTime.now(),
-            ),
-            SizedBox(height: 30.h),
-            Expanded(
-              child: Container(
-                child: Center(
-                  child: Image.asset(
-                    ConstanceData.paperIcon,
-                    height: 100.h,
-                    width: 100.w,
-                  ),
-                ),
-              ),
-            )
-            // Flexible(
-            //   child: ListView.builder(
-            //     itemCount: 0,
-            //     itemBuilder: (_, index) {
-            //       return TodoWidget();
-            //     },
-            //   ),
-            // )
-          ],
-        ),
+          ),
+        ]),
       ),
     );
   }
-}
 
-//on tap of user avatar glow avatar (animation)
+  Widget emptyEvents() => Center(
+        child: Opacity(
+          opacity: 0.2,
+          child: Container(
+            height: 200.h,
+            width: 200.w,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(ConstanceData.paperIcon))),
+          ),
+        ),
+      );
+}

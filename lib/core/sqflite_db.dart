@@ -12,7 +12,7 @@ class SQFliteDB {
   static final int _version = 1;
   final String tableName = "todeytabletest";
 
-  //////Event
+  //
   final String columnId = "id";
   final String columnTitle = "eventTitle";
   final String columnNote = "eventNote";
@@ -46,11 +46,10 @@ class SQFliteDB {
 
   FutureOr<void> _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory. $columnAttached TEXT)");
+        "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnTitle TEXT, $columnNote TEXT, $columnDate TEXT, $columnType INTEGER, $columnCreatedTime TEXT, $columnStartedDate TEXT, $columnEndedDate TEXT, $columnCategory, $columnAttached TEXT)");
     print("Table is created");
   }
 
-  //////////////////////////////////////////////////////////////////////
   //CREATE DATA
   Future<int> saveEvent(EventModel eventModel) async {
     // ignore: await_only_futures
@@ -61,7 +60,6 @@ class SQFliteDB {
   }
 
   //READ DATA
-
   Future<List<EventModel>> getAllEvent() async {
     var dbClient = await db;
     final List<Map<String, dynamic>> maps = await dbClient.query(tableName);
@@ -84,25 +82,22 @@ class SQFliteDB {
   }
 
   //UPDATE DATA
-
   Future<int> updateEvent(EventModel eventModel) async {
     var dbClient = await db;
     return await dbClient.update("$tableName", eventModel.toJson(),
         where: "$columnId = ? ", whereArgs: [eventModel.id]);
   }
-  //DELETE DATA
 
+  //DELETE DATA
   Future<int> deleteEvent(int id) async {
     var dbClient = await db;
     return await dbClient
         .delete(tableName, where: "$columnId = ? ", whereArgs: [id]);
   }
 
+  // CLEAR DATA
   Future<void> clearDB() async {
     var dbClient = await db;
     return dbClient.close();
   }
-
-  /////////////////////////////////////////////////////////////
-
 }

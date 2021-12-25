@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todey/helpers/sharepreference_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
@@ -70,12 +71,14 @@ class SettingController extends GetxController {
     }
   }
 
-  void changeTheme(bool value) {
+  Future<void> changeTheme(bool value) async {
     if (value) {
       Get.changeThemeMode(ThemeMode.dark);
       update();
+      await SharedPreferenceHelper.saveTheme(isLight: value);
     } else {
       Get.changeThemeMode(ThemeMode.light);
+      await SharedPreferenceHelper.saveTheme(isLight: value);
       update();
     }
   }

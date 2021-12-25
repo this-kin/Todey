@@ -2,51 +2,63 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
   ///
-  static String usernameKey = "USERNAMEKEY";
-  static String userimageKey = "USERIMAGEKEY";
-  static String useremailKey = "USEREMAILKEY";
-  static String useridKey = "USERIDKEY";
+  static String _usernameKey = "USERNAMEKEY";
+  static String _userimageKey = "USERIMAGEKEY";
+  static String _useremailKey = "USEREMAILKEY";
+  static String _useridKey = "USERIDKEY";
+  static const _themeKey = "THEMEKEY";
 
   //
-  static Future saveUsername({username}) async {
+  static Future<bool> saveUsername({username}) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.setString(usernameKey, username.toString());
+    return _pref.setString(_usernameKey, username.toString());
   }
 
-  static Future saveUserimage({imageurl}) async {
+  static Future<bool> saveUserimage({imageurl}) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.setString(userimageKey, imageurl.toString());
+    return _pref.setString(_userimageKey, imageurl.toString());
   }
 
-  static Future saveUserEmail({email}) async {
+  static Future<bool> saveUserEmail({email}) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.setString(useremailKey, email.toString());
+    return _pref.setString(_useremailKey, email.toString());
   }
 
-  static Future saveUserid({uuid}) async {
+  static Future<bool> saveUserid({uuid}) async {
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    return _prefs.setString(useridKey, uuid);
+    return _prefs.setString(_useridKey, uuid);
   }
 
-  static Future<bool> clearUser() async {
-    SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.clear();
+  static Future<bool> saveTheme({bool isLight}) async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    return _prefs.setBool(_themeKey, isLight);
   }
 
   ////
 
   static Future<String> getUsername() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.getString(usernameKey);
+    return _pref.getString(_usernameKey);
   }
 
   static Future<String> getUserimage() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.getString(userimageKey);
+    return _pref.getString(_userimageKey);
   }
 
   static Future<String> getUseremail() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    return _pref.getString(useremailKey);
+    return _pref.getString(_useremailKey);
+  }
+
+  static Future<bool> getTheme() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    return _prefs.getBool(_themeKey);
+  }
+
+  ///
+  static Future<bool> clearUser() async {
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    return _pref.clear();
   }
 }
