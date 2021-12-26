@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttericon/entypo_icons.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:todey/controllers/settings_controller.dart';
@@ -71,18 +71,18 @@ class _SettingState extends State<Setting> {
               ),
               buildTitle("Notification".tr),
               SettingTile(
-                icon: Entypo.notification,
+                icon: CupertinoIcons.bell,
                 btnText: "Nofitcation".tr,
                 //   trailing: KSwitch(),
               ),
               SettingTile(
-                icon: Entypo.notifications_off,
+                icon: CupertinoIcons.bell_slash_fill,
                 btnText: "daily_reminder".tr,
                 //   trailing: KSwitch(),
               ),
               buildTitle("help_feed".tr),
               SettingTile(
-                icon: AntDesign.search1,
+                icon: Entypo.search,
                 btnText: "suggest".tr,
                 trailing: Text(""),
                 onPressed: () {
@@ -90,7 +90,7 @@ class _SettingState extends State<Setting> {
                 },
               ),
               SettingTile(
-                icon: MaterialCommunityIcons.hazard_lights,
+                icon: Icons.report_problem_outlined,
                 btnText: "report".tr,
                 trailing: Text(""),
                 onPressed: () {

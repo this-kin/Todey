@@ -1,11 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:toast/toast.dart';
 import 'package:todey/controllers/item_controller.dart';
 
 class FirstComponent extends StatefulWidget {
@@ -161,7 +159,7 @@ class _FirstComponentState extends State<FirstComponent> {
     if (result != null && result != time) {
       return result;
     } else {
-      Toast.show("Pick future time ", context);
+      //
     }
     return result;
   }
@@ -178,7 +176,7 @@ class _FirstComponentState extends State<FirstComponent> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Icon(FlutterIcons.clock_faw5, size: 20.sp),
+            Icon(FontAwesome5.clock, size: 20.sp),
             Text(
               date.format(context),
               style: TextStyle(fontSize: 14.sp, color: Colors.grey),
@@ -189,13 +187,14 @@ class _FirstComponentState extends State<FirstComponent> {
     );
   }
 
-  Container indicatorWidget() {
+  Widget indicatorWidget() {
     return Container(
       height: 5.h,
       width: 50.w,
       decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(10.sp)),
+        color: Colors.grey.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10.sp),
+      ),
     );
   }
 }

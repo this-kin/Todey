@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
+import 'package:fluttericon/fontelico_icons.dart';
+import 'package:fluttericon/meteocons_icons.dart';
+import 'package:fluttericon/octicons_icons.dart';
 import 'package:todey/modules/create/create.dart';
 import 'package:todey/modules/dashboard/dashboard.dart';
 import 'package:todey/modules/setting/setting.dart';
@@ -79,7 +83,7 @@ class _HomeState extends State<Home> {
                 icon: Icon(Icons.add_circle_outline_sharp,
                     size: _currentIndex == 2 ? 1 : 1),
                 label: ""),
-            BottomNavigationBarItem(icon: Icon(AntDesign.setting), label: "")
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
           ]),
     );
   }

@@ -9,8 +9,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.4
   intl: ^0.17.0
-  # flutter_icons: ^1.1.0
-  # toast: ^0.1.5
   get: ^4.6.1
   flutter_screenutil: ^5.0.2 
   shared_preferences: ^2.0.11

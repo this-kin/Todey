@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/models/event_type_model.dart';
-import 'package:todey/modules/create/components/voice.dart';
 
 class SecondComponent extends StatefulWidget {
   const SecondComponent({Key key}) : super(key: key);
@@ -128,8 +127,10 @@ class _SecondComponentState extends State<SecondComponent> {
                       onPressed: () {
                         //activate recorder
                         print("clicked");
+
+                        _con.recordAudio();
                       },
-                      iconData: Entypo.mic,
+                      iconData: Icons.mic_rounded,
                       color: theme.accentColor,
                     ),
                     actionButton(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
@@ -151,7 +151,7 @@ class _CreateState extends State<Create> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Icon(FlutterIcons.clock_faw5, size: 20.sp),
+            Icon(FontAwesome5.clock),
             Text(
               date.format(context),
               style: TextStyle(fontSize: 14.sp, color: Colors.grey),

@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:toast/toast.dart';
 import 'package:todey/helpers/sharepreference_helper.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:get/get.dart';
@@ -56,10 +57,12 @@ class AuthService extends GetxController {
         SharedPreferenceHelper.saveUsername(username: _user.value.displayName);
         SharedPreferenceHelper.saveUserid(uuid: _user.value.uid.toString());
       } else {
-        Toast.show(ConstanceData.error, context);
+        Fluttertoast.showToast(
+            msg: ConstanceData.error, backgroundColor: Colors.redAccent);
       }
     } catch (e) {
-      Toast.show(e.toString(), context);
+      Fluttertoast.showToast(
+          msg: e.toString(), backgroundColor: Colors.redAccent);
     }
   }
 
@@ -67,8 +70,8 @@ class AuthService extends GetxController {
   void logout(context) async {
     await _auth.signOut().then((value) => SharedPreferenceHelper.clearUser(),
         onError: (err) {
-      Toast.show(err.toString(), context);
+      Fluttertoast.showToast(
+          msg: err.toString(), backgroundColor: Colors.redAccent);
     });
-    // Toast.show(e.toString(), context);
   }
 }

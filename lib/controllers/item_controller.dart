@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:get/get.dart';
-import 'package:record/record.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
-import 'package:todey/services/toast_service.dart';
 import 'package:todey/utils/formatted_date.dart';
+import 'dart:io' as io;
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
@@ -48,7 +49,7 @@ class EventController extends GetxController {
         print(value);
       });
     } else {
-      ShowToast.checkEvent(context);
+      //
     }
   }
 
@@ -88,6 +89,29 @@ class EventController extends GetxController {
   //     print(result.files[0].name);
   //   }
   // }
+
+  Future recordAudio() async {
+    bool permission = await FlutterAudioRecorder2.hasPermissions;
+
+    if (permission) {
+      String customPath = '/flutter_audio_recorder_';
+      io.Directory appDocDirectory;
+
+      if (io.Platform.isIOS) {
+        appDocDirectory = await getApplicationDocumentsDirectory();
+      } else {
+        appDocDirectory = (await getExternalStorageDirectory());
+      }
+      final path = appDocDirectory.path +
+          customPath +
+          DateTime.now().millisecondsSinceEpoch.toString();
+      var recorder = FlutterAudioRecorder2(path, audioFormat: AudioFormat.WAV);
+      await recorder.initialized;
+      var current = await recorder.current(channel: 0);
+
+      print(current.status);
+    }
+  }
 
   void _disposeControllers() {
     noteController.value.clear();
