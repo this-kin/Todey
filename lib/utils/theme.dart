@@ -9,6 +9,7 @@ class CustomTheme {
 
   static const Color _deleteColor = Color(0xffE34946);
   static const Color _updateColor = Color(0xffED9B1E);
+  
 
   static ColorScheme _lightColorScheme = ColorScheme.light(
     primary: _primaryColor1,

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:todey/controllers/item_controller.dart';
+import 'package:todey/modules/dashboard/widget/text_widget.dart';
 import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/formatted_date.dart';
@@ -76,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
           SizedBox(height: 30.h),
           Flexible(
             child: Container(
-              margin: EdgeInsets.only(right: 10.w),
+              // margin: EdgeInsets.only(right: 10.w),
               child: Obx(
                 () => _event.events.isEmpty
                     ? emptyEvents()
@@ -84,26 +85,14 @@ class _DashboardState extends State<Dashboard> {
                         child: ListView.builder(
                           itemCount: _event.events.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: EdgeInsets.all(8.0.w),
-                              child: GetX<EventController>(
-                                builder: (controller) {
-                                  //Item widget from db
-                                  return Container(
-                                    height: 100.h,
-                                    width: double.infinity,
-                                    child: Center(
-                                      child: Text(
-                                        controller
-                                            .events.value[index].eventTitle,
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                            return GetX<EventController>(
+                              builder: (controller) {
+                                //item widget from db
+                                return TextWidget(
+                                  date:
+                                      controller.events.value[index].eventDate,
+                                );
+                              },
                             );
                           },
                         ),
