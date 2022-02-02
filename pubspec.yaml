@@ -24,10 +24,10 @@ dependencies:
   cached_network_image: ^3.2.0
   url_launcher: ^6.0.17
   flutter_phoenix: ^1.0.0
-  flutter_audio_recorder2: ^0.0.2
   date_picker_timeline: ^1.2.3  
   fluttericon: ^2.0.0
   fluttertoast: ^8.0.8
+
   
 
   

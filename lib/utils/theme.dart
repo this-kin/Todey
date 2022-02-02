@@ -7,9 +7,18 @@ class CustomTheme {
   static const Color _primaryColor1 = Color(0xff1C68F0);
   static const Color _primaryColor2 = Color(0xff2281F5);
 
-  static const Color _deleteColor = Color(0xffE34946);
-  static const Color _updateColor = Color(0xffED9B1E);
-  
+  static const Color deleteColor = Color(0xffE34946);
+  static const Color updateColor = Color(0xffED9B1E);
+  static const Color funColor = Color(0xff1FBFFD);
+  static const Color familyColor = Colors.redAccent;
+  static const Color workColor = Color(0xff020F2F);
+  static const Color personalColor = Colors.white;
+  static const Color defaultColor = Colors.transparent;
+  static const Color homeColor = Colors.green;
+  static const Color kImportantColor = Color(0xff2765FA);
+  static const Color kPlanedColor = Colors.amber;
+  static const Color kSettingColor = Color(0xff888A9B);
+  static const Color kBackgroundColor = Color(0xff2F2C53);
 
   static ColorScheme _lightColorScheme = ColorScheme.light(
     primary: _primaryColor1,
@@ -113,7 +122,7 @@ class CustomTheme {
       // colorScheme: _lightColorScheme,
       scaffoldBackgroundColor: const Color(0xff2F2C53),
       backgroundColor: const Color(0xff2F2C53),
-      errorColor: _deleteColor,
+      errorColor: deleteColor,
       platform: TargetPlatform.iOS,
       cursorColor: _primaryColor2,
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -145,7 +154,7 @@ class CustomTheme {
       accentColor: Colors.grey,
       backgroundColor: const Color(0xFFFFFFFF),
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
-      errorColor: _deleteColor,
+      errorColor: deleteColor,
       cursorColor: _primaryColor2,
       typography: Typography(),
       platform: TargetPlatform.iOS,

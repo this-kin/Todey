@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_audio_recorder2/flutter_audio_recorder2.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
-import 'package:todey/utils/formatted_date.dart';
-import 'dart:io' as io;
+import 'package:todey/utils/helper.dart';
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
@@ -22,6 +19,7 @@ class EventController extends GetxController {
   var eventEndedTime = TimeOfDay.now().obs;
   var eventType = "Personal".obs;
   var isRecording = false.obs;
+  var eventAttachment = "";
 
   @override
   void onReady() {
@@ -43,7 +41,7 @@ class EventController extends GetxController {
         eventTitle: titleController.value.text,
         eventStartedDate: eventStartedTime.value.toString(),
         eventType: eventType.value,
-        eventAttachment: 'testerment.com',
+        eventAttachment: eventAttachment,
       );
       await sqFliteDB.saveEvent(model).then((value) {
         print(value);
@@ -89,32 +87,4 @@ class EventController extends GetxController {
   //     print(result.files[0].name);
   //   }
   // }
-
-  Future recordAudio() async {
-    bool permission = await FlutterAudioRecorder2.hasPermissions;
-
-    if (permission) {
-      String customPath = '/flutter_audio_recorder_';
-      io.Directory appDocDirectory;
-
-      if (io.Platform.isIOS) {
-        appDocDirectory = await getApplicationDocumentsDirectory();
-      } else {
-        appDocDirectory = (await getExternalStorageDirectory());
-      }
-      final path = appDocDirectory.path +
-          customPath +
-          DateTime.now().millisecondsSinceEpoch.toString();
-      var recorder = FlutterAudioRecorder2(path, audioFormat: AudioFormat.WAV);
-      await recorder.initialized;
-      var current = await recorder.current(channel: 0);
-
-      print(current.status);
-    }
-  }
-
-  void _disposeControllers() {
-    noteController.value.clear();
-    titleController.value.clear();
-  }
 }

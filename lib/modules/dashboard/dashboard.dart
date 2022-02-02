@@ -4,10 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:todey/controllers/item_controller.dart';
+import 'package:todey/models/language_models.dart';
 import 'package:todey/modules/dashboard/widget/text_widget.dart';
 import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/constant.dart';
-import 'package:todey/utils/formatted_date.dart';
+import 'package:todey/utils/helper.dart';
 import 'package:todey/widgets/user_avatar.dart';
 
 class Dashboard extends StatefulWidget {
@@ -78,26 +79,30 @@ class _DashboardState extends State<Dashboard> {
           Flexible(
             child: Container(
               // margin: EdgeInsets.only(right: 10.w),
-              child: Obx(
-                () => _event.events.isEmpty
-                    ? emptyEvents()
-                    : Container(
-                        child: ListView.builder(
-                          itemCount: _event.events.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return GetX<EventController>(
-                              builder: (controller) {
-                                //item widget from db
-                                return TextWidget(
-                                  date:
-                                      controller.events.value[index].eventDate,
-                                );
-                              },
-                            );
-                          },
-                        ),
+              child: Obx(() => _event.events.isEmpty
+                  ? emptyEvents()
+                  : Container(
+                      child: ListView.builder(
+                        itemCount: _event.events.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return GetX<EventController>(
+                            builder: (controller) {
+                              //
+                              var snapshot = controller.events[index];
+                              return TextWidget(
+                                eventCategory: snapshot.eventCategory,
+                                eventCreatedDate: snapshot.eventCreatedDate,
+                                eventId: snapshot.id,
+                                eventIndex: index,
+                                eventNote: snapshot.eventNote,
+                                eventTitle: snapshot.eventTitle,
+                                eventType: snapshot.eventType,
+                              );
+                            },
+                          );
+                        },
                       ),
-              ),
+                    )),
             ),
           ),
         ]),

@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
 class VoiceWidget extends StatefulWidget {
-  const VoiceWidget({Key key}) : super(key: key);
+  final String eventTitle;
+  final String eventNote;
+  final String eventCategory;
+  final String eventCreatedDate;
+  final int eventIndex;
+  final int eventId;
+  final String eventType;
+
+  const VoiceWidget({
+    Key key,
+    this.eventTitle,
+    this.eventNote,
+    this.eventCategory,
+    this.eventCreatedDate,
+    this.eventIndex,
+    this.eventId,
+    this.eventType,
+  }) : super(key: key);
 
   @override
   _VoiceWidgetState createState() => _VoiceWidgetState();
@@ -10,11 +27,6 @@ class VoiceWidget extends StatefulWidget {
 class _VoiceWidgetState extends State<VoiceWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Dismissible(
-        key: widget.key,
-        child: Container(),
-      ),
-    );
+    return Container();
   }
 }

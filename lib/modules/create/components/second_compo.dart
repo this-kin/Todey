@@ -117,8 +117,10 @@ class _SecondComponentState extends State<SecondComponent> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     actionButton(
-                      onPressed: () {
+                      onPressed: () async {
                         //activate camera
+
+                        print(_con.eventAttachment);
                       },
                       iconData: FontAwesome.camera,
                       color: theme.accentColor,
@@ -128,7 +130,7 @@ class _SecondComponentState extends State<SecondComponent> {
                         //activate recorder
                         print("clicked");
 
-                        _con.recordAudio();
+                        //    _con.recordAudio();
                       },
                       iconData: Icons.mic_rounded,
                       color: theme.accentColor,

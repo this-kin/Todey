@@ -62,21 +62,44 @@ flutter build apk
 - [syncfusion_flutter_datepicker](https://pub.dev/packages/syncfusion_flutter_datepicker)
 - [feedback](https://pub.dev/packages/feedback) 
 - [cached_network_image](https://pub.dev/packages/cached_network_image) 
-- [url_launcher](https://pub.dev/packages/url_launcher) 
+- [url_launcher](https://pub.dev/packages/url_launcher)
+- [flutter_phoenix](https://pub.dev/packages/flutter_phoenix)
+- [date_picker_timeline](https://pub.dev/packages/date_picker_timeline)
+- [fluttericon](https://pub.dev/packages/fluttericon)
+- [fluttertoast](https://pub.dev/packages/fluttertoast)
+
+
+# Features
+- Light/Dark Theme
+- Create Task 
+- Delete Task
+- Read Task
+- Google Authentication
+- Feedback
+- Suggest Feature
+- Multi-Language Localization (English, French, Portuguese)
+- Local Notification
+- Follow on Twitter
 
 # Coming Soon
+- Attachment (image, audio, doc/pdf)
+- Animated avatar
+- logout 
+- save theme state
+- save language state
+- daily reminder 
+- dismissible delete and update
+- charts for task 
+- create and display image task 
+- create and display audio task 
 
 
 ## Author
 
-👤 **Flutter BoyFriend**
+👤 **Dammy Richie**
 
-* Github: [@FlutterBoyfriend](https://github.com/FlutterBoyfriend)
-
-## Show your support
-
-Give a ⭐️ if you like this project! all contributions 👏✍ and PRs 🖖🤞 are welcome 🤝🙏
-you can also create issues if you detect any bug 🦟🦟 
+* Github: [@FlutterBoyfriend](https://github.com/ichie2)
+ 
 
 
 
