@@ -117,6 +117,7 @@ class _CreateState extends State<Create> {
                         Expanded(
                           child: Container(
                             child: PageView(
+                              physics: const NeverScrollableScrollPhysics(),
                               controller: _controller,
                               onPageChanged: (index) {
                                 setState(() {
@@ -175,5 +176,6 @@ class _CreateState extends State<Create> {
   @override
   void dispose() {
     super.dispose();
+    _con.disposeControllers();
   }
 }

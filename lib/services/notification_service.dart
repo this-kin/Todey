@@ -73,7 +73,29 @@ class EndedNotificationHelper {
     );
   }
 
-  ///
+  Future<void> startScheduleNotification(DateTime date) async {
+    var scheduledTime =
+        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
+    var andriodSpecific = AndroidNotificationDetails(
+      "CHANNEL_ID 2",
+      "CHANNEL_NAME 2",
+      channelDescription: "CHANNEL_DESCRIPTION 2",
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
+    var iosSpecific = IOSNotificationDetails();
+    var platformSpecific =
+        NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
+
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+        2, "Todey", "started".tr, scheduledTime, platformSpecific,
+        payload: "Test Payload",
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime);
+  }
+
   ///Scheduled eventEnded
   Future<void> endScheduleNotification(DateTime date) async {
     var scheduledTime =
@@ -102,5 +124,5 @@ class EndedNotificationHelper {
 EndedNotificationHelper endedNotification = EndedNotificationHelper._();
 
 _requestPermissionIos() {
-  //im not runnin mac basically this project gonna be Andriod till i get a mac
+  // im not runnin mac basically this project gonna be Andriod till i get a mac
 }

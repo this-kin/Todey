@@ -52,10 +52,11 @@ class AuthService extends GetxController {
           await _auth.signInWithCredential(_authCredential);
       if (_credential.user != null) {
         _user.value = _credential.user;
-        SharedPreferenceHelper.saveUserEmail(email: _user.value.email);
-        SharedPreferenceHelper.saveUserimage(imageurl: _user.value.photoURL);
-        SharedPreferenceHelper.saveUsername(username: _user.value.displayName);
-        SharedPreferenceHelper.saveUserid(uuid: _user.value.uid.toString());
+        SharedPreferenceHelper().saveUserEmail(email: _user.value.email);
+        SharedPreferenceHelper().saveUserimage(imageurl: _user.value.photoURL);
+        SharedPreferenceHelper()
+            .saveUsername(username: _user.value.displayName);
+        SharedPreferenceHelper().saveUserid(uuid: _user.value.uid.toString());
       } else {
         Fluttertoast.showToast(
             msg: ConstanceData.error, backgroundColor: Colors.redAccent);
@@ -68,7 +69,7 @@ class AuthService extends GetxController {
 
 // logout / clear user
   void logout(context) async {
-    await _auth.signOut().then((value) => SharedPreferenceHelper.clearUser(),
+    await _auth.signOut().then((value) => SharedPreferenceHelper().clearUser(),
         onError: (err) {
       Fluttertoast.showToast(
           msg: err.toString(), backgroundColor: Colors.redAccent);

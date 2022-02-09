@@ -86,9 +86,10 @@ class _TextWidgetState extends State<TextWidget> {
                       child: Text(
                         widget.eventTitle,
                         maxLines: _isExpanded ? 2 : 1,
-                        style: theme.textTheme.overline.copyWith(
+                        style: theme.textTheme.headline2.copyWith(
                           color: Colors.white,
                           fontSize: 13.sp,
+                          wordSpacing: 1.5,
                         ),
                       ),
                     ),
@@ -112,8 +113,10 @@ class _TextWidgetState extends State<TextWidget> {
               const Spacer(),
               Text(
                 widget.eventCreatedDate,
-                style: theme.textTheme.button.copyWith(
+                style: theme.textTheme.headline2.copyWith(
                   fontSize: 12.sp,
+                  color: Colors.white,
+                  wordSpacing: 2.0,
                 ),
               )
             ],

@@ -81,6 +81,7 @@ flutter build apk
 - Local Notification
 - Follow on Twitter
 - Dismissible Slider 
+- Local Notification
 
 # Coming Soon
 - Attachment (image, audio, doc/pdf)
@@ -93,6 +94,7 @@ flutter build apk
 - charts for task 
 - create and display image task 
 - create and display audio task 
+- Daily Notification
 
 
 ## Author

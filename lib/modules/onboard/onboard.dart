@@ -30,7 +30,7 @@ class _OnboardState extends State<Onboard> {
   int _selectedIndex = 0;
 
   void checkUser() async {
-    var user = await SharedPreferenceHelper.getUsername();
+    var user = await SharedPreferenceHelper().getUsername();
     if (user == null) {
     } else {
       Navigator.pushAndRemoveUntil(

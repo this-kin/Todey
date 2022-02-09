@@ -90,8 +90,7 @@ class _DashboardState extends State<Dashboard> {
                             return GetX<EventController>(
                                 // ignore: missing_return
                                 builder: (controller) {
-                              //
-                              var snapshot = controller.events[index];
+                              final snapshot = controller.events[index];
                               // ignore: invalid_use_of_protected_member, unused_local_variable
                               for (final EventModel item
                                   in controller.events.value)
@@ -100,6 +99,8 @@ class _DashboardState extends State<Dashboard> {
                                     // delete events
                                     _event.deleteEvent(
                                         id: snapshot.id, index: index);
+                                    _event.events.value.removeAt(index);
+                                    setState(() {});
                                   },
                                   background: Padding(
                                     padding: const EdgeInsets.all(8.0),

@@ -5,7 +5,7 @@ import 'package:todey/services/sharepreference_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
-  var isDarkMode = true.obs;
+  var theme = true.obs;
   var notification = true.obs;
   var reminder = true.obs;
 
@@ -14,7 +14,12 @@ class SettingController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    // spService.getLanguage(defaultLanguage.value);
+    getSharedPref();
+  }
+
+  void getSharedPref() async {
+    theme.value = await SharedPreferenceHelper().getTheme();
+    print(theme);
   }
 
   // change language
@@ -74,12 +79,14 @@ class SettingController extends GetxController {
 
   Future<void> changeTheme(bool value) async {
     if (value) {
+      theme.value = true;
       Get.changeThemeMode(ThemeMode.dark);
       update();
-      await SharedPreferenceHelper.saveTheme(isLight: value);
+      await SharedPreferenceHelper().saveTheme(isLight: value);
     } else {
+      theme.value = false;
       Get.changeThemeMode(ThemeMode.light);
-      await SharedPreferenceHelper.saveTheme(isLight: value);
+      await SharedPreferenceHelper().saveTheme(isLight: value);
       update();
     }
   }

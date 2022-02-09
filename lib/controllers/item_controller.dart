@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
+import 'package:todey/services/notification_service.dart';
 import 'package:todey/utils/helper.dart';
-import 'dart:io' as io;
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
@@ -27,7 +26,7 @@ class EventController extends GetxController {
   void onReady() {
     super.onReady();
     getEvents();
-    print("events length : ${events.length.toString()}");
+    endedNotification.setOnNotificationClick(onNotificationClick);
   }
 
   /// CREATE  EVENT
@@ -46,7 +45,18 @@ class EventController extends GetxController {
         eventAttachment: eventAttachment,
       );
       await sqFliteDB.saveEvent(model).then((value) {
-        print(value);
+        // formatting time and date
+        var now = eventDate.value;
+        var start = eventStartedTime.value;
+        var end = eventEndedTime.value;
+        //
+        var startedDate =
+            DateTime(now.year, now.month, now.day, start.hour, start.minute);
+        var endedDate =
+            DateTime(now.year, now.month, now.day, end.hour, end.minute);
+        endedNotification.startScheduleNotification(startedDate);
+        endedNotification.endScheduleNotification(endedDate);
+        disposeControllers();
       });
     } else {
       //
@@ -60,7 +70,7 @@ class EventController extends GetxController {
 
   Future<void> deleteEvent({int id, index}) async {
     await sqFliteDB.deleteEvent(id);
-    events.removeAt(index);
+    // events.value.removeAt(index);
     update();
     getEvents();
   }
@@ -76,7 +86,7 @@ class EventController extends GetxController {
 
   /// FIRES WHEN YOU CLICK ON THE NOTIFICATION
   onNotificationClick(String payload) {
-    print("fuck offf ");
+    // l
   }
 
   // Future<String> pickImage() async {
@@ -90,7 +100,7 @@ class EventController extends GetxController {
   //   }
   // }
 
-  void _disposeControllers() {
+  void disposeControllers() {
     noteController.value.clear();
     titleController.value.clear();
   }

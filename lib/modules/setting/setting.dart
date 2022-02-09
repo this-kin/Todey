@@ -17,10 +17,14 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   //
-
   final SettingController _con = Get.put(SettingController());
+  bool isDark = false;
 
-  var _isDarkMode = false;
+  @override
+  void initState() {
+    isDark = _con.theme.value;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +43,19 @@ class _SettingState extends State<Setting> {
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
         child: SingleChildScrollView(
-          child:
-              // Obx(
-              //   () =>
-              Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildTitle('General'.tr),
               SettingTile(
-                icon: _isDarkMode
-                    ? Icons.dark_mode_rounded
-                    : Icons.light_mode_rounded,
+                icon:
+                    isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
                 btnText: "Theme".tr,
                 trailing: CupertinoSwitch(
-                  value: _isDarkMode,
+                  value: isDark,
                   onChanged: (val) {
                     setState(() {
-                      _isDarkMode = !_isDarkMode;
+                      isDark = !isDark;
                       _con.changeTheme(val);
                     });
                   },
@@ -111,7 +111,7 @@ class _SettingState extends State<Setting> {
           ),
         ),
       ),
-      // ),
+      //),
     );
   }
 
