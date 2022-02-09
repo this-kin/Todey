@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:todey/helpers/sharepreference_helper.dart';
+import 'package:todey/services/sharepreference_helper.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:get/get.dart';
 import 'package:todey/modules/onboard/onboard.dart';

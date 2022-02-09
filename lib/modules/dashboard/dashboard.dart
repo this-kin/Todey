@@ -1,10 +1,11 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:todey/controllers/item_controller.dart';
-import 'package:todey/models/language_models.dart';
+import 'package:todey/models/todo_model.dart';
 import 'package:todey/modules/dashboard/widget/text_widget.dart';
 import 'package:todey/services/auth_service.dart';
 import 'package:todey/utils/constant.dart';
@@ -79,30 +80,54 @@ class _DashboardState extends State<Dashboard> {
           Flexible(
             child: Container(
               // margin: EdgeInsets.only(right: 10.w),
-              child: Obx(() => _event.events.isEmpty
-                  ? emptyEvents()
-                  : Container(
-                      child: ListView.builder(
-                        itemCount: _event.events.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GetX<EventController>(
-                            builder: (controller) {
+              child: Obx(
+                () => _event.events.isEmpty
+                    ? emptyEvents()
+                    : Container(
+                        child: ListView.builder(
+                          itemCount: _event.events.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GetX<EventController>(
+                                // ignore: missing_return
+                                builder: (controller) {
                               //
                               var snapshot = controller.events[index];
-                              return TextWidget(
-                                eventCategory: snapshot.eventCategory,
-                                eventCreatedDate: snapshot.eventCreatedDate,
-                                eventId: snapshot.id,
-                                eventIndex: index,
-                                eventNote: snapshot.eventNote,
-                                eventTitle: snapshot.eventTitle,
-                                eventType: snapshot.eventType,
-                              );
-                            },
-                          );
-                        },
+                              // ignore: invalid_use_of_protected_member, unused_local_variable
+                              for (final EventModel item
+                                  in controller.events.value)
+                                return Dismissible(
+                                  onDismissed: (direction) {
+                                    // delete events
+                                    _event.deleteEvent(
+                                        id: snapshot.id, index: index);
+                                  },
+                                  background: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      color: kDeletedColor,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        CupertinoIcons.delete,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  key: ValueKey(index),
+                                  child: TextWidget(
+                                    eventCategory: snapshot.eventCategory,
+                                    eventCreatedDate: snapshot.eventCreatedDate,
+                                    eventId: snapshot.id,
+                                    eventIndex: index,
+                                    eventNote: snapshot.eventNote,
+                                    eventTitle: snapshot.eventTitle,
+                                    eventType: snapshot.eventType,
+                                  ),
+                                );
+                            });
+                          },
+                        ),
                       ),
-                    )),
+              ),
             ),
           ),
         ]),

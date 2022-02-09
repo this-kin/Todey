@@ -129,8 +129,6 @@ class _SecondComponentState extends State<SecondComponent> {
                       onPressed: () {
                         //activate recorder
                         print("clicked");
-
-                        //    _con.recordAudio();
                       },
                       iconData: Icons.mic_rounded,
                       color: theme.accentColor,

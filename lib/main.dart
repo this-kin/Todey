@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:todey/controllers/settings_controller.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/modules/onboard/onboard.dart';
 import 'package:todey/services/auth_service.dart';
@@ -19,7 +20,10 @@ void main() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]).then((value) => Get.put(AuthService()));
+  ]).then((value) {
+    Get.put(AuthService());
+    Get.put(SettingController());
+  });
   runApp(BetterFeedback(child: MyApp()));
 }
 

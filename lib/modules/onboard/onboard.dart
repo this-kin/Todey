@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:todey/helpers/sharepreference_helper.dart';
+import 'package:todey/services/sharepreference_helper.dart';
 import 'package:todey/models/welcome_model.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:todey/services/auth_service.dart';

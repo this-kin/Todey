@@ -1,7 +1,7 @@
 import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/helpers/sharepreference_helper.dart';
+import 'package:todey/services/sharepreference_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {

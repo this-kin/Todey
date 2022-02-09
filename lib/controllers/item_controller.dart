@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:todey/core/sqflite_db.dart';
 import 'package:todey/models/todo_model.dart';
 import 'package:todey/utils/helper.dart';
+import 'dart:io' as io;
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
@@ -87,4 +89,9 @@ class EventController extends GetxController {
   //     print(result.files[0].name);
   //   }
   // }
+
+  void _disposeControllers() {
+    noteController.value.clear();
+    titleController.value.clear();
+  }
 }

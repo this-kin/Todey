@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todey/utils/constant.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todey/utils/constant.dart';
 import 'package:todey/utils/helper.dart';
 
 class TextWidget extends StatefulWidget {
@@ -32,130 +32,94 @@ class TextWidget extends StatefulWidget {
 class _TextWidgetState extends State<TextWidget> {
   bool _isExpanded = false;
 
+  void collapse() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.only(left: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+    return InkWell(
+      onTap: () {
+        collapse();
+      },
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 8.0.h),
+        child: AnimatedContainer(
+          height: _isExpanded ? 120.h : 100.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.sp),
+            color: widget.eventCategory == "Important"
+                ? theme.primaryColor
+                : kAccentColor,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.bounceInOut,
+          child: Row(
             children: [
-              CircleAvatar(
-                backgroundColor: avatarColor(widget.eventCategory),
-                backgroundImage: AssetImage(getAvatar(widget.eventType)),
-                radius: 22.sp,
-              ),
-              //event Title
               Container(
-                width: 100.w,
-                height: 20.h,
-                child: Text(
-                  widget.eventTitle,
-                  overflow: TextOverflow.fade,
-                  textScaleFactor: 0.7,
-                  style: TextStyle(
-                      color: kTextColor, fontFamily: "Raleway", fontSize: 18),
+                height: 50.h,
+                width: 50.w,
+                decoration: BoxDecoration(
+                  color: avatarColor(widget.eventType),
+                  shape: BoxShape.circle,
+                ),
+                padding: EdgeInsets.all(5.sp),
+                child: Image.asset(
+                  getAvatar(widget.eventType),
+                  fit: BoxFit.scaleDown,
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              //Event Notes
+              SizedBox(width: 20.w),
               Container(
-                width: 120.w,
-                height: 20.h,
-                child: Text(
-                  widget.eventNote,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      //  color: kSettingColor,
-                      fontFamily: "MADType",
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: _isExpanded ? 30.h : 18.h,
+                      width: 120.w,
+                      child: Text(
+                        widget.eventTitle,
+                        maxLines: _isExpanded ? 2 : 1,
+                        style: theme.textTheme.overline.copyWith(
+                          color: Colors.white,
+                          fontSize: 13.sp,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 12.h),
+                    SizedBox(
+                      height: 20.h,
+                      width: 170.w,
+                      child: Text(
+                        widget.eventNote,
+                        overflow: TextOverflow.ellipsis,
+                        style: theme.textTheme.headline5.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              Text(
+                widget.eventCreatedDate,
+                style: theme.textTheme.button.copyWith(
+                  fontSize: 12.sp,
                 ),
               )
             ],
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.15,
-          ),
-          Text(
-            widget.eventCreatedDate,
-            // style: kItemWidgetStyle,
-          )
-        ],
+        ),
       ),
     );
   }
 }
-
-/* 
-Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            _isExpanded = !_isExpanded;
-          });
-        },
-        child: AnimatedContainer(
-          height: _isExpanded ? 120.h : 90.h,
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.sp),
-            color: getColor(widget.eventCategory),
-          ),
-          duration: ConstanceData.kDuration,
-          curve: Curves.bounceInOut,
-          child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            CircleAvatar(
-              backgroundColor: avatarColor(widget.eventCategory),
-              backgroundImage: AssetImage(getAvatar(widget.eventType)),
-              radius: 22.sp,
-            ),
-            SizedBox(width: 20.w),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 140.w,
-                    height: 20.h,
-                    child: Text(
-                      widget.eventTitle,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: _isExpanded ? 3 : 1,
-                      textScaleFactor: 0.7,
-                      style: theme.textTheme.overline,
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Container(
-                    width: 140.w,
-                    height: _isExpanded ? 40.h : 12.h,
-                    child: Text(
-                      widget.eventNote,
-                      overflow: _isExpanded
-                          ? TextOverflow.visible
-                          : TextOverflow.ellipsis,
-                      maxLines: _isExpanded ? 3 : 2,
-                      style: theme.textTheme.headline5.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                ]),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.15,
-            ),
-            Text(
-              widget.eventCreatedDate,
-            )
-          ]),
-        ),
-      ),
-    );
-    */

@@ -80,6 +80,7 @@ flutter build apk
 - Multi-Language Localization (English, French, Portuguese)
 - Local Notification
 - Follow on Twitter
+- Dismissible Slider 
 
 # Coming Soon
 - Attachment (image, audio, doc/pdf)
@@ -88,7 +89,7 @@ flutter build apk
 - save theme state
 - save language state
 - daily reminder 
-- dismissible delete and update
+- dismissible to update
 - charts for task 
 - create and display image task 
 - create and display audio task 
