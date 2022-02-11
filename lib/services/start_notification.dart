@@ -1,4 +1,4 @@
-import 'dart:io' show File, Platform;
+import 'dart:io' show Platform;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //TZDATETIME
 import 'package:timezone/data/latest.dart' as tz;

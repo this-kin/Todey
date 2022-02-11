@@ -13,7 +13,6 @@ class Indicator extends StatefulWidget {
 class _IndicatorState extends State<Indicator> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Container(
       height: 50.h,
       width: 100.w,

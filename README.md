@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000)
 [![License: APACHE](https://img.shields.io/badge/License-APACHE-yellow.svg)](#)
 
- ![Logo](images/todey.png)
+ ![Logo](ss/todey.png)
 
 
 
@@ -21,13 +21,35 @@ Flutter 1.22.4
 - A little knowledge of Dart and Flutter
 
 # Screenshots
-
-
- ![Onboarding](ss/ss1.png)
- ![Home Screen](ss/ss2.png)
+ ![Light Splash](ss/ss1.png)
+ ![Dark Onboarding](ss/onboard1.png)
+ ![Dark Onboarding](ss/onboard2.png)
+ ![Dark Onboarding](ss/onboard3.png)
+ ![Google Signing](ss/ss2.png) 
+ <!-- ![Home Screen](ss/ss2.png)
  ![Create Event](ss/ss3.png)
  ![Create Event](ss/ss4.png)
- ![Setting](ss/ss5.png)
+ ![Setting](ss/ss5.png) -->
+
+ | 1 | 2|
+|------|-------|
+|<img src="ss/ss3.png" width="400">|<img src="ss/ss8.png" width="400">|
+
+ | 3 | 4|
+|------|-------|
+|<img src="ss/ss4.png" width="400">|<img src="ss/ss8.png" width="400">|
+
+ | 5 | 6|
+|------|-------|
+|<img src="ss/ss5.png" width="400">|<img src="ss/ss9.png" width="400">|
+
+ | 7 | 8|
+|------|-------|
+|<img src="ss/ss6.png" width="400">|<img src="ss/ss10.png" width="400">|
+
+ | 9 | 9|
+|------|-------|
+|<img src="ss/ss7.png" width="400">|<img src="ss/ss11.png" width="400">|
 
 # Command
 ### Install dependencies

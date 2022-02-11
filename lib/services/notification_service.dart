@@ -1,4 +1,4 @@
-import 'dart:io' show File, Platform;
+import 'dart:io' show Platform;
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //TZDATETIME
@@ -49,7 +49,7 @@ class EndedNotificationHelper {
   //End of the Day
 
   Future<void> endOfDay() async {
-    var now = DateTime.now();
+    // var now = DateTime.now();
     var scheduledTime = Time(22, 0, 0);
     var andriodSpecific = AndroidNotificationDetails(
       "CHANNEL_ID 2",

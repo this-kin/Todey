@@ -33,8 +33,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final SettingController _controller = Get.put(SettingController());
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -43,7 +41,7 @@ class _MyAppState extends State<MyApp> {
         statusBarIconBrightness:
             Get.isDarkMode ? Brightness.light : Brightness.dark,
         statusBarBrightness:
-            Get.isDarkMode ? Brightness.light : Brightness.dark,
+            Get.isDarkMode ? Brightness.dark : Brightness.light,
         systemNavigationBarColor: Colors.transparent,
         systemNavigationBarIconBrightness:
             Get.isDarkMode ? Brightness.light : Brightness.dark,
@@ -54,23 +52,17 @@ class _MyAppState extends State<MyApp> {
       child: ScreenUtilInit(
         designSize: Size(360, 784),
         builder: () {
-          return GetBuilder<SettingController>(
-            builder: (controller) {
-              return GetMaterialApp(
-                debugShowCheckedModeBanner: false,
-                translations: Translation(),
-                locale: Locale("en", "US"),
-                color: Colors.white,
-                fallbackLocale: Locale('en', 'US'),
-                theme: controller.theme.value
-                    ? CustomTheme.buildDarkTheme()
-                    : CustomTheme.buildLightTheme(),
-                darkTheme: CustomTheme.buildDarkTheme(),
-                home: Onboard(),
-                title: "Todey",
-                getPages: routes,
-              );
-            },
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            translations: Translation(),
+            locale: Locale("en", "US"),
+            color: Colors.white,
+            fallbackLocale: Locale('en', 'US'),
+            theme: CustomTheme.buildLightTheme(),
+            darkTheme: CustomTheme.buildDarkTheme(),
+            home: Onboard(),
+            title: "Todey",
+            getPages: routes,
           );
         },
       ),

@@ -12,7 +12,7 @@ String formattedNow() {
   return formatted;
 }
 
-String getAvatar(String eventType) {
+getAvatar(String eventType) {
   switch (eventType) {
     case "Fun":
       return ConstanceData.gameIcon;
