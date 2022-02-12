@@ -22,7 +22,7 @@ class _SettingState extends State<Setting> {
 
   @override
   void initState() {
-    isDark = _con.theme.value;
+    isDark = _con.theme.value ?? false;
     super.initState();
   }
 

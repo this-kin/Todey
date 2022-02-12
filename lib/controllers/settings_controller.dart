@@ -18,7 +18,7 @@ class SettingController extends GetxController {
   }
 
   void getSharedPref() async {
-    theme.value = await SharedPreferenceHelper().getTheme();
+    theme.value = await SharedPreferenceHelper().getTheme() ?? false;
     print(theme);
   }
 

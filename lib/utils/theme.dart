@@ -4,8 +4,8 @@ import 'package:todey/utils/constant.dart';
 
 class CustomTheme {
 //
-  static const Color _primaryColor1 = Color(0xff1C68F0);
-  static const Color _primaryColor2 = Color(0xff2281F5);
+  static const Color primaryColor1 = Color(0xff1C68F0);
+  static const Color primaryColor2 = Color(0xff2281F5);
 
   static const Color deleteColor = Color(0xffE34946);
   static const Color updateColor = Color(0xffED9B1E);
@@ -21,13 +21,13 @@ class CustomTheme {
   static const Color kBackgroundColor = Color(0xff2F2C53);
 
   static ColorScheme _lightColorScheme = ColorScheme.light(
-    primary: _primaryColor1,
-    secondary: _primaryColor2,
+    primary: primaryColor1,
+    secondary: primaryColor2,
     brightness: Brightness.light,
   );
   static ColorScheme _darkColorScheme = ColorScheme.dark(
-    primary: _primaryColor1,
-    secondary: _primaryColor2,
+    primary: primaryColor1,
+    secondary: primaryColor2,
     brightness: Brightness.dark,
   );
 
@@ -116,15 +116,15 @@ class CustomTheme {
   static ThemeData buildDarkTheme() {
     return ThemeData(
       indicatorColor: Colors.white,
-      primaryColor: _primaryColor2,
-      buttonColor: _primaryColor2,
+      primaryColor: primaryColor2,
+      buttonColor: primaryColor2,
       accentColor: Colors.grey,
       // colorScheme: _lightColorScheme,
       scaffoldBackgroundColor: const Color(0xff2F2C53),
       backgroundColor: const Color(0xff2F2C53),
       errorColor: deleteColor,
       platform: TargetPlatform.iOS,
-      cursorColor: _primaryColor2,
+      cursorColor: primaryColor2,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       typography: Typography(),
@@ -135,7 +135,7 @@ class CustomTheme {
       // colorScheme: _darkColorScheme,
       timePickerTheme: TimePickerThemeData(
         backgroundColor: const Color(0xff2F2C53),
-        dialHandColor: _primaryColor2,
+        dialHandColor: primaryColor2,
         dialTextColor: Colors.white,
         dialBackgroundColor: Colors.grey.withOpacity(0.2),
         hourMinuteTextColor: Colors.white,
@@ -147,15 +147,15 @@ class CustomTheme {
 
   static ThemeData buildLightTheme() {
     return ThemeData(
-      primaryColor: _primaryColor2,
-      buttonColor: _primaryColor2,
+      primaryColor: primaryColor2,
+      buttonColor: primaryColor2,
       splashColor: Colors.white38,
       splashFactory: InkRipple.splashFactory,
       accentColor: Colors.grey,
       backgroundColor: const Color(0xFFFFFFFF),
       scaffoldBackgroundColor: const Color(0xFFFFFFFF),
       errorColor: deleteColor,
-      cursorColor: _primaryColor2,
+      cursorColor: primaryColor2,
       typography: Typography(),
       platform: TargetPlatform.iOS,
       brightness: Brightness.dark,
@@ -165,11 +165,11 @@ class CustomTheme {
       accentIconTheme: IconThemeData(color: Colors.grey),
       timePickerTheme: TimePickerThemeData(
         backgroundColor: const Color(0xFFFFFFFF),
-        dialHandColor: _primaryColor2,
+        dialHandColor: primaryColor2,
         dialTextColor: Colors.black,
         // entryModeIconColor: Colors.grey,
         dialBackgroundColor: Colors.grey.withOpacity(0.2),
-        hourMinuteTextColor: _primaryColor1,
+        hourMinuteTextColor: primaryColor1,
         dayPeriodColor: Colors.grey.withOpacity(0.3),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
 import 'package:todey/modules/create/components/second_compo.dart';
+import 'package:todey/utils/theme.dart';
 import 'package:todey/widgets/create_indicator.dart';
 
 class Create extends StatefulWidget {
@@ -94,12 +95,13 @@ class _CreateState extends State<Create> {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   gradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.blue.shade700,
-                                        Colors.blueAccent.withOpacity(0.7)
-                                      ]),
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      CustomTheme.primaryColor1,
+                                      CustomTheme.primaryColor2,
+                                    ],
+                                  ),
                                 ),
                                 alignment: Alignment.center,
                                 child: Icon(
