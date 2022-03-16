@@ -1,17 +1,4 @@
-import 'package:feedback/feedback.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:todey/controllers/settings_controller.dart';
-import 'package:todey/core/sqflite_db.dart';
-import 'package:todey/modules/onboard/onboard.dart';
-import 'package:todey/services/auth_service.dart';
-import 'package:todey/utils/routes.dart';
-import 'package:todey/utils/theme.dart';
-import 'package:todey/utils/translation.dart';
+import 'package:todey/utils/exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
