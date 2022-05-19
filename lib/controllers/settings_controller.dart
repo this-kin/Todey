@@ -1,7 +1,8 @@
 import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/services/sharepreference_helper.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todey/constants/string_constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingController extends GetxController {
@@ -16,26 +17,17 @@ class SettingController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    getSharedPref();
-  }
-
-  void getSharedPref() async {
-    theme.value = await SharedPreferenceHelper().getTheme() ?? false;
-    print(theme);
   }
 
   // change language
   changeLanguage(param1, param2) {
     var locale = Locale(param1, param2);
     Get.updateLocale(locale);
-    //save state of current language
-    // spService.setLanguage(param1, param2);
     print('$param1, $param2');
     update();
   }
 
   // switch flip
-
   flipSwitch(value) {
     value = !value;
     print(value);
@@ -80,16 +72,15 @@ class SettingController extends GetxController {
   }
 
   Future<void> changeTheme(bool value) async {
+    final box = await Hive.openBox<bool>(appTheme);
     if (value) {
       theme.value = true;
       Get.changeThemeMode(ThemeMode.dark);
-      update();
-      await SharedPreferenceHelper().saveTheme(isLight: value);
+      box.put(appThemeKey, true);
     } else {
       theme.value = false;
       Get.changeThemeMode(ThemeMode.light);
-      await SharedPreferenceHelper().saveTheme(isLight: value);
-      update();
+      box.put(appThemeKey, false);
     }
   }
 

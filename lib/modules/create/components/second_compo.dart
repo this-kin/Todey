@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
-import 'package:todey/data/models/event_type_model.dart';
+import 'package:todey/constants/event_type_model.dart';
 import 'package:todey/widgets/action_button.dart';
 
 class SecondComponent extends StatefulWidget {

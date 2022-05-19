@@ -27,10 +27,13 @@ dependencies:
   fluttericon: ^2.0.0
   hive_flutter:
   fluttertoast: ^8.0.8
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 flutter:
   uses-material-design: true
   assets:

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:todey/services/sharepreference_helper.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:todey/constants/string_constant.dart';
+import 'package:todey/data/models/user_data.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:get/get.dart';
 import 'package:todey/modules/onboard/onboard.dart';
@@ -54,11 +56,13 @@ class AuthService extends GetxController {
           await _auth.signInWithCredential(_authCredential);
       if (_credential.user != null) {
         _user.value = _credential.user;
-        SharedPreferenceHelper().saveUserEmail(email: _user.value.email);
-        SharedPreferenceHelper().saveUserimage(imageurl: _user.value.photoURL);
-        SharedPreferenceHelper()
-            .saveUsername(username: _user.value.displayName);
-        SharedPreferenceHelper().saveUserid(uuid: _user.value.uid.toString());
+        final UserData userData = UserData(
+          id: _credential.user.uid,
+          username: _credential.user.displayName,
+          email: _credential.user.email,
+          imageUrl: _credential.user.photoURL,
+        );
+        setUserStateToHive(userData);
       } else {
         Fluttertoast.showToast(
             msg: ConstanceData.error, backgroundColor: Colors.redAccent);
@@ -71,12 +75,12 @@ class AuthService extends GetxController {
 
 // logout / clear user
   void logout(context) async {
-    await _auth.signOut().then(
-      (value) => SharedPreferenceHelper().clearUser(),
-      onError: (err) {
-        Fluttertoast.showToast(
-            msg: err.toString(), backgroundColor: Colors.redAccent);
-      },
-    );
+    await _auth.signOut().then((value) async {
+      final box = await Hive.openBox(userDataString);
+      box.delete(userDataKey);
+    }, onError: (err) {
+      Fluttertoast.showToast(
+          msg: err.toString(), backgroundColor: Colors.redAccent);
+    });
   }
 }
