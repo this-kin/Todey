@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:todey/services/sharepreference_helper.dart';
-import 'package:todey/models/welcome_model.dart';
-import 'package:todey/modules/home/home.dart';
-import 'package:todey/services/auth_service.dart';
-import 'package:todey/widgets/indicator.dart';
+import 'package:todey/data/models/welcome_model.dart';
+import 'package:todey/utils/exports.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key key}) : super(key: key);
@@ -15,28 +9,10 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-  @override
-  void initState() {
-    super.initState();
-    checkUser();
-  }
-
-  //
-  final AuthService _authService = Get.put(AuthService());
-  //
   final PageController _pageController = PageController();
 
   //tracks current page
   int _selectedIndex = 0;
-
-  void checkUser() async {
-    var user = await SharedPreferenceHelper().getUsername();
-    if (user == null) {
-    } else {
-      Navigator.pushAndRemoveUntil(
-          context, MaterialPageRoute(builder: (_) => Home()), (route) => false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +77,7 @@ class _OnboardState extends State<Onboard> {
               ? _pageController.nextPage(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.bounceInOut)
-              : _authService.login(context);
+              : authController.login(context);
         },
         label: Text(
           _selectedIndex < 2 ? "Next" : "Continue",

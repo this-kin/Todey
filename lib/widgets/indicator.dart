@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: must_be_immutable
+import 'package:todey/utils/exports.dart';
 
+// ignore: must_be_immutable
 class Indicator extends StatefulWidget {
   int selectedIndex;
 

@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:get/get.dart';
 import 'package:todey/controllers/item_controller.dart';
-import 'package:todey/models/event_type_model.dart';
+import 'package:todey/data/models/event_type_model.dart';
+import 'package:todey/widgets/action_button.dart';
 
 class SecondComponent extends StatefulWidget {
   const SecondComponent({Key key}) : super(key: key);
@@ -116,55 +117,31 @@ class _SecondComponentState extends State<SecondComponent> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    actionButton(
+                    ActionButton(
+                      iconData: FontAwesome.camera,
                       onPressed: () async {
                         //activate camera
-
                         print(_con.eventAttachment);
                       },
-                      iconData: FontAwesome.camera,
-                      color: theme.accentColor,
                     ),
-                    actionButton(
+                    ActionButton(
+                      iconData: Icons.mic_rounded,
                       onPressed: () {
                         //activate recorder
                         print("clicked");
                       },
-                      iconData: Icons.mic_rounded,
-                      color: theme.accentColor,
                     ),
-                    actionButton(
+                    ActionButton(
+                      iconData: Icons.text_fields,
                       onPressed: () {
                         //activate blog type
                       },
-                      iconData: Icons.text_fields,
-                      color: theme.accentColor,
                     ),
                   ],
                 ),
               ),
             )
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget actionButton({onPressed, IconData iconData, color}) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        height: 50.h,
-        width: 50.w,
-        decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.2),
-          shape: BoxShape.circle,
-        ),
-        alignment: Alignment.center,
-        child: Icon(
-          iconData,
-          color: color,
-          size: 20.sp,
         ),
       ),
     );

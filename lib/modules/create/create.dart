@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
-import 'package:get/get.dart';
-import 'package:todey/controllers/item_controller.dart';
+import 'package:todey/constants/color_constants.dart';
+import 'package:todey/constants/controllers.dart';
 import 'package:todey/modules/create/components/first_compo.dart';
 import 'package:todey/modules/create/components/second_compo.dart';
-import 'package:todey/utils/theme.dart';
 import 'package:todey/widgets/create_indicator.dart';
 
 class Create extends StatefulWidget {
@@ -24,9 +23,6 @@ class _CreateState extends State<Create> {
 
   //list of pages
   List<Widget> _pages = const [FirstComponent(), SecondComponent()];
-
-  //
-  final EventController _con = Get.put(EventController());
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +83,7 @@ class _CreateState extends State<Create> {
                                         duration:
                                             const Duration(milliseconds: 300),
                                         curve: Curves.bounceInOut)
-                                    : _con.createEvent(context);
+                                    : eventController.createEvent(context);
                               },
                               child: Container(
                                 height: 55.h,
@@ -97,10 +93,7 @@ class _CreateState extends State<Create> {
                                   gradient: LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
-                                    colors: [
-                                      CustomTheme.primaryColor1,
-                                      CustomTheme.primaryColor2,
-                                    ],
+                                    colors: [primaryColor1, primaryColor2],
                                   ),
                                 ),
                                 alignment: Alignment.center,
@@ -178,6 +171,6 @@ class _CreateState extends State<Create> {
   @override
   void dispose() {
     super.dispose();
-    _con.disposeControllers();
+    eventController.disposeControllers();
   }
 }

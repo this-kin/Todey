@@ -4,11 +4,11 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todey/models/todo_model.dart';
+import 'package:todey/data/models/todo_model.dart';
 
-class SQFliteDB {
-  static final SQFliteDB _instance = new SQFliteDB._internal();
-  factory SQFliteDB() => _instance;
+class DatabaseHelper {
+  static final DatabaseHelper _instance = new DatabaseHelper._internal();
+  factory DatabaseHelper() => _instance;
   static final int _version = 1;
   final String tableName = "todeytabletest";
 
@@ -26,7 +26,7 @@ class SQFliteDB {
 
   static Database _db;
 
-  SQFliteDB._internal();
+  DatabaseHelper._internal();
   Future<Database> get db async {
     if (_db != null) {
       return _db;
@@ -35,7 +35,7 @@ class SQFliteDB {
     return _db;
   }
 
-  SQFliteDB.internal();
+  DatabaseHelper.internal();
 
   initializeDB() async {
     Directory directory = await getApplicationDocumentsDirectory();

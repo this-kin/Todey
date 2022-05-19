@@ -11,6 +11,8 @@ class SettingController extends GetxController {
 
   var defaultLanguage = 'en, US'.obs;
 
+  static final SettingController instance = Get.put(SettingController());
+
   @override
   void onReady() {
     super.onReady();

@@ -24,7 +24,7 @@ class AuthService extends GetxController {
     checkUser(_user.value);
   }
 
-  //check if user is registered
+  // check if user is registered
   void checkUser(User user) {
     if (user == null) {
       Get.offAll(Onboard());
@@ -32,6 +32,8 @@ class AuthService extends GetxController {
       Get.offAll(Home());
     }
   }
+
+  static final AuthService instance = Get.put(AuthService());
 
   // google signing
   void login(context) async {
@@ -69,10 +71,12 @@ class AuthService extends GetxController {
 
 // logout / clear user
   void logout(context) async {
-    await _auth.signOut().then((value) => SharedPreferenceHelper().clearUser(),
-        onError: (err) {
-      Fluttertoast.showToast(
-          msg: err.toString(), backgroundColor: Colors.redAccent);
-    });
+    await _auth.signOut().then(
+      (value) => SharedPreferenceHelper().clearUser(),
+      onError: (err) {
+        Fluttertoast.showToast(
+            msg: err.toString(), backgroundColor: Colors.redAccent);
+      },
+    );
   }
 }

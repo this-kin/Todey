@@ -21,9 +21,6 @@ class _FirstComponentState extends State<FirstComponent> {
   DateTime _now = DateTime.now();
 
   //
-  TimeOfDay _time = TimeOfDay.now();
-
-  //
   List<String> category = ["Important", "Planned"];
 
   //

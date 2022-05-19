@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todey/core/sqflite_db.dart';
-import 'package:todey/models/todo_model.dart';
+import 'package:todey/data/models/todo_model.dart';
+import 'package:todey/data/sqflite_db.dart';
 import 'package:todey/services/notification_service.dart';
 import 'package:todey/utils/helper.dart';
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
   var timeNow = TimeOfDay.now();
-  SQFliteDB sqFliteDB = SQFliteDB();
+  DatabaseHelper _databaseHelper = DatabaseHelper();
   var events = <EventModel>[].obs;
   var titleController = TextEditingController().obs;
   var noteController = TextEditingController().obs;
@@ -29,6 +29,8 @@ class EventController extends GetxController {
     endedNotification.setOnNotificationClick(onNotificationClick);
   }
 
+  static final EventController instance = Get.put(EventController());
+
   /// CREATE  EVENT
   Future<void> createEvent(BuildContext context) async {
     if (titleController.value.text.isNotEmpty &&
@@ -44,12 +46,10 @@ class EventController extends GetxController {
         eventType: eventType.value,
         eventAttachment: eventAttachment,
       );
-      await sqFliteDB.saveEvent(model).then((value) {
-        // formatting time and date
+      await _databaseHelper.saveEvent(model).then((value) {
         var now = eventDate.value;
         var start = eventStartedTime.value;
         var end = eventEndedTime.value;
-        //
         var startedDate =
             DateTime(now.year, now.month, now.day, start.hour, start.minute);
         var endedDate =
@@ -64,41 +64,30 @@ class EventController extends GetxController {
   }
 
   Future<void> getEvents() async {
-    events.value = await sqFliteDB.getAllEvent();
+    events.value = await _databaseHelper.getAllEvent();
     update();
   }
 
   Future<void> deleteEvent({int id, index}) async {
-    await sqFliteDB.deleteEvent(id);
+    await _databaseHelper.deleteEvent(id);
     // events.value.removeAt(index);
     update();
     getEvents();
   }
 
   Future<void> updateEvent(EventModel event) async {
-    await sqFliteDB.updateEvent(event);
+    await _databaseHelper.updateEvent(event);
     getEvents();
   }
 
   Future<void> closeDatabase() async {
-    await sqFliteDB.clearDB();
+    await _databaseHelper.clearDB();
   }
 
   /// FIRES WHEN YOU CLICK ON THE NOTIFICATION
   onNotificationClick(String payload) {
     // l
   }
-
-  // Future<String> pickImage() async {
-  //   final result = await FilePicker.platform.pickFiles(
-  //     allowMultiple: false,
-  //     allowedExtensions: <String>["png", "jpeg", "jpg"],
-  //     type: FileType.custom,
-  //   );
-  //   if (result != null) {
-  //     print(result.files[0].name);
-  //   }
-  // }
 
   void disposeControllers() {
     noteController.value.clear();

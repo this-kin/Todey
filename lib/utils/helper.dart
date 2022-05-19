@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:todey/constants/color_constants.dart';
 import 'package:todey/utils/exports.dart';
 
 //DateTime Now formatter
@@ -34,22 +35,22 @@ getAvatar(String eventType) {
 Color avatarColor(String title) {
   switch (title) {
     case "Fun":
-      return CustomTheme.funColor;
+      return funColor;
       break;
     case "Family":
-      return CustomTheme.familyColor;
+      return familyColor;
       break;
     case "Personal":
-      return CustomTheme.personalColor;
+      return personalColor;
       break;
     case "Work":
-      return CustomTheme.workColor;
+      return workColor;
       break;
     case "Academic":
-      return CustomTheme.defaultColor;
+      return defaultColor;
       break;
     default:
-      return CustomTheme.defaultColor;
+      return defaultColor;
       break;
   }
 }
@@ -57,13 +58,13 @@ Color avatarColor(String title) {
 Color getColor(String eventType) {
   switch (eventType) {
     case "Important":
-      return CustomTheme.kImportantColor;
+      return kImportantColor;
       break;
     case "Planned":
-      return CustomTheme.kPlanedColor;
+      return kPlanedColor;
       break;
     default:
-      return CustomTheme.defaultColor;
+      return defaultColor;
       break;
   }
 }

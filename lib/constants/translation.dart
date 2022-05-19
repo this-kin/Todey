@@ -1,7 +1,7 @@
 import 'package:todey/utils/exports.dart';
 
 class Translation extends Translations {
-  ///supports (3) lanugages ENGLISH, FRENCH AND PORTUGESE
+  /// supports (3) lanugages ENGLISH, FRENCH AND PORTUGESE
 
   @override
   Map<String, Map<String, String>> get keys => {

@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/modules/create/create.dart';
 import 'package:todey/modules/dashboard/dashboard.dart';
 import 'package:todey/modules/setting/setting.dart';
+import 'package:todey/utils/exports.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -13,22 +11,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-//list of pages
+  // list of pages
   final List<Widget> _pages = [Dashboard(), Create(), Setting()];
 
-//controller
+  // controller
   final PageController _pageController = PageController();
 
-  //tracks current page
+  // tracks current page
   int _currentIndex = 0;
 
-//
+  // animate to page
   void _onPageChanged(index) {
     _pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.bounceInOut);
   }
 
-//
+  //
   void _itemTapped(index) {
     setState(() {
       _currentIndex = index;
@@ -66,21 +64,22 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _onPageChanged,
-          elevation: 0,
-          enableFeedback: true,
-          backgroundColor: theme.backgroundColor,
-          selectedItemColor: theme.primaryColor,
-          unselectedItemColor: Colors.grey,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: ""),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline_sharp,
-                    size: _currentIndex == 2 ? 1 : 1),
-                label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
-          ]),
+        currentIndex: _currentIndex,
+        onTap: _onPageChanged,
+        elevation: 0,
+        enableFeedback: true,
+        backgroundColor: theme.backgroundColor,
+        selectedItemColor: theme.primaryColor,
+        unselectedItemColor: Colors.grey,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: ""),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline_sharp,
+                  size: _currentIndex == 2 ? 1 : 1),
+              label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+        ],
+      ),
     );
   }
 }
