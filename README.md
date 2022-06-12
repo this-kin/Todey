@@ -135,10 +135,12 @@ flutter build apk
 
 👤 **Dammy Richie**
 
-* Github: [@FlutterBoyfriend](https://github.com/ichie2)
+* Github: [@Dammy Richie](https://github.com/ichie2)
  
 
+## Contributors
 
+👤 **Dammy Richie**
 
 
 
