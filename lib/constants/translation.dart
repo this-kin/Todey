@@ -1,4 +1,4 @@
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class Translation extends Translations {
   /// supports (3) lanugages ENGLISH, FRENCH AND PORTUGESE

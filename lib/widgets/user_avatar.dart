@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class UserAvatar extends StatelessWidget {
   final String imgUrl;

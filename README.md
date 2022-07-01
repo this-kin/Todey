@@ -7,7 +7,7 @@
 
 
 
-A Task Management App built with Flutter
+A Task Management App built with Flutter Made with 💙
 
 # Flutter Version
 Flutter 1.22.4

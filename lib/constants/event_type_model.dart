@@ -1,4 +1,4 @@
-import 'package:todey/utils/constant.dart';
+import 'package:todey/constants/constant.dart';
 
 class Type {
   final String name;

@@ -1,7 +1,7 @@
 import 'package:todey/modules/create/create.dart';
 import 'package:todey/modules/dashboard/dashboard.dart';
 import 'package:todey/modules/setting/setting.dart';
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);

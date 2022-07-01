@@ -1,5 +1,5 @@
 import 'package:todey/data/models/welcome_model.dart';
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key key}) : super(key: key);

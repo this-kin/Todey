@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:todey/constants/color_constants.dart';
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class CustomTheme {
   static TextTheme _lightTextTheme = TextTheme(

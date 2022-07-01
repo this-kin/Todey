@@ -9,7 +9,7 @@ import 'package:todey/data/models/user_data.dart';
 import 'package:todey/modules/home/home.dart';
 import 'package:get/get.dart';
 import 'package:todey/modules/onboard/onboard.dart';
-import 'package:todey/utils/constant.dart';
+import 'package:todey/constants/constant.dart';
 
 class AuthService extends GetxController {
   User get user => _user.value;

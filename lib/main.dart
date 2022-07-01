@@ -3,7 +3,7 @@ import 'package:todey/constants/string_constant.dart';
 import 'package:todey/core/routes.dart';
 import 'package:todey/data/models/user_data.dart';
 import 'package:todey/data/sqflite_db.dart';
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 import 'package:path_provider/path_provider.dart' as path;
 
 Future<void> main() async {

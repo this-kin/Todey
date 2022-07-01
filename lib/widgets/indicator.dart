@@ -1,5 +1,5 @@
 // ignore: must_be_immutable
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 // ignore: must_be_immutable
 class Indicator extends StatefulWidget {

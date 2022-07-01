@@ -1,4 +1,4 @@
-import 'package:todey/utils/exports.dart';
+import 'package:todey/core/exports.dart';
 
 class EmptyWidget extends StatelessWidget {
   const EmptyWidget({Key key}) : super(key: key);

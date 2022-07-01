@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:todey/data/models/todo_model.dart';
 import 'package:todey/data/sqflite_db.dart';
 import 'package:todey/services/notification_service.dart';
-import 'package:todey/utils/helper.dart';
+import 'package:todey/core/helper.dart';
 
 class EventController extends GetxController {
   var dateNow = DateTime.now();
