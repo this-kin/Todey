@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttericon/entypo_icons.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:todey/controllers/settings_controller.dart';
+import 'package:todey/data/controllers/settings_controller.dart';
 import 'package:todey/modules/setting/widget/setting_title.dart';
 import 'package:todey/constants/constant.dart';
 

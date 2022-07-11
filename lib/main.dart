@@ -29,16 +29,19 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness:
-          Get.isDarkMode ? Brightness.dark : Brightness.light,
-      statusBarBrightness: Get.isDarkMode ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarIconBrightness:
-          Get.isDarkMode ? Brightness.dark : Brightness.light,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness:
+            Get.isDarkMode ? Brightness.dark : Brightness.light,
+        statusBarBrightness:
+            Get.isDarkMode ? Brightness.dark : Brightness.light,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness:
+            Get.isDarkMode ? Brightness.dark : Brightness.light,
+        systemNavigationBarDividerColor: Colors.transparent,
+      ),
+    );
     return ScreenUtilInit(
       designSize: Size(360, 784),
       builder: () {

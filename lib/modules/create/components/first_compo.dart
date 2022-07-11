@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:todey/controllers/item_controller.dart';
+import 'package:todey/core/exports.dart';
 
 class FirstComponent extends StatefulWidget {
   const FirstComponent({Key key}) : super(key: key);
