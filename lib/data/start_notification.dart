@@ -1,19 +1,15 @@
 import 'dart:io' show Platform;
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-//TZDATETIME
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:get/get.dart';
 
-///had to create different notification helper for each event
-///this is is fired when event is ended and early every night
-class EndedNotificationHelper {
+class StartNotificationHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   var initializationSetting;
 
-  EndedNotificationHelper._() {
+  StartNotificationHelper._() {
     init();
   }
 
@@ -45,16 +41,13 @@ class EndedNotificationHelper {
     });
   }
 
-  //
-  //End of the Day
-
-  Future<void> endOfDay() async {
-    // var now = DateTime.now();
-    var scheduledTime = Time(22, 0, 0);
+  // start of the day
+  Future<void> startOfDay() async {
+    var scheduledTime = Time(6, 0, 0);
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 2",
-      "CHANNEL_NAME 2",
-      channelDescription: "CHANNEL_DESCRIPTION 2",
+      "CHANNEL_ID 0",
+      "CHANNEL_NAME 0",
+      channelDescription: "CHANNEL_DESCRIPTION 0",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -63,23 +56,25 @@ class EndedNotificationHelper {
     var platformSpecific =
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
+    // ignore: deprecated_member_use
     await flutterLocalNotificationsPlugin.showDailyAtTime(
-      2,
+      0,
       "Todey",
-      "night".tr,
+      "started".tr,
       scheduledTime,
       platformSpecific,
       payload: "Test Payload",
     );
   }
 
+// scheduled startedDate
   Future<void> startScheduleNotification(DateTime date) async {
     var scheduledTime =
         tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
     var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 2",
-      "CHANNEL_NAME 2",
-      channelDescription: "CHANNEL_DESCRIPTION 2",
+      "CHANNEL_ID 1",
+      "CHANNEL_NAME 1",
+      channelDescription: "CHANNEL_DESCRIPTION 1",
       importance: Importance.max,
       priority: Priority.high,
     );
@@ -89,31 +84,7 @@ class EndedNotificationHelper {
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        2, "Todey", "started".tr, scheduledTime, platformSpecific,
-        payload: "Test Payload",
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime);
-  }
-
-  ///Scheduled eventEnded
-  Future<void> endScheduleNotification(DateTime date) async {
-    var scheduledTime =
-        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
-    var andriodSpecific = AndroidNotificationDetails(
-      "CHANNEL_ID 3",
-      "CHANNEL_NAME 3",
-      channelDescription: "CHANNEL_DESCRIPTION 3",
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-
-    var iosSpecific = IOSNotificationDetails();
-    var platformSpecific =
-        NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
-
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        3, "Todey", "ended".tr, scheduledTime, platformSpecific,
+        1, "Todey", "started".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
@@ -121,8 +92,7 @@ class EndedNotificationHelper {
   }
 }
 
-EndedNotificationHelper endedNotification = EndedNotificationHelper._();
-
+StartNotificationHelper startNotification = StartNotificationHelper._();
 _requestPermissionIos() {
-  // im not runnin mac basically this project gonna be Andriod till i get a mac
+  //im not runnin mac basically this project gonna be Andriod till i get a mac
 }

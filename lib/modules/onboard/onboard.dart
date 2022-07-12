@@ -1,5 +1,6 @@
 import 'package:todey/data/models/welcome_model.dart';
 import 'package:todey/core/exports.dart';
+import 'package:todey/modules/home/home.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key key}) : super(key: key);
@@ -77,7 +78,7 @@ class _OnboardState extends State<Onboard> {
               ? _pageController.nextPage(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.bounceInOut)
-              : null;
+              : Get.offAll(Home());
         },
         label: Text(
           _selectedIndex < 2 ? "Next" : "Continue",

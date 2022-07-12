@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todey/data/models/todo_model.dart';
 import 'package:todey/data/sqflite_db.dart';
-import 'package:todey/services/notification_service.dart';
 import 'package:todey/core/extension.dart';
 
 class EventController extends GetxController {
@@ -26,7 +25,7 @@ class EventController extends GetxController {
   void onReady() {
     super.onReady();
     getEvents();
-    endedNotification.setOnNotificationClick(onNotificationClick);
+  
   }
 
   static final EventController instance = Get.put(EventController());
@@ -54,8 +53,6 @@ class EventController extends GetxController {
             DateTime(now.year, now.month, now.day, start.hour, start.minute);
         var endedDate =
             DateTime(now.year, now.month, now.day, end.hour, end.minute);
-        endedNotification.startScheduleNotification(startedDate);
-        endedNotification.endScheduleNotification(endedDate);
         disposeControllers();
       });
     } else {
