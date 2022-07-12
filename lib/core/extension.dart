@@ -10,7 +10,6 @@ String formattedNow() {
   return formatted;
 }
 
-
 // avatar picker
 String getAvatar(String eventType) {
   switch (eventType) {
@@ -29,10 +28,10 @@ String getAvatar(String eventType) {
     case "Work":
       return ConstanceData.suitcaseIcon;
       break;
-    default: "";
+    default:
+      "Fun";
   }
 }
-
 
 // avatar color picker
 Color avatarColor(String title) {
@@ -57,7 +56,6 @@ Color avatarColor(String title) {
       break;
   }
 }
-
 
 // color picker
 Color getColor(String eventType) {

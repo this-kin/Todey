@@ -1,4 +1,3 @@
-import 'package:todey/data/controllers/auth_controller.dart';
 import 'package:todey/data/controllers/item_controller.dart';
 import 'package:todey/data/controllers/settings_controller.dart';
 

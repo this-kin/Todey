@@ -3,7 +3,7 @@ description: A new Flutter project.
 publish_to: "none"
 version: 2.0.0
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -12,8 +12,8 @@ dependencies:
   get: ^4.6.1
   flutter_screenutil: ^5.0.2
   shared_preferences: ^2.0.11
-  # firebase_core: ^1.10.6
-  # firebase_auth: ^3.3.4
+  firebase_core:
+  firebase_auth:
   google_sign_in:
   sqflite: ^2.0.1
   #  fl_chart:
@@ -26,11 +26,16 @@ dependencies:
   date_picker_timeline: ^1.2.3
   fluttericon: ^2.0.0
   hive_flutter:
+  hive:
+
   fluttertoast: ^8.0.8
-  hive_generator: ^1.1.2
-  build_runner: ^2.1.7
 
 dev_dependencies:
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
+  freezed:
+  flutter_native_splash: ^1.2.1
+
   flutter_test:
     sdk: flutter
 
