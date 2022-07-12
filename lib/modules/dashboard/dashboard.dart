@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_use_of_protected_member
-
 import 'package:flutter/cupertino.dart';
 import 'package:todey/core/exports.dart';
 
@@ -12,7 +10,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   //
-  final AuthService _con = Get.put(AuthService());
+  // final AuthService _con = Get.put(AuthService());
   final EventController _event = Get.put(EventController());
 
   @override
@@ -43,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
         ),
         actions: [
           UserAvatar(
-            imgUrl: _con.user.photoURL,
+            imgUrl: "",
           ),
           SizedBox(width: 20.w)
         ],

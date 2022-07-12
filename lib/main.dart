@@ -10,13 +10,13 @@ Future<void> main() async {
   final dir = await path.getApplicationDocumentsDirectory();
   Hive.init(dir.path);
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   await DatabaseHelper().initializeDB();
   Hive.registerAdapter(UserDataAdapter());
   await Hive.openBox<UserData>(userDataString);
   await Hive.openBox<bool>(appTheme);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  Get.put(AuthService());
+  // Get.put(AuthService());
   Get.put(SettingController());
   runApp(BetterFeedback(child: MyApp()));
 }

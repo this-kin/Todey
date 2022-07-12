@@ -77,7 +77,7 @@ class _OnboardState extends State<Onboard> {
               ? _pageController.nextPage(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.bounceInOut)
-              : authController.login(context);
+              : null;
         },
         label: Text(
           _selectedIndex < 2 ? "Next" : "Continue",

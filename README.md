@@ -129,6 +129,7 @@ flutter build apk
 - create and display image task 
 - create and display audio task 
 - Daily Notification
+- loaders
 
 
 ## Author

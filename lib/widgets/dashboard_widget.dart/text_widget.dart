@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todey/constants/constant.dart';
-import 'package:todey/core/helper.dart';
+import 'package:todey/core/extension.dart';
 
 class TextWidget extends StatefulWidget {
   final String eventTitle;
