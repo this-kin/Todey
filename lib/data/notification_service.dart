@@ -1,6 +1,5 @@
 import 'dart:io' show Platform;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:get/get.dart';
 
@@ -10,30 +9,30 @@ class StartNotificationHelper {
   var initializationSetting;
 
   StartNotificationHelper._() {
-    init();
+    initializer();
   }
 
-  init() async {
-    tz.initializeTimeZones();
-
+  initializer() async {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     if (Platform.isIOS) {
       _requestPermissionIos();
     }
-
-    initialisePlatFormSpec();
+    initializeSettings();
   }
 
-  initialisePlatFormSpec() {
+  initializeSettings() {
     var initializeAndrioidSetting = AndroidInitializationSettings("todey");
     var initializeIosSetting = IOSInitializationSettings(
-        // configure for ios
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
 
-        );
     initializationSetting = InitializationSettings(
         android: initializeAndrioidSetting, iOS: initializeIosSetting);
   }
 
+  // on notification click
   setOnNotificationClick(Function onNotificationClick) async {
     await flutterLocalNotificationsPlugin.initialize(initializationSetting,
         onSelectNotification: (String payload) async {
@@ -53,6 +52,7 @@ class StartNotificationHelper {
     );
 
     var iosSpecific = IOSNotificationDetails();
+
     var platformSpecific =
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
 
@@ -90,9 +90,10 @@ class StartNotificationHelper {
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
+
+  _requestPermissionIos() {
+    // im not runnin mac basically this project gonna be Andriod till i get a mac
+  }
 }
 
 StartNotificationHelper startNotification = StartNotificationHelper._();
-_requestPermissionIos() {
-  //im not runnin mac basically this project gonna be Andriod till i get a mac
-}
