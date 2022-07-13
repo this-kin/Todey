@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todey/data/models/todo_model.dart';
-import 'package:todey/data/sqflite_db.dart';
+import 'package:todey/data/database.dart';
 import 'package:todey/core/extension.dart';
 
 class EventController extends GetxController {

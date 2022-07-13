@@ -1,11 +1,11 @@
 import 'dart:io';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:todey/constants/color_constants.dart';
 import 'package:todey/constants/string_constant.dart';
 import 'package:todey/core/routes.dart';
 import 'package:todey/data/models/user_data.dart';
-import 'package:todey/data/sqflite_db.dart';
+import 'package:todey/data/database.dart';
 import 'package:todey/core/exports.dart';
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:todey/route_selector.dart';
@@ -13,15 +13,15 @@ import 'package:todey/route_selector.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Directory directory = await path.getApplicationDocumentsDirectory();
-  // await Firebase.initializeApp();
-  await DatabaseHelper().initializeDB();
+  await Firebase.initializeApp();
+  await DatabaseHelper().initialize();
   Hive.registerAdapter(UserDataAdapter());
   await Hive.initFlutter(directory.path);
   await Hive.openBox<UserData>(userDataString);
   await Hive.openBox<bool>(appTheme);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  // Get.put(AuthService());
-  Get.put(SettingController());
+  authController.onReady();
+  settingController.onReady();
   runApp(BetterFeedback(child: MyApp()));
 }
 

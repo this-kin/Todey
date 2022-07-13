@@ -27,7 +27,6 @@ dependencies:
   fluttericon: ^2.0.0
   hive_flutter:
   hive:
-
   fluttertoast: ^8.0.8
 
 dev_dependencies:

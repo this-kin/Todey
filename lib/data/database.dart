@@ -31,13 +31,13 @@ class DatabaseHelper {
     if (_db != null) {
       return _db;
     }
-    _db = await initializeDB();
+    _db = await initialize();
     return _db;
   }
 
   DatabaseHelper.internal();
 
-  initializeDB() async {
+  Future initialize() async {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, "todeytest3.db");
     var myDB = await openDatabase(path, version: _version, onCreate: _onCreate);

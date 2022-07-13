@@ -34,7 +34,7 @@ class _OnboardState extends State<Onboard> {
                 child: PageView.builder(
                   itemCount: allOnboard.length,
                   controller: _pageController,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   onPageChanged: (val) {
                     setState(() {
                       _selectedIndex = val;
