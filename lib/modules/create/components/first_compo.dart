@@ -5,6 +5,7 @@ import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:todey/core/exports.dart';
+import 'package:todey/widgets/create_widgets/custom_date.dart';
 
 class FirstComponent extends StatefulWidget {
   const FirstComponent({Key key}) : super(key: key);
@@ -74,7 +75,7 @@ class _FirstComponentState extends State<FirstComponent> {
             Obx(
               () => Row(
                 children: [
-                  customChips(
+                  CustomDateTime(
                     date: _con.eventStartedTime.value,
                     onPressed: () async {
                       final time = TimeOfDay.now();
@@ -85,7 +86,7 @@ class _FirstComponentState extends State<FirstComponent> {
                     },
                   ),
                   SizedBox(width: 25.w),
-                  customChips(
+                  CustomDateTime(
                     date: _con.eventEndedTime.value,
                     onPressed: () async {
                       final time = TimeOfDay.now();
@@ -159,39 +160,5 @@ class _FirstComponentState extends State<FirstComponent> {
       //
     }
     return result;
-  }
-
-  customChips({TimeOfDay date, Function onPressed}) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        height: 40.h,
-        width: 100.w,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8.sp)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(FontAwesome5.clock, size: 20.sp),
-            Text(
-              date.format(context),
-              style: TextStyle(fontSize: 14.sp, color: Colors.grey),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget indicatorWidget() {
-    return Container(
-      height: 5.h,
-      width: 50.w,
-      decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(10.sp),
-      ),
-    );
   }
 }

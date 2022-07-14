@@ -50,12 +50,9 @@ class StartNotificationHelper {
       importance: Importance.max,
       priority: Priority.high,
     );
-
     var iosSpecific = IOSNotificationDetails();
-
     var platformSpecific =
         NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
-
     // ignore: deprecated_member_use
     await flutterLocalNotificationsPlugin.showDailyAtTime(
       0,
@@ -67,8 +64,8 @@ class StartNotificationHelper {
     );
   }
 
-// scheduled startedDate
-  Future<void> startScheduleNotification(DateTime date) async {
+  // scheduled started Date
+  Future<void> startNotification(DateTime date) async {
     var scheduledTime =
         tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
     var andriodSpecific = AndroidNotificationDetails(
@@ -85,6 +82,28 @@ class StartNotificationHelper {
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
         1, "Todey", "started".tr, scheduledTime, platformSpecific,
+        payload: "Test Payload",
+        androidAllowWhileIdle: true,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime);
+  } // scheduled started Date
+
+  Future<void> endedNotification(DateTime date) async {
+    var scheduledTime =
+        tz.TZDateTime.from(date, tz.local).add(Duration(minutes: 1));
+    var andriodSpecific = AndroidNotificationDetails(
+      "CHANNEL_ID 2",
+      "CHANNEL_NAME 2",
+      channelDescription: "CHANNEL_DESCRIPTION 2",
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
+    var iosSpecific = IOSNotificationDetails();
+    var platformSpecific =
+        NotificationDetails(android: andriodSpecific, iOS: iosSpecific);
+    await flutterLocalNotificationsPlugin.zonedSchedule(
+        1, "Todey", "ended".tr, scheduledTime, platformSpecific,
         payload: "Test Payload",
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
