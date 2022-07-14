@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:todey/core/exports.dart';
@@ -72,32 +71,38 @@ class _FirstComponentState extends State<FirstComponent> {
               ],
             ),
             SizedBox(height: 8.h),
-            Obx(
-              () => Row(
-                children: [
-                  CustomDateTime(
-                    date: _con.eventStartedTime.value,
-                    onPressed: () async {
-                      final time = TimeOfDay.now();
-                      _con.eventStartedTime.value = await showTimePicker(
-                        context: context,
-                        initialTime: time,
+            Row(
+              children: [
+                ValueListenableBuilder<TimeOfDay>(
+                    valueListenable: _con.eventStartedTime,
+                    builder: (__, value, child) {
+                      return CustomDateTime(
+                        date: value,
+                        onPressed: () async {
+                          final time = TimeOfDay.now();
+                          _con.eventStartedTime.value = await showTimePicker(
+                            context: context,
+                            initialTime: time,
+                          );
+                        },
                       );
-                    },
-                  ),
-                  SizedBox(width: 25.w),
-                  CustomDateTime(
-                    date: _con.eventEndedTime.value,
-                    onPressed: () async {
-                      final time = TimeOfDay.now();
-                      _con.eventEndedTime.value = await showTimePicker(
-                        context: context,
-                        initialTime: time,
+                    }),
+                SizedBox(width: 25.w),
+                ValueListenableBuilder(
+                    valueListenable: _con.eventEndedTime,
+                    builder: (context, value, child) {
+                      return CustomDateTime(
+                        date: value,
+                        onPressed: () async {
+                          final time = TimeOfDay.now();
+                          _con.eventEndedTime.value = await showTimePicker(
+                            context: context,
+                            initialTime: time,
+                          );
+                        },
                       );
-                    },
-                  ),
-                ],
-              ),
+                    }),
+              ],
             ),
             SizedBox(height: 20.h),
             Text(

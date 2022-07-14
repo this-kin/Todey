@@ -3,14 +3,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:get/get.dart';
 
-class StartNotificationHelper {
+class NotificationHelper {
+  NotificationHelper._() {}
+
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   var initializationSetting;
-
-  StartNotificationHelper._() {
-    initializer();
-  }
 
   initializer() async {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -115,4 +113,4 @@ class StartNotificationHelper {
   }
 }
 
-StartNotificationHelper startNotification = StartNotificationHelper._();
+NotificationHelper notification = NotificationHelper._();

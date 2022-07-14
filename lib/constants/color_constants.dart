@@ -20,3 +20,6 @@ const Color kBackgroundColor = Color(0xff2F2C53);
 const Color kAccentColor = Colors.grey;
 const Color primaryColor1 = Color(0xff1C68F0);
 const Color primaryColor2 = Color(0xff2281F5);
+
+// text colors
+const Color greyTextColor = Color(0xffC5C5C5);

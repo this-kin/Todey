@@ -4,8 +4,13 @@ import 'package:get/get.dart';
 import 'package:todey/data/models/todo_model.dart';
 import 'package:todey/data/database.dart';
 import 'package:todey/core/extension.dart';
+import 'package:todey/data/notification_service.dart';
 
 class EventController extends GetxController {
+//
+  static final EventController instance = Get.put(EventController());
+
+//
   var dateNow = DateTime.now();
   var timeNow = TimeOfDay.now();
   DatabaseHelper _databaseHelper = DatabaseHelper();
@@ -15,8 +20,8 @@ class EventController extends GetxController {
   var eventCategory = "Important".obs;
   var eventCreatedDate = formattedNow();
   var eventDate = DateTime.now().obs;
-  var eventStartedTime = TimeOfDay.now().obs;
-  var eventEndedTime = TimeOfDay.now().obs;
+  ValueNotifier<TimeOfDay> eventStartedTime = ValueNotifier(TimeOfDay.now());
+  ValueNotifier<TimeOfDay> eventEndedTime = ValueNotifier(TimeOfDay.now());
   var eventType = "Personal".obs;
   var isRecording = false.obs;
   var eventAttachment = "";
@@ -25,12 +30,10 @@ class EventController extends GetxController {
   void onReady() {
     super.onReady();
     getEvents();
-  
+    notification.initializer();
   }
 
-  static final EventController instance = Get.put(EventController());
-
-  /// CREATE  EVENT
+  // create events
   Future<void> createEvent(BuildContext context) async {
     if (titleController.value.text.isNotEmpty &&
         noteController.value.text.isNotEmpty) {
@@ -45,16 +48,18 @@ class EventController extends GetxController {
         eventType: eventType.value,
         eventAttachment: eventAttachment,
       );
-      await _databaseHelper.saveEvent(model).then((value) {
-        var now = eventDate.value;
-        var start = eventStartedTime.value;
-        var end = eventEndedTime.value;
-        var startedDate =
-            DateTime(now.year, now.month, now.day, start.hour, start.minute);
-        var endedDate =
-            DateTime(now.year, now.month, now.day, end.hour, end.minute);
-        disposeControllers();
-      });
+      await _databaseHelper.saveEvent(model);
+      var now = eventDate.value;
+      var start = eventStartedTime.value;
+      var end = eventEndedTime.value;
+      var startedDate =
+          DateTime(now.year, now.month, now.day, start.hour, start.minute);
+      var endedDate =
+          DateTime(now.year, now.month, now.day, end.hour, end.minute);
+      notification.startNotification(startedDate);
+      notification.endedNotification(endedDate);
+
+      disposeControllers();
     } else {
       //
     }
