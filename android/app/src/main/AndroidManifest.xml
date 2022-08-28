@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:usesCleartextTraffic="true"
         android:label="Todey"
         android:icon="@mipmap/ic_launcher">
         <activity

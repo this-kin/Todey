@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:todey/constants/color_constants.dart';
 import 'package:todey/constants/string_constant.dart';
-import 'package:todey/core/routes.dart';
 import 'package:todey/data/models/user_data.dart';
 import 'package:todey/data/database.dart';
 import 'package:todey/core/exports.dart';
@@ -42,7 +41,7 @@ class _MyAppState extends State<MyApp> {
     );
     return ScreenUtilInit(
       designSize: Size(360, 784),
-      builder: () {
+      builder: (__, _) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           translations: Translation(),
