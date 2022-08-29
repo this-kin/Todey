@@ -7,12 +7,19 @@ import 'package:todey/modules/onboard/onboard.dart';
 import 'package:todey/modules/setting/setting.dart';
 
 class RouteGenerator {
+  static const String onboarding = '/onboarding';
+  static const String home = "/home";
+  static const String dashboard = "/dashboard";
+  static const String create = "/create";
+  static const String setting = "/settings";
+  static const String voice = "/voice";
+
   static final List<GetPage> routes = [
-    GetPage(name: '/onboarding', page: () => Onboard()),
-    GetPage(name: '/home', page: () => Home()),
-    GetPage(name: '/dash', page: () => Dashboard()),
-    GetPage(name: '/create', page: () => Create()),
-    GetPage(name: '/voice', page: () => Voice()),
-    GetPage(name: '/setting', page: () => Setting()),
+    GetPage(name: onboarding, page: () => Onboard()),
+    GetPage(name: home, page: () => Home()),
+    GetPage(name: dashboard, page: () => Dashboard()),
+    GetPage(name: create, page: () => Create()),
+    GetPage(name: voice, page: () => Voice()),
+    GetPage(name: setting, page: () => Setting()),
   ];
 }

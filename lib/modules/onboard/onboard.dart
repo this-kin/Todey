@@ -1,6 +1,5 @@
 import 'package:todey/data/models/welcome_model.dart';
 import 'package:todey/core/exports.dart';
-import 'package:todey/modules/home/home.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key key}) : super(key: key);
@@ -10,9 +9,10 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
+  //
   final PageController _pageController = PageController();
 
-  //tracks current page
+  // tracks current page
   int _selectedIndex = 0;
 
   @override
@@ -78,7 +78,7 @@ class _OnboardState extends State<Onboard> {
               ? _pageController.nextPage(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.bounceInOut)
-              : Get.offAll(Home());
+              : authController.login(context);
         },
         label: Text(
           _selectedIndex < 2 ? "Next" : "Continue",
