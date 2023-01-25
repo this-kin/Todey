@@ -1,4 +1,4 @@
-package com.flutterboyfriend.todey
+package com.ichie.todey
 
 import io.flutter.embedding.android.FlutterActivity
 
