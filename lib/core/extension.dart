@@ -11,7 +11,7 @@ String formattedNow() {
 }
 
 // avatar picker
-String getAvatar(String eventType) {
+dynamic getAvatar(String eventType) {
   switch (eventType) {
     case "Fun":
       return ConstanceData.gameIcon;
@@ -29,7 +29,8 @@ String getAvatar(String eventType) {
       return ConstanceData.suitcaseIcon;
       break;
     default:
-      "Fun";
+      return "Fun";
+      break;
   }
 }
 

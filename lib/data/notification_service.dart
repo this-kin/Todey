@@ -4,7 +4,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:get/get.dart';
 
 class NotificationHelper {
-  NotificationHelper._() {}
+  NotificationHelper._();
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 

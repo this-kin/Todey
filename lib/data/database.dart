@@ -9,20 +9,20 @@ import 'package:todey/data/models/todo_model.dart';
 class DatabaseHelper {
   static final DatabaseHelper _instance = new DatabaseHelper._internal();
   factory DatabaseHelper() => _instance;
-  static final int _version = 1;
+  static const int _version = 1;
   final String tableName = "todeytabletest";
 
   //
-  final String columnId = "id";
-  final String columnTitle = "eventTitle";
-  final String columnNote = "eventNote";
-  final String columnDate = "eventDate";
-  final String columnType = "eventType";
-  final String columnAttached = 'eventAttachment';
-  final String columnStartedDate = "eventStartedDate";
-  final String columnEndedDate = "eventEndedDate";
-  final String columnCategory = "eventCategory";
-  final String columnCreatedTime = "eventCreatedDate";
+  static const String columnId = "id";
+  static const String columnTitle = "eventTitle";
+  static const String columnNote = "eventNote";
+  static const String columnDate = "eventDate";
+  static const String columnType = "eventType";
+  static const String columnAttached = 'eventAttachment';
+  static const String columnStartedDate = "eventStartedDate";
+  static const String columnEndedDate = "eventEndedDate";
+  static const String columnCategory = "eventCategory";
+  static const String columnCreatedTime = "eventCreatedDate";
 
   static Database _db;
 
