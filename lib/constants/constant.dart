@@ -14,14 +14,14 @@ class ConstanceData {
   static final suitcaseIcon = BASEIMAGEURL + "suitcase.png";
   static final userIcon = BASEIMAGEURL + "user.png";
 
-//fonts
+  //fonts
   static final abelFont = "MADType";
   static final ralewayFont = 'Raleway';
 
-//duration
+  //duration
   static final kDuration = Duration(milliseconds: 300);
 
-// error message
+  // error message
   static const error = "An error has occcured";
 }
 

@@ -20,9 +20,9 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    user.bindStream(_auth.userChanges());
-    ever(user, checkUser);
-    checkUser(user.value);
+    // user.bindStream(_auth.userChanges());
+    // ever(user, checkUser);
+    // checkUser(user.value);
   }
 
   // check existing user
