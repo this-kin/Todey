@@ -95,7 +95,6 @@ class CustomTheme {
       backgroundColor: const Color(0xff2F2C53),
       errorColor: deleteColor,
       platform: TargetPlatform.iOS,
-      cursorColor: primaryColor2,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       typography: Typography(),
