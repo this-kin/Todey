@@ -6,8 +6,15 @@
  ![Logo](ss/todey.png)
 
 
-
 A Task Management App built with Flutter Made with 💙
+
+ 
+# 📲 Download
+
+<br>
+<a href="https://play.google.com/store/apps/details?id=com.ichie.todey">
+    <img src="https://lh3.googleusercontent.com/qF9r3ZjtgG-qyHdmjecArtKiulz1gmwL_xl9R3_fzk6igSeoN0wYbJSKEX5d_fxJRwYZJpHbqcLB3i9atl-9dOfUl9an7U43TfZ9PtQ=s0" width="200"></img>
+</a>
 
 # Flutter Version
 Flutter 1.22.4
